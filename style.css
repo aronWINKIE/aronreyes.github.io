@@ -356,7 +356,7 @@ html, body {
     line-height: 1;
     margin-bottom: 24px;
     letter-spacing: -2px;
-    opacity: 0.35;  /* Dati 0.15, ngayon 0.35 para readable */
+    opacity: 0.30;  /* Dati 0.15, ngayon 0.30 para readable */
     text-shadow: 0 2px 20px rgba(0,0,0,0.5);
 }
 
