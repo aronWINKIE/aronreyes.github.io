@@ -221,3 +221,130 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('%c👋 Aron Reyes Portfolio v3', 'color: #c75b3a; font-size: 14px; font-weight: bold; font-family: monospace;');
     console.log('%cBuilt with ❤️ and AI assistance', 'color: #6b7b8e; font-size: 11px; font-family: monospace;');
 });
+
+
+/* ============================================
+   MATRIX WAVE ANIMATION (Contact Slide)
+   Characters fall from top and form wave pattern
+   ============================================ */
+
+class MatrixWave {
+    constructor() {
+        this.canvas = document.getElementById('matrixCanvas');
+        if (!this.canvas) return;
+
+        this.ctx = this.canvas.getContext('2d');
+        this.particles = [];
+        this.chars = ['.', '·', '∙', '•', '◦', '○', '◌', '/', '<', '>', '{', '}', ';', ':'];
+        this.resize();
+        this.init();
+
+        window.addEventListener('resize', () => this.resize());
+        this.animate();
+    }
+
+    resize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight * 0.45;
+    }
+
+    init() {
+        // Create initial particles
+        for (let i = 0; i < 120; i++) {
+            this.spawnParticle(true);
+        }
+    }
+
+    spawnParticle(randomY = false) {
+        const x = Math.random() * this.canvas.width;
+        const y = randomY ? Math.random() * this.canvas.height : -10;
+
+        // Target Y follows a sine wave pattern at the bottom
+        const wavePhase = (x / this.canvas.width) * Math.PI * 3;
+        const waveAmp = this.canvas.height * 0.35;
+        const targetY = this.canvas.height - waveAmp * Math.sin(wavePhase) - (Math.random() * 40);
+
+        this.particles.push({
+            x: x,
+            y: y,
+            targetY: targetY,
+            char: this.chars[Math.floor(Math.random() * this.chars.length)],
+            speed: 0.5 + Math.random() * 1.5,
+            size: 1.5 + Math.random() * 2.5,
+            alpha: 0,
+            maxAlpha: 0.15 + Math.random() * 0.35,
+            fadeIn: true,
+            settled: false,
+            settleTimer: 0,
+            drift: (Math.random() - 0.5) * 0.3
+        });
+    }
+
+    animate() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        // Spawn new particles occasionally
+        if (this.particles.length < 200 && Math.random() > 0.85) {
+            this.spawnParticle();
+        }
+
+        this.particles.forEach((p, i) => {
+            // Fade in
+            if (p.fadeIn) {
+                p.alpha += 0.02;
+                if (p.alpha >= p.maxAlpha) {
+                    p.alpha = p.maxAlpha;
+                    p.fadeIn = false;
+                }
+            }
+
+            // Movement
+            if (!p.settled) {
+                const dist = p.targetY - p.y;
+                if (dist > 5) {
+                    p.y += p.speed * (dist / 100 + 0.5);
+                    p.x += p.drift;
+                } else {
+                    p.settled = true;
+                }
+            } else {
+                // Gentle float when settled
+                p.y += Math.sin(Date.now() * 0.001 + p.x * 0.01) * 0.2;
+                p.settleTimer++;
+
+                // Fade out after settling
+                if (p.settleTimer > 200 + Math.random() * 300) {
+                    p.alpha -= 0.015;
+                }
+            }
+
+            // Draw
+            this.ctx.font = `${p.size}px JetBrains Mono, monospace`;
+            this.ctx.fillStyle = `rgba(100, 160, 200, ${p.alpha})`;
+            this.ctx.fillText(p.char, p.x, p.y);
+
+            // Remove dead particles
+            if (p.alpha <= 0 && !p.fadeIn) {
+                this.particles.splice(i, 1);
+            }
+        });
+
+        requestAnimationFrame(() => this.animate());
+    }
+}
+
+// Start matrix animation when contact slide is active
+const matrixObserver = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        if (mutation.target.classList.contains('active') && 
+            mutation.target.dataset.index === '4') {
+            if (!window.matrixWave) {
+                window.matrixWave = new MatrixWave();
+            }
+        }
+    });
+});
+
+document.querySelectorAll('.slide').forEach(slide => {
+    matrixObserver.observe(slide, { attributes: true, attributeFilter: ['class'] });
+});
