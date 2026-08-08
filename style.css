@@ -97,10 +97,11 @@ html, body {
     inset: 0;
     background: linear-gradient(
         90deg,
-        rgba(10, 22, 40, 1) 0%,        /* solid black sa left */
-        rgba(10, 22, 40, 0.95) 35%,   /* dark pa rin */
-        rgba(10, 22, 40, 0.75) 55%,   /* medium */
-        rgba(10, 22, 40, 0.3) 100%    /* light lang sa right */
+        rgba(10, 22, 40, 1) 0%,         /* solid dark sa left */
+        rgba(10, 22, 40, 0.92) 30%,    /* dark pa rin */
+        rgba(10, 22, 40, 0.7) 50%,     /* medium */
+        rgba(10, 22, 40, 0.3) 75%,     /* light */
+        rgba(10, 22, 40, 0.1) 100%     /* almost clear sa right */
     );
     z-index: 1;
 }
@@ -109,6 +110,9 @@ html, body {
 .about-bg .bg-image {
     opacity: 0.4;
     filter: blur(1px);
+    object-fit: contain;           /* Buong image makikita, may letterbox */
+    object-position: center;
+    background-color: var(--bg);   /* Para hindi awkward yung space */
 }
 
 .bg-overlay-light {
@@ -280,11 +284,7 @@ html, body {
     gap: 4px;
     z-index: 2;
     text-shadow: 0 2px 30px rgba(0, 0, 0, 0.9), 0 1px 10px rgba(0, 0, 0, 0.7);
-    background: rgba(10, 22, 40, 0.6);
-    backdrop-filter: blur(8px);
-    padding: 32px 40px;
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.05);
+    
 }
 
 .hero-label {
@@ -356,7 +356,8 @@ html, body {
     line-height: 1;
     margin-bottom: 24px;
     letter-spacing: -2px;
-    opacity: 0.15;
+    opacity: 0.35;  /* Dati 0.15, ngayon 0.35 para readable */
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
 }
 
 .hero-meta {
@@ -435,25 +436,26 @@ html, body {
 
 .about-photo { margin-top: 20px; }
 .photo-frame {
-    width: 220px; height: 280px;
+    width: 220px;
+    height: 280px;
     border: 1px solid var(--border);
     border-radius: 8px;
     overflow: hidden;
     position: relative;
     background: var(--bg-light);
 }
-.photo-frame {
-    width: 240px;
-    height: auto;                   /* Auto height para di ma-squish */
-    aspect-ratio: 3/4;             /* Portrait ratio */
-    max-height: 320px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    position: relative;
-    background: var(--bg-light);
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(30%);
+    transition: filter 0.5s;
 }
-.photo-frame:hover img { filter: grayscale(0%); }
+
+.photo-frame:hover img {
+    filter: grayscale(0%);
+}
 .photo-placeholder {
     width: 100%; height: 100%;
     display: flex;
