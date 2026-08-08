@@ -3,22 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aron Reyes | Portfolio</title>
+    <title>Aron Reyes | Web Developer — Silang, PH</title>
+    <meta name="description" content="Aron Reyes — Web Developer from Silang, Calabarzon. Building modern, interactive web applications with AI assistance.">
+    <meta property="og:title" content="Aron Reyes | Web Developer Portfolio">
+    <meta property="og:description" content="Modern web development, e-commerce solutions, and interactive experiences. Based in Silang, Philippines.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://aronreyes.github.io/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#0a1628">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <base target="_blank">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Aron Reyes",
+      "jobTitle": "Web Developer",
+      "url": "https://aronreyes.github.io",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Silang",
+        "addressRegion": "Calabarzon",
+        "addressCountry": "PH"
+      },
+      "sameAs": [
+        "https://github.com/aronWINKIE"
+      ]
+    }
+    </script>
 <base target="_blank">
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-text">
+                <span>A</span><span>R</span><span>O</span><span>N</span>
+                <span class="space"></span>
+                <span>R</span><span>E</span><span>Y</span><span>E</span><span>S</span>
+            </div>
+            <div class="preloader-line"><div class="preloader-progress"></div></div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
+
     <!-- Progress Dots -->
-    <nav class="slide-nav">
-        <div class="nav-dot active" data-slide="0"></div>
-        <div class="nav-dot" data-slide="1"></div>
-        <div class="nav-dot" data-slide="2"></div>
-        <div class="nav-dot" data-slide="3"></div>
-        <div class="nav-dot" data-slide="4"></div>
+    <nav class="slide-nav" aria-label="Slide navigation">
+        <div class="nav-dot active" data-slide="0" aria-label="Go to slide 1"></div>
+        <div class="nav-dot" data-slide="1" aria-label="Go to slide 2"></div>
+        <div class="nav-dot" data-slide="2" aria-label="Go to slide 3"></div>
+        <div class="nav-dot" data-slide="3" aria-label="Go to slide 4"></div>
+        <div class="nav-dot" data-slide="4" aria-label="Go to slide 5"></div>
     </nav>
 
     <!-- Slide Counter -->
@@ -30,14 +72,21 @@
 
     <!-- Top Bar -->
     <header class="top-bar">
-        <div class="location-badge">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Based in Silang, PH</span>
+        <div class="top-bar-left">
+            <div class="location-badge">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Based in Silang, PH</span>
+            </div>
+            <div class="availability-badge" id="availabilityBadge">
+                <span class="status-dot"></span>
+                <span class="status-text">Available for projects</span>
+            </div>
         </div>
         <div class="nav-links">
             <span class="code-tag">&lt;/&gt;</span>
             <a href="#" class="nav-link" data-slide="0">Welcome</a>
             <a href="#" class="nav-link" data-slide="1">About</a>
+            <a href="#" class="nav-link" data-slide="2">Skills</a>
             <a href="#" class="nav-link" data-slide="3">Projects</a>
             <a href="#" class="nav-link" data-slide="4">Contact</a>
         </div>
@@ -46,16 +95,17 @@
     <!-- Main Slider Container -->
     <main class="slider-container">
 
-        <!-- SLIDE 1: HERO with background photo -->
-        <section class="slide active" data-index="0">
+        <!-- SLIDE 1: HERO -->
+        <section class="slide active" data-index="0" aria-label="Welcome">
+            <canvas id="heroParticles" class="hero-particles"></canvas>
             <div class="hero-bg">
-                <img src="background.jpg" alt="Background" class="bg-image">
+                <img src="background.jpg" alt="" class="bg-image" loading="eager">
                 <div class="bg-overlay"></div>
             </div>
             <div class="slide-content hero-content">
                 <div class="hero-text">
                     <div class="hero-label">
-                        <span class="type-text" data-text="Hello I&#39;M"></span>
+                        <span class="type-text" data-text="Hello I'm"></span>
                         <span class="cursor">|</span>
                     </div>
                     <h1 class="hero-name">
@@ -71,9 +121,10 @@
                         <span class="cursor">|</span>
                     </div>
                     <div class="hero-code">&lt;/&gt;</div>
-                    <button type="button" class="cta-btn" id="ctaBtn">
+                    <button type="button" class="cta-btn magnetic" id="ctaBtn" aria-label="Go to contact slide">
                         <span class="type-text" data-text="Get in Touch"></span>
                         <span class="cursor">|</span>
+                        <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
                 <div class="hero-right">
@@ -93,33 +144,81 @@
             </div>
         </section>
 
-        <!-- SLIDE 2: ABOUT with dashboard background -->
-        <section class="slide" data-index="1">
+        <!-- SLIDE 2: ABOUT -->
+        <section class="slide" data-index="1" aria-label="About me">
             <div class="about-bg">
-                <img src="dashboard.jpg" alt="Dashboard" class="bg-image">
+                <img src="dashboard.jpg" alt="" class="bg-image" loading="lazy">
                 <div class="bg-overlay-light"></div>
             </div>
-            <div class="slide-content">
+            <div class="slide-content about-content">
                 <div class="about-left">
                     <div class="section-tag">
                         <span class="type-text" data-text="// About Me"></span>
                         <span class="cursor">|</span>
                     </div>
                     <div class="about-photo">
-                        <div class="photo-frame">
-                            <img src="profile.jpg" alt="Aron Reyes" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><i class=\'fas fa-user\'></i></div>';">
+                        <div class="photo-frame magnetic">
+                            <img src="profile.jpg" alt="Aron Reyes portrait" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><i class=\'fas fa-user\'></i></div>';" loading="lazy">
+                        </div>
+                    </div>
+                    <!-- Timeline -->
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-info">
+                                <span class="timeline-year">2024 — Present</span>
+                                <span class="timeline-role">Freelance Web Developer</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-info">
+                                <span class="timeline-year">2023 — 2024</span>
+                                <span class="timeline-role">Video Editor & Content Creator</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-info">
+                                <span class="timeline-year">2022 — 2023</span>
+                                <span class="timeline-role">Started Coding Journey</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="about-right">
                     <div class="about-text">
-                        <p class="type-paragraph" data-text="I&#39;m an aspiring web developer from Silang, Calabarzon. I build modern, interactive web applications with the help of AI tools."></p>
+                        <p class="type-paragraph" data-text="I'm an aspiring web developer from Silang, Calabarzon. I build modern, interactive web applications with the help of AI tools."></p>
                         <p class="type-paragraph" data-text="Fast learner, detail-oriented, and always eager to take on new challenges. I specialize in front-end development with a growing passion for full-stack."></p>
-                        <p class="type-paragraph" data-text="When I&#39;m not coding, I do video editing and explore new technologies..."></p>
+                        <p class="type-paragraph" data-text="When I'm not coding, I do video editing and explore new technologies..."></p>
+                    </div>
+                    <!-- Services -->
+                    <div class="services-section">
+                        <h3 class="services-title">What I Do</h3>
+                        <div class="services-grid">
+                            <div class="service-card glass">
+                                <i class="fas fa-laptop-code"></i>
+                                <h4>Web Development</h4>
+                                <p>Responsive, fast, and accessible websites built with modern standards.</p>
+                                <span class="service-price">From ₱8,000</span>
+                            </div>
+                            <div class="service-card glass">
+                                <i class="fas fa-shopping-bag"></i>
+                                <h4>E-Commerce</h4>
+                                <p>Full-stack online stores with payment integration and inventory.</p>
+                                <span class="service-price">From ₱25,000</span>
+                            </div>
+                            <div class="service-card glass">
+                                <i class="fas fa-robot"></i>
+                                <h4>AI Integration</h4>
+                                <p>Smart features, chatbots, and automation for your business.</p>
+                                <span class="service-price">Custom quote</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="about-stats">
                         <div class="stat">
-                            <span class="stat-num">5+</span>
+                            <span class="stat-num" data-target="5">0</span><span class="stat-suffix">+</span>
                             <span class="stat-label">Projects</span>
                         </div>
                         <div class="stat">
@@ -127,7 +226,7 @@
                             <span class="stat-label">Assisted</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-num">24/7</span>
+                            <span class="stat-num" data-target="24">0</span><span class="stat-suffix">/7</span>
                             <span class="stat-label">Learning</span>
                         </div>
                     </div>
@@ -136,7 +235,7 @@
         </section>
 
         <!-- SLIDE 3: SKILLS -->
-        <section class="slide" data-index="2">
+        <section class="slide" data-index="2" aria-label="Technical skills">
             <div class="slide-content">
                 <div class="skills-header">
                     <div class="section-tag">
@@ -146,13 +245,14 @@
                     <p class="skills-sub">Organized into key categories to clearly showcase expertise</p>
                 </div>
                 <div class="skills-grid">
-                    <div class="skill-category">
+                    <div class="skill-category glass">
                         <h3>Frontend</h3>
                         <div class="skill-list">
                             <div class="skill-item" data-level="90">
                                 <div class="skill-header">
                                     <i class="fab fa-html5 skill-icon html"></i>
                                     <span>HTML5</span>
+                                    <span class="skill-percent">90%</span>
                                 </div>
                                 <div class="skill-bar"><div class="skill-fill"></div></div>
                             </div>
@@ -160,6 +260,7 @@
                                 <div class="skill-header">
                                     <i class="fab fa-css3-alt skill-icon css"></i>
                                     <span>CSS3</span>
+                                    <span class="skill-percent">85%</span>
                                 </div>
                                 <div class="skill-bar"><div class="skill-fill"></div></div>
                             </div>
@@ -167,6 +268,7 @@
                                 <div class="skill-header">
                                     <i class="fab fa-js skill-icon js"></i>
                                     <span>JavaScript</span>
+                                    <span class="skill-percent">80%</span>
                                 </div>
                                 <div class="skill-bar"><div class="skill-fill"></div></div>
                             </div>
@@ -174,18 +276,20 @@
                                 <div class="skill-header">
                                     <i class="fab fa-react skill-icon react"></i>
                                     <span>React</span>
+                                    <span class="skill-percent">70%</span>
                                 </div>
                                 <div class="skill-bar"><div class="skill-fill"></div></div>
                             </div>
                         </div>
                     </div>
-                    <div class="skill-category">
+                    <div class="skill-category glass">
                         <h3>Tools</h3>
                         <div class="skill-list">
                             <div class="skill-item" data-level="85">
                                 <div class="skill-header">
                                     <i class="fab fa-git-alt skill-icon git"></i>
                                     <span>Git / GitHub</span>
+                                    <span class="skill-percent">85%</span>
                                 </div>
                                 <div class="skill-bar"><div class="skill-fill"></div></div>
                             </div>
@@ -193,6 +297,7 @@
                                 <div class="skill-header">
                                     <i class="fas fa-code skill-icon vscode"></i>
                                     <span>VS Code</span>
+                                    <span class="skill-percent">90%</span>
                                 </div>
                                 <div class="skill-bar"><div class="skill-fill"></div></div>
                             </div>
@@ -200,6 +305,7 @@
                                 <div class="skill-header">
                                     <i class="fas fa-robot skill-icon ai"></i>
                                     <span>AI Prompting</span>
+                                    <span class="skill-percent">80%</span>
                                 </div>
                                 <div class="skill-bar"><div class="skill-fill"></div></div>
                             </div>
@@ -207,19 +313,21 @@
                                 <div class="skill-header">
                                     <i class="fas fa-video skill-icon video"></i>
                                     <span>Video Editing</span>
+                                    <span class="skill-percent">75%</span>
                                 </div>
                                 <div class="skill-bar"><div class="skill-fill"></div></div>
                             </div>
                         </div>
                     </div>
-                    <div class="skill-category">
+                    <div class="skill-category glass">
                         <h3>Soft Skills</h3>
                         <div class="skill-tags">
-                            <span class="skill-tag"><i class="fas fa-puzzle-piece"></i> Problem Solving</span>
-                            <span class="skill-tag"><i class="fas fa-bolt"></i> Fast Learner</span>
-                            <span class="skill-tag"><i class="fas fa-comments"></i> Communication</span>
-                            <span class="skill-tag"><i class="fas fa-crosshairs"></i> Detail Oriented</span>
-                            <span class="skill-tag"><i class="fas fa-sync-alt"></i> Adaptable</span>
+                            <span class="skill-tag magnetic"><i class="fas fa-puzzle-piece"></i> Problem Solving</span>
+                            <span class="skill-tag magnetic"><i class="fas fa-bolt"></i> Fast Learner</span>
+                            <span class="skill-tag magnetic"><i class="fas fa-comments"></i> Communication</span>
+                            <span class="skill-tag magnetic"><i class="fas fa-crosshairs"></i> Detail Oriented</span>
+                            <span class="skill-tag magnetic"><i class="fas fa-sync-alt"></i> Adaptable</span>
+                            <span class="skill-tag magnetic"><i class="fas fa-clock"></i> Time Management</span>
                         </div>
                     </div>
                 </div>
@@ -227,38 +335,47 @@
         </section>
 
         <!-- SLIDE 4: PROJECTS -->
-        <section class="slide" data-index="3">
+        <section class="slide" data-index="3" aria-label="Portfolio projects">
             <div class="slide-content">
                 <div class="projects-header">
                     <div class="section-tag">
                         <span class="type-text" data-text="// Portfolio"></span>
                         <span class="cursor">|</span>
                     </div>
-                    <p class="projects-sub">Selected works and ongoing projects</p>
+                    <p class="projects-sub">Selected works and ongoing projects — click a card for details</p>
                 </div>
                 <div class="projects-grid">
-                    <div class="project-card">
+                    <div class="project-card tilt-card" data-project="nightmode">
                         <div class="project-visual"><i class="fas fa-moon"></i></div>
                         <div class="project-info">
                             <h3>Nightmode Portfolio</h3>
                             <p>Interactive portfolio with dark mode toggle and custom CSS filter effects.</p>
                             <div class="project-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-external-link-alt"></i> View Case Study</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-card">
+                    <div class="project-card tilt-card" data-project="mobile">
                         <div class="project-visual"><i class="fas fa-mobile-alt"></i></div>
                         <div class="project-info">
                             <h3>Mobile App</h3>
                             <p>React Native application with AI-powered features and modern UI.</p>
                             <div class="project-tech"><span>React Native</span><span>AI</span></div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-external-link-alt"></i> View Case Study</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-card">
+                    <div class="project-card tilt-card" data-project="ecommerce">
                         <div class="project-visual"><i class="fas fa-shopping-cart"></i></div>
                         <div class="project-info">
                             <h3>E-Commerce Web</h3>
                             <p>Full-stack e-commerce platform with payment integration.</p>
                             <div class="project-tech"><span>React</span><span>Node.js</span></div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-external-link-alt"></i> View Case Study</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -266,14 +383,63 @@
         </section>
 
         <!-- SLIDE 5: CONTACT -->
-        <section class="slide" data-index="4">
+        <section class="slide" data-index="4" aria-label="Contact">
+            <canvas id="matrixCanvas"></canvas>
             <div class="slide-content contact-content">
                 <div class="contact-left">
                     <div class="section-tag"><span class="type-text" data-text="&lt;/&gt;"></span><span class="cursor">|</span></div>
                 </div>
                 <div class="contact-center">
                     <h1 class="contact-title"><span class="type-text" data-text="HelloWorld"></span><span class="contact-exclaim">!</span><span class="cursor">|</span></h1>
-                    <p class="contact-subtitle"><span class="type-text" data-text="Thank you for watching"></span><span class="cursor">|</span></p>
+                    <p class="contact-subtitle"><span class="type-text" data-text="Let's build something together"></span><span class="cursor">|</span></p>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form-wrapper">
+                        <form id="contactForm" class="contact-form" novalidate>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" id="formName" required placeholder=" " autocomplete="name">
+                                    <label for="formName">Your Name</label>
+                                    <span class="form-line"></span>
+                                    <span class="form-error">Please enter your name</span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" id="formEmail" required placeholder=" " autocomplete="email">
+                                    <label for="formEmail">Email Address</label>
+                                    <span class="form-line"></span>
+                                    <span class="form-error">Please enter a valid email</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <select id="formType" required>
+                                    <option value="" disabled selected></option>
+                                    <option value="website">Business Website</option>
+                                    <option value="ecommerce">E-Commerce</option>
+                                    <option value="portfolio">Portfolio / Landing Page</option>
+                                    <option value="redesign">Website Redesign</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <label for="formType">Project Type</label>
+                                <span class="form-line"></span>
+                                <span class="form-error">Please select a project type</span>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="formMessage" rows="3" required placeholder=" "></textarea>
+                                <label for="formMessage">Tell me about your project</label>
+                                <span class="form-line"></span>
+                                <span class="form-error">Please describe your project</span>
+                            </div>
+                            <button type="submit" class="submit-btn magnetic" id="submitBtn">
+                                <span class="btn-text">Send Message</span>
+                                <span class="btn-loader"></span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                            <div class="form-success" id="formSuccess">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Message sent successfully! I'll get back to you within 24 hours.</span>
+                            </div>
+                        </form>
+                    </div>
                 </div>
                 <div class="contact-right">
                     <div class="contact-vertical">Portfolio — 2026</div>
@@ -282,27 +448,62 @@
                     <div class="contact-block">
                         <span class="contact-label">Contact Me</span>
                         <div class="contact-links">
-                            <a href="mailto:aronreyes@gmail.com"><i class="fas fa-envelope"></i> aronreyes@gmail.com</a>
-                            <a href="https://github.com/aronWINKIE/aronreyes.github.io" target="_blank"><i class="fas fa-globe"></i> github.com/aronWINKIE</a>
-                            <a href="tel:09275380816"><i class="fas fa-phone"></i> 0927-538-0816</a>
+                            <a href="mailto:aronreyes@gmail.com" class="magnetic"><i class="fas fa-envelope"></i> aronreyes@gmail.com</a>
+                            <a href="https://github.com/aronWINKIE/aronreyes.github.io" target="_blank" class="magnetic"><i class="fas fa-globe"></i> github.com/aronWINKIE</a>
+                            <a href="tel:09275380816" class="magnetic"><i class="fas fa-phone"></i> 0927-538-0816</a>
                         </div>
                     </div>
                     <div class="contact-social">
-                        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" title="OLJ"><i class="fas fa-briefcase"></i></a>
+                        <a href="#" title="GitHub" class="magnetic" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" title="LinkedIn" class="magnetic" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="OnlineJobs.ph" class="magnetic" aria-label="OnlineJobs"><i class="fas fa-briefcase"></i></a>
+                    </div>
+                </div>
+
+                <!-- Testimonials -->
+                <div class="testimonials-wrapper">
+                    <div class="testimonial-card glass">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"Aron delivered our landing page in just 5 days. Communication was clear and the result exceeded expectations."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">JD</div>
+                            <div class="author-info">
+                                <strong>John Doe</strong>
+                                <span>Founder, TechStart PH</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card glass">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"Professional, detail-oriented, and fast. The e-commerce site he built helped us increase sales by 40%."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">MS</div>
+                            <div class="author-info">
+                                <strong>Maria Santos</strong>
+                                <span>Owner, LocalMart</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+    </main>
 
-        <!-- Matrix Wave Canvas --><canvas id="matrixCanvas"></canvas>
-</main>
+    <!-- Project Modal -->
+    <div class="project-modal" id="projectModal" aria-hidden="true">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose" aria-label="Close modal"><i class="fas fa-times"></i></button>
+            <div class="modal-body" id="modalBody">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
 
     <!-- Navigation Arrows -->
     <div class="nav-arrows">
-        <button class="arrow-btn arrow-up" id="arrowUp"><i class="fas fa-chevron-up"></i></button>
-        <button class="arrow-btn arrow-down" id="arrowDown"><i class="fas fa-chevron-down"></i></button>
+        <button class="arrow-btn arrow-up magnetic" id="arrowUp" aria-label="Previous slide"><i class="fas fa-chevron-up"></i></button>
+        <button class="arrow-btn arrow-down magnetic" id="arrowDown" aria-label="Next slide"><i class="fas fa-chevron-down"></i></button>
     </div>
 
     <script src="script.js"></script>
