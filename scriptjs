@@ -28,14 +28,24 @@ class PortfolioSlider {
         // Delay typing start for hero slide
         setTimeout(() => this.startTyping(0), 600);
 
-        // CTA button
+        // CTA button - navigate to contact slide
         const ctaBtn = document.getElementById('ctaBtn');
         if (ctaBtn) {
             ctaBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                this.goToSlide(4);
+                e.stopPropagation();
+                if (typeof this.goToSlide === 'function') {
+                    this.goToSlide(4);
+                }
             });
         }
+
+        // Global fallback for any onclick handlers
+        window.goToSlide = (index) => {
+            if (window.slider && typeof window.slider.goToSlide === 'function') {
+                window.slider.goToSlide(index);
+            }
+        };
     }
 
     bindEvents() {
