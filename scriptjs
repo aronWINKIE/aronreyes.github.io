@@ -1,6 +1,6 @@
 /* ============================================
-   ARON REYES - SLIDE PORTFOLIO CONTROLLER
-   Typing Effect | Smooth Transitions | Navigation
+   ARON REYES - V3 SLIDE PORTFOLIO CONTROLLER
+   Typing Effect | Background Transitions | Navigation
    ============================================ */
 
 class PortfolioSlider {
@@ -10,6 +10,7 @@ class PortfolioSlider {
         this.isAnimating = false;
         this.typingSpeed = 45;
         this.typingDelay = 300;
+        this.typingInProgress = false;
 
         this.slides = document.querySelectorAll('.slide');
         this.dots = document.querySelectorAll('.nav-dot');
@@ -24,12 +25,12 @@ class PortfolioSlider {
     init() {
         this.bindEvents();
         this.updateUI();
-        this.startTyping(0);
-        this.animateSkillBars(2);
+        // Delay typing start for hero slide
+        setTimeout(() => this.startTyping(0), 600);
     }
 
     bindEvents() {
-        // Keyboard navigation
+        // Keyboard
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
                 e.preventDefault();
@@ -40,53 +41,46 @@ class PortfolioSlider {
             }
         });
 
-        // Wheel navigation with debounce
+        // Wheel with debounce
         let wheelTimeout;
         document.addEventListener('wheel', (e) => {
             if (this.isAnimating) return;
             clearTimeout(wheelTimeout);
             wheelTimeout = setTimeout(() => {
-                if (e.deltaY > 30) {
-                    this.nextSlide();
-                } else if (e.deltaY < -30) {
-                    this.prevSlide();
-                }
+                if (e.deltaY > 30) this.nextSlide();
+                else if (e.deltaY < -30) this.prevSlide();
             }, 50);
         }, { passive: true });
 
-        // Touch navigation
+        // Touch
         let touchStartY = 0;
         document.addEventListener('touchstart', (e) => {
             touchStartY = e.touches[0].clientY;
         }, { passive: true });
-
         document.addEventListener('touchend', (e) => {
             if (this.isAnimating) return;
-            const touchEndY = e.changedTouches[0].clientY;
-            const diff = touchStartY - touchEndY;
+            const diff = touchStartY - e.changedTouches[0].clientY;
             if (Math.abs(diff) > 50) {
-                if (diff > 0) this.nextSlide();
-                else this.prevSlide();
+                diff > 0 ? this.nextSlide() : this.prevSlide();
             }
         }, { passive: true });
 
-        // Nav dots
-        this.dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => this.goToSlide(index));
+        // Dots
+        this.dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => this.goToSlide(i));
         });
 
-        // Top nav links
+        // Nav links
         this.navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                const slideIndex = parseInt(link.dataset.slide);
-                this.goToSlide(slideIndex);
+                this.goToSlide(parseInt(link.dataset.slide));
             });
         });
 
-        // Arrow buttons
-        this.arrowUp.addEventListener('click', () => this.prevSlide());
-        this.arrowDown.addEventListener('click', () => this.nextSlide());
+        // Arrows
+        if (this.arrowUp) this.arrowUp.addEventListener('click', () => this.prevSlide());
+        if (this.arrowDown) this.arrowDown.addEventListener('click', () => this.nextSlide());
     }
 
     nextSlide() {
@@ -106,116 +100,105 @@ class PortfolioSlider {
         if (index < 0 || index >= this.totalSlides) return;
 
         this.isAnimating = true;
-        const direction = index > this.currentSlide ? 'next' : 'prev';
 
-        // Update slides
+        // Update slide classes
         this.slides.forEach((slide, i) => {
             slide.classList.remove('active', 'prev', 'next');
-            if (i === index) {
-                slide.classList.add('active');
-            } else if (i < index) {
-                slide.classList.add('prev');
-            } else {
-                slide.classList.add('next');
-            }
+            if (i === index) slide.classList.add('active');
+            else if (i < index) slide.classList.add('prev');
+            else slide.classList.add('next');
         });
 
         this.currentSlide = index;
         this.updateUI();
 
-        // Start typing for new slide
+        // Start typing for new slide after transition
         setTimeout(() => {
             this.startTyping(index);
-            if (index === 2) this.animateSkillBars(2);
-        }, 400);
+            if (index === 2) this.animateSkillBars();
+        }, 500);
 
-        // Reset animation lock
         setTimeout(() => {
             this.isAnimating = false;
         }, 800);
     }
 
     updateUI() {
-        // Update dots
         this.dots.forEach((dot, i) => {
             dot.classList.toggle('active', i === this.currentSlide);
         });
-
-        // Update counter
         if (this.currentCounter) {
             this.currentCounter.textContent = String(this.currentSlide + 1).padStart(2, '0');
         }
-
-        // Update nav links
         this.navLinks.forEach(link => {
-            const linkSlide = parseInt(link.dataset.slide);
-            link.classList.toggle('active', linkSlide === this.currentSlide);
+            link.classList.toggle('active', parseInt(link.dataset.slide) === this.currentSlide);
         });
-
-        // Update arrows
         if (this.arrowUp) this.arrowUp.disabled = this.currentSlide === 0;
         if (this.arrowDown) this.arrowDown.disabled = this.currentSlide === this.totalSlides - 1;
     }
 
     /* ============================================
-       TYPING EFFECT
+       TYPING EFFECT with three dots
        ============================================ */
-    startTyping(slideIndex) {
+    async startTyping(slideIndex) {
         const slide = this.slides[slideIndex];
         if (!slide) return;
 
+        // Reset all type-text elements in this slide
         const typeElements = slide.querySelectorAll('.type-text');
 
-        typeElements.forEach((el, i) => {
+        for (let i = 0; i < typeElements.length; i++) {
+            const el = typeElements[i];
             const text = el.dataset.text || '';
             const cursor = el.nextElementSibling;
 
             // Reset
             el.textContent = '';
-            if (cursor) cursor.classList.add('typing');
+            if (cursor) {
+                cursor.style.display = 'inline';
+                cursor.classList.add('typing');
+            }
 
-            // Delayed start for each element
-            setTimeout(() => {
-                this.typeText(el, text, 0, () => {
-                    if (cursor) {
-                        cursor.classList.remove('typing');
-                        // Add three dots animation after typing
-                        this.animateDots(el, cursor);
-                    }
-                });
-            }, i * this.typingDelay);
-        });
-    }
+            // Type each character
+            for (let j = 0; j < text.length; j++) {
+                el.textContent += text.charAt(j);
+                await this.sleep(this.typingSpeed + Math.random() * 20);
+            }
 
-    typeText(element, text, index, callback) {
-        if (index < text.length) {
-            element.textContent += text.charAt(index);
-            setTimeout(() => {
-                this.typeText(element, text, index + 1, callback);
-            }, this.typingSpeed + Math.random() * 20);
-        } else {
-            if (callback) callback();
+            // Handle three dots animation
+            if (text.includes('...')) {
+                const baseText = text.replace('...', '');
+                el.textContent = baseText;
+                await this.sleep(200);
+                el.textContent = baseText + '.';
+                await this.sleep(200);
+                el.textContent = baseText + '..';
+                await this.sleep(200);
+                el.textContent = baseText + '...';
+            }
+
+            // Hide cursor after typing this element
+            if (cursor) {
+                cursor.classList.remove('typing');
+                // Keep cursor visible but blinking, or hide it
+                if (i < typeElements.length - 1) {
+                    cursor.style.display = 'none';
+                }
+            }
+
+            await this.sleep(this.typingDelay);
         }
     }
 
-    animateDots(element, cursor) {
-        // If the text ends with "...", animate them appearing one by one
-        const text = element.textContent;
-        if (text.includes('...')) {
-            const baseText = text.replace('...', '');
-            element.textContent = baseText;
-
-            setTimeout(() => { element.textContent = baseText + '.'; }, 200);
-            setTimeout(() => { element.textContent = baseText + '..'; }, 400);
-            setTimeout(() => { element.textContent = baseText + '...'; }, 600);
-        }
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     /* ============================================
        SKILL BARS ANIMATION
        ============================================ */
-    animateSkillBars(slideIndex) {
-        const slide = this.slides[slideIndex];
+    animateSkillBars() {
+        const slide = this.slides[2]; // Skills slide
         if (!slide) return;
 
         const skillItems = slide.querySelectorAll('.skill-item');
@@ -226,7 +209,7 @@ class PortfolioSlider {
                 fill.style.width = '0%';
                 setTimeout(() => {
                     fill.style.width = level + '%';
-                }, 300 + i * 150);
+                }, 400 + i * 150);
             }
         });
     }
@@ -234,8 +217,7 @@ class PortfolioSlider {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    new PortfolioSlider();
-
-    console.log('%c👋 Anthony Reyes Portfolio', 'color: #c75b3a; font-size: 14px; font-weight: bold; font-family: monospace;');
+    window.slider = new PortfolioSlider();
+    console.log('%c👋 Aron Reyes Portfolio v3', 'color: #c75b3a; font-size: 14px; font-weight: bold; font-family: monospace;');
     console.log('%cBuilt with ❤️ and AI assistance', 'color: #6b7b8e; font-size: 11px; font-family: monospace;');
 });

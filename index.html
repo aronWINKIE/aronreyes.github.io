@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anthony Reyes | Portfolio</title>
+    <title>Aron Reyes | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -46,52 +46,59 @@
     <!-- Main Slider Container -->
     <main class="slider-container">
 
-        <!-- SLIDE 1: HERO -->
+        <!-- SLIDE 1: HERO with background photo -->
         <section class="slide active" data-index="0">
-            <div class="slide-content">
-                <div class="hero-main">
+            <div class="hero-bg">
+                <img src="background.jpg" alt="Background" class="bg-image">
+                <div class="bg-overlay"></div>
+            </div>
+            <div class="slide-content hero-content">
+                <div class="hero-text">
                     <div class="hero-label">
                         <span class="type-text" data-text="Hello I&#39;M"></span>
                         <span class="cursor">|</span>
                     </div>
                     <h1 class="hero-name">
-                        <span class="type-text" data-text="Anthony"></span>
+                        <span class="type-text" data-text="Aron"></span>
                         <span class="cursor">|</span>
                     </h1>
                     <h2 class="hero-surname">
                         <span class="type-text" data-text="Reyes"></span>
                         <span class="cursor">|</span>
                     </h2>
+                    <div class="hero-role">
+                        <span class="type-text" data-text="Web Developer"></span>
+                        <span class="cursor">|</span>
+                    </div>
                     <div class="hero-code">&lt;/&gt;</div>
+                    <a href="#" class="cta-btn" onclick="goTo(4); return false;">
+                        <span class="type-text" data-text="Get in Touch"></span>
+                        <span class="cursor">|</span>
+                    </a>
                 </div>
-                <div class="hero-side">
+                <div class="hero-right">
                     <div class="big-title">
                         <span class="type-text" data-text="Portfolio"></span>
                         <span class="cursor">|</span>
                     </div>
                     <div class="hero-meta">
                         <span class="meta-arrow">&gt;</span>
-                        <div class="meta-text">
-                            <span class="type-text" data-text="Web Developer"></span>
-                            <span class="cursor">|</span>
-                        </div>
-                        <div class="meta-year">
-                            <span class="type-text" data-text="&gt; 2026"></span>
-                            <span class="cursor">|</span>
-                        </div>
+                        <span class="meta-year">2026</span>
                     </div>
                 </div>
             </div>
             <div class="scroll-hint">
-                <span class="mouse">
-                    <span class="wheel"></span>
-                </span>
+                <span class="mouse"><span class="wheel"></span></span>
                 <span class="scroll-text">Scroll to explore</span>
             </div>
         </section>
 
-        <!-- SLIDE 2: ABOUT -->
+        <!-- SLIDE 2: ABOUT with dashboard background -->
         <section class="slide" data-index="1">
+            <div class="about-bg">
+                <img src="dashboard.jpg" alt="Dashboard" class="bg-image">
+                <div class="bg-overlay-light"></div>
+            </div>
             <div class="slide-content">
                 <div class="about-left">
                     <div class="section-tag">
@@ -100,7 +107,7 @@
                     </div>
                     <div class="about-photo">
                         <div class="photo-frame">
-                            <img src="profile.jpg" alt="Anthony Reyes" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><i class=\'fas fa-user\'></i></div>';">
+                            <img src="profile.jpg" alt="Aron Reyes" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><i class=\'fas fa-user\'></i></div>';">
                         </div>
                     </div>
                 </div>
@@ -183,39 +190,27 @@
                 </div>
                 <div class="projects-grid">
                     <div class="project-card">
-                        <div class="project-visual">
-                            <i class="fas fa-moon"></i>
-                        </div>
+                        <div class="project-visual"><i class="fas fa-moon"></i></div>
                         <div class="project-info">
                             <h3>Nightmode Portfolio</h3>
                             <p>Interactive portfolio with dark mode toggle and custom CSS filter effects.</p>
-                            <div class="project-tech">
-                                <span>HTML</span><span>CSS</span><span>JS</span>
-                            </div>
+                            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
                         </div>
                     </div>
                     <div class="project-card">
-                        <div class="project-visual">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
+                        <div class="project-visual"><i class="fas fa-mobile-alt"></i></div>
                         <div class="project-info">
                             <h3>Mobile App</h3>
                             <p>React Native application with AI-powered features and modern UI.</p>
-                            <div class="project-tech">
-                                <span>React Native</span><span>AI</span>
-                            </div>
+                            <div class="project-tech"><span>React Native</span><span>AI</span></div>
                         </div>
                     </div>
                     <div class="project-card">
-                        <div class="project-visual">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
+                        <div class="project-visual"><i class="fas fa-shopping-cart"></i></div>
                         <div class="project-info">
                             <h3>E-Commerce Web</h3>
                             <p>Full-stack e-commerce platform with payment integration.</p>
-                            <div class="project-tech">
-                                <span>React</span><span>Node.js</span>
-                            </div>
+                            <div class="project-tech"><span>React</span><span>Node.js</span></div>
                         </div>
                     </div>
                 </div>
@@ -226,20 +221,11 @@
         <section class="slide" data-index="4">
             <div class="slide-content contact-content">
                 <div class="contact-left">
-                    <div class="section-tag">
-                        <span class="type-text" data-text="&lt;/&gt;"></span>
-                        <span class="cursor">|</span>
-                    </div>
+                    <div class="section-tag"><span class="type-text" data-text="&lt;/&gt;"></span><span class="cursor">|</span></div>
                 </div>
                 <div class="contact-center">
-                    <h1 class="contact-title">
-                        <span class="type-text" data-text="Say...Hello"></span>
-                        <span class="cursor">|</span>
-                    </h1>
-                    <p class="contact-subtitle">
-                        <span class="type-text" data-text="Thank you for watching"></span>
-                        <span class="cursor">|</span>
-                    </p>
+                    <h1 class="contact-title"><span class="type-text" data-text="Say...Hello"></span><span class="cursor">|</span></h1>
+                    <p class="contact-subtitle"><span class="type-text" data-text="Thank you for watching"></span><span class="cursor">|</span></p>
                 </div>
                 <div class="contact-right">
                     <div class="contact-vertical">Portfolio — 2026</div>
@@ -248,8 +234,8 @@
                     <div class="contact-block">
                         <span class="contact-label">Contact Me</span>
                         <div class="contact-links">
-                            <a href="mailto:anthony.a.reyes@gmail.com"><i class="fas fa-envelope"></i>anthony.a.reyes@gmail.com</a>
-                            <a href="https://github.com/aronWINKIE/aronreyes.github.io" target="_blank"><i class="fas fa-globe"></i> https://github.com/aronWINKIE/aronreyes.github.io</a>
+                            <a href="mailto:aronreyes@gmail.com"><i class="fas fa-envelope"></i> aronreyes@gmail.com</a>
+                            <a href="https://github.com/aronWINKIE/aronreyes.github.io" target="_blank"><i class="fas fa-globe"></i> github.com/aronWINKIE</a>
                             <a href="tel:09275380816"><i class="fas fa-phone"></i> 0927-538-0816</a>
                         </div>
                     </div>
