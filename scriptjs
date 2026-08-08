@@ -27,6 +27,15 @@ class PortfolioSlider {
         this.updateUI();
         // Delay typing start for hero slide
         setTimeout(() => this.startTyping(0), 600);
+
+        // CTA button
+        const ctaBtn = document.getElementById('ctaBtn');
+        if (ctaBtn) {
+            ctaBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.goToSlide(4);
+            });
+        }
     }
 
     bindEvents() {
