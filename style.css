@@ -845,3 +845,37 @@ html, body {
     color: var(--accent);
     font-weight: 300;
 }
+
+
+/* ============================================
+   SKILL ICONS (Page 3)
+   ============================================ */
+.skill-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.skill-icon {
+    font-size: 1.3rem;
+    width: 28px;
+    text-align: center;
+}
+
+/* Brand colors for icons */
+.skill-icon.html { color: #e34c26; }
+.skill-icon.css { color: #264de4; }
+.skill-icon.js { color: #f7df1e; }
+.skill-icon.react { color: #61dafb; }
+.skill-icon.git { color: #f05032; }
+.skill-icon.vscode { color: #007acc; }
+.skill-icon.ai { color: #a855f7; }
+.skill-icon.video { color: #ff6b6b; }
+
+/* Soft skill tags with icons */
+.skill-tag i {
+    margin-right: 6px;
+    font-size: 0.7rem;
+    color: var(--accent);
+}
