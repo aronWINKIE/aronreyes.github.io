@@ -164,7 +164,7 @@ class PortfolioSlider {
         if (!slide) return;
 
         // Reset all type-text elements in this slide
-        const typeElements = slide.querySelectorAll('.type-text');
+        const typeElements = slide.querySelectorAll('.type-text, .type-paragraph');
 
         for (let i = 0; i < typeElements.length; i++) {
             const el = typeElements[i];

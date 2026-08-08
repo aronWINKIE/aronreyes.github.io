@@ -86,23 +86,20 @@ html, body {
     inset: 0;
 }
 
-/* Hero: grayscale photo with dark overlay */
 .hero-bg .bg-image {
     filter: grayscale(100%) contrast(1.1);
-    transform: scale(1.02);
+    object-position: center top;  /* Anchors to top so face isn't cut off */
+    /* REMOVE: transform: scale(1.02); */
 }
 
 .bg-overlay {
-    position: absolute;
-    inset: 0;
     background: linear-gradient(
         90deg,
         rgba(10, 22, 40, 0.95) 0%,
-        rgba(10, 22, 40, 0.85) 40%,
-        rgba(10, 22, 40, 0.6) 70%,
-        rgba(10, 22, 40, 0.4) 100%
+        rgba(10, 22, 40, 0.85) 35%,
+        rgba(10, 22, 40, 0.5) 60%,
+        rgba(10, 22, 40, 0.25) 100%
     );
-    z-index: 1;
 }
 
 /* About: dashboard bg at 40% opacity */
