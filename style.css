@@ -1,5 +1,5 @@
 /* ============================================
-   ANTHONY REYES — PREMIUM PORTFOLIO v4
+   ARON REYES — PREMIUM PORTFOLIO v4
    Preloader | Custom Cursor | Glassmorphism | 3D Tilt | Form | Modal
    ============================================ */
 
@@ -81,16 +81,19 @@ html, body {
     animation: preloaderChar 0.5s ease forwards;
 }
 .preloader-text span.space { width: 12px; }
-.preloader-text span:nth-child(1) { animation-delay: 0.1s; }
-.preloader-text span:nth-child(2) { animation-delay: 0.2s; }
-.preloader-text span:nth-child(3) { animation-delay: 0.3s; }
-.preloader-text span:nth-child(4) { animation-delay: 0.4s; }
-.preloader-text span:nth-child(5) { animation-delay: 0.5s; }
-.preloader-text span:nth-child(6) { animation-delay: 0.6s; }
-.preloader-text span:nth-child(7) { animation-delay: 0.7s; }
-.preloader-text span:nth-child(8) { animation-delay: 0.8s; }
-.preloader-text span:nth-child(9) { animation-delay: 0.9s; }
-.preloader-text span:nth-child(10) { animation-delay: 1.0s; }
+.preloader-text span:nth-child(1) { animation-delay: 0.08s; }
+.preloader-text span:nth-child(2) { animation-delay: 0.16s; }
+.preloader-text span:nth-child(3) { animation-delay: 0.24s; }
+.preloader-text span:nth-child(4) { animation-delay: 0.32s; }
+.preloader-text span:nth-child(5) { animation-delay: 0.40s; }
+.preloader-text span:nth-child(6) { animation-delay: 0.48s; }
+.preloader-text span:nth-child(7) { animation-delay: 0.56s; }
+.preloader-text span:nth-child(8) { animation-delay: 0.64s; }
+.preloader-text span:nth-child(9) { animation-delay: 0.72s; }
+.preloader-text span:nth-child(10) { animation-delay: 0.80s; }
+.preloader-text span:nth-child(11) { animation-delay: 0.88s; }
+.preloader-text span:nth-child(12) { animation-delay: 0.96s; }
+.preloader-text span:nth-child(13) { animation-delay: 1.04s; }
 
 @keyframes preloaderChar {
     to { opacity: 1; transform: translateY(0); }
