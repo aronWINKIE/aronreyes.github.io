@@ -1,5 +1,5 @@
 /* ============================================
-   ANTHONY REYES — PREMIUM PORTFOLIO CONTROLLER v4.1
+   ARON REYES — PREMIUM PORTFOLIO CONTROLLER v4.1
    FIXED: Preloader fallback | Cursor | Magnetic | Tilt | Form | Modal | Particles
    ============================================ */
 
@@ -715,40 +715,40 @@ class ProjectModal {
         this.cards = document.querySelectorAll('.project-card');
 
         this.projectData = {
-            nightmode: {
-                title: 'Nightmode Portfolio',
-                tag: 'Personal Project',
-                problem: 'Needed a portfolio that stands out with dark mode aesthetics while maintaining readability and performance.',
-                solution: 'Built a custom dark-themed portfolio with CSS filter effects, smooth transitions, and a typing animation system.',
-                result: 'Achieved a 95+ Lighthouse score with sub-2s load time and positive feedback from 20+ developers.',
-                tech: ['HTML5', 'CSS3', 'JavaScript', 'GSAP'],
+            silangbrew: {
+                title: 'Silang Brew',
+                tag: 'Landing Page',
+                problem: 'A local coffee shop in Silang needed an online presence to attract customers and showcase their menu.',
+                solution: 'Built a warm, inviting single-page website with smooth scroll navigation, responsive design, and a modern menu grid.',
+                result: 'Clean, fast-loading site that works on all devices. Perfect template for local businesses.',
+                tech: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
                 links: [
-                    { text: 'View Live', url: '#', icon: 'fa-external-link-alt' },
-                    { text: 'View Code', url: '#', icon: 'fa-code' }
+                    { text: 'View Live', url: 'https://aronreyes.github.io/silang-brew/', icon: 'fa-external-link-alt' },
+                    { text: 'View Code', url: 'https://github.com/aronWINKIE/aronreyes.github.io/tree/main/silang-brew', icon: 'fa-code' }
                 ]
             },
-            mobile: {
-                title: 'Mobile App',
-                tag: 'Client Project',
-                problem: 'Client needed a cross-platform mobile app with AI features but had limited budget for native development.',
-                solution: 'Developed a React Native application with integrated AI APIs for smart recommendations and modern UI components.',
-                result: 'App launched on both iOS and Android with 4.8★ rating and 1,000+ downloads in the first month.',
-                tech: ['React Native', 'Expo', 'OpenAI API', 'Firebase'],
+            taskflow: {
+                title: 'TaskFlow',
+                tag: 'Web Application',
+                problem: 'People need a simple, fast task manager that works offline and persists data without a backend.',
+                solution: 'Developed a fully functional task manager using vanilla JavaScript with localStorage for data persistence.',
+                result: 'Zero-setup productivity tool with filters, stats, and animations. All data stays on the device.',
+                tech: ['JavaScript', 'localStorage', 'CSS Animations', 'DOM Manipulation'],
                 links: [
-                    { text: 'View Live', url: '#', icon: 'fa-external-link-alt' },
-                    { text: 'View Code', url: '#', icon: 'fa-code' }
+                    { text: 'View Live', url: 'https://aronreyes.github.io/taskflow/', icon: 'fa-external-link-alt' },
+                    { text: 'View Code', url: 'https://github.com/aronWINKIE/aronreyes.github.io/tree/main/taskflow', icon: 'fa-code' }
                 ]
             },
-            ecommerce: {
-                title: 'E-Commerce Web',
-                tag: 'Client Project',
-                problem: 'Local business needed an online store to expand reach beyond physical location during pandemic.',
-                solution: 'Full-stack e-commerce platform with React frontend, Node.js backend, and PayMongo payment integration.',
-                result: 'Increased client sales by 150% within 3 months and reduced manual order processing by 80%.',
-                tech: ['React', 'Node.js', 'MongoDB', 'PayMongo API'],
+            kusina: {
+                title: 'Kusina Box',
+                tag: 'E-Commerce Demo',
+                problem: 'Filipino food businesses need affordable e-commerce solutions without complex backends.',
+                solution: 'Created a complete frontend e-commerce experience with cart management, quantity controls, and checkout flow.',
+                result: 'Fully interactive shopping experience. Ready to integrate with payment APIs like PayMongo or Stripe.',
+                tech: ['HTML5', 'CSS3', 'JavaScript', 'Cart Logic'],
                 links: [
-                    { text: 'View Live', url: '#', icon: 'fa-external-link-alt' },
-                    { text: 'View Code', url: '#', icon: 'fa-code' }
+                    { text: 'View Live', url: 'https://aronreyes.github.io/kusina-ph/', icon: 'fa-external-link-alt' },
+                    { text: 'View Code', url: 'https://github.com/aronWINKIE/aronreyes.github.io/tree/main/kusina-ph', icon: 'fa-code' }
                 ]
             }
         };
