@@ -1,48 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Upland Kafé — A charming garden-style cafe in Silang, Cavite. Your perfect pitstop before Tagaytay. Open daily until 10:30 PM.">
+    <meta name="theme-color" content="#2a1f16">
+    
+    <meta property="og:title" content="Upland Kafé | Garden Cafe — Silang, Cavite">
+    <meta property="og:description" content="Where coffee meets nature. A garden-style cafe along Aguinaldo Highway.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.windowseat.ph/wp-content/uploads/2021/09/240832656_134916485504862_2026827490858588260_n.jpeg">
+    
     <title>Upland Kafé | Garden Cafe — Silang, Cavite</title>
-    <meta name="description" content="Upland Kafé — A charming garden-style cafe in Silang, Cavite. Perfect pitstop to Tagaytay. Open daily until 10:30 PM.">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CafeOrCoffeeShop",
+        "name": "Upland Kafé",
+        "description": "Garden-style cafe in Silang, Cavite",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Shell Select, San Vicente II",
+            "addressLocality": "Silang",
+            "addressRegion": "Cavite",
+            "postalCode": "4118",
+            "addressCountry": "PH"
+        },
+        "telephone": "+639928546765",
+        "email": "uplandkafe21@gmail.com",
+        "url": "https://www.instagram.com/uplandkafe/",
+        "openingHours": "Mo-Su 08:00-22:30",
+        "priceRange": "₱₱",
+        "servesCuisine": "Cafe"
+    }
+    </script>
+    
     <style>
+        /* ═══════════════════════════════════════
+           DESIGN TOKENS
+        ═══════════════════════════════════════ */
         :root {
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            
             --cream: #f5f0e8;
             --cream-dark: #e8e0d4;
             --coffee: #2a1f16;
             --coffee-light: #4a3b2a;
+            --coffee-muted: #6b5d4f;
             --accent: #c75b3a;
+            --accent-light: #e88c6a;
             --accent-glow: rgba(199, 91, 58, 0.15);
             --text: #1a1410;
             --text-muted: #7a6e64;
+            --text-light: #a89e94;
             --glass: rgba(245, 240, 232, 0.85);
-            --shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+            --glass-dark: rgba(26, 20, 16, 0.6);
+            
             --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.08);
+            --shadow-lg: 0 25px 50px -12px rgba(0,0,0,0.15);
+            --shadow-xl: 0 40px 80px -20px rgba(0,0,0,0.2);
+            
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+            --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            
+            --space-xs: clamp(0.5rem, 0.4rem + 0.25vw, 0.75rem);
+            --space-sm: clamp(0.75rem, 0.6rem + 0.5vw, 1rem);
+            --space-md: clamp(1rem, 0.8rem + 0.75vw, 1.5rem);
+            --space-lg: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+            --space-xl: clamp(2.5rem, 2rem + 2.5vw, 5rem);
+            --space-2xl: clamp(4rem, 3rem + 5vw, 8rem);
+            
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --radius-full: 9999px;
+            
+            --header-height: 80px;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        
+        [data-theme="dark"] {
+            --cream: #0f0c09;
+            --cream-dark: #1a1612;
+            --text: #f5f0e8;
+            --text-muted: #a89e94;
+            --text-light: #7a6e64;
+            --glass: rgba(26, 20, 16, 0.85);
+            --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.3);
+            --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.4);
+            --shadow-lg: 0 25px 50px -12px rgba(0,0,0,0.5);
+        }
+        
+        /* ═══════════════════════════════════════
+           RESET & BASE
+        ═══════════════════════════════════════ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 80px;
+            scroll-padding-top: var(--header-height);
+            font-size: clamp(15px, 0.9rem + 0.2vw, 18px);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
-
+        
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-sans);
             background: var(--cream);
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
         }
-
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
-
-        /* ===== PRELOADER ===== */
+        
+        ::selection {
+            background: var(--accent);
+            color: white;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        a { color: inherit; text-decoration: none; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; }
+        
+        /* ═══════════════════════════════════════
+           PRELOADER
+        ═══════════════════════════════════════ */
         #preloader {
             position: fixed;
             inset: 0;
@@ -52,21 +153,32 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            gap: 24px;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
+            gap: 28px;
+            transition: opacity 1s var(--ease-out-expo), visibility 1s;
         }
-        #preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
         .preloader-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
             color: var(--cream);
-            letter-spacing: 4px;
-            animation: preloaderPulse 1.5s ease-in-out infinite;
+            letter-spacing: 6px;
+            font-weight: 600;
+            overflow: hidden;
+        }
+        .preloader-text span {
+            display: inline-block;
+            animation: preloaderChar 0.6s var(--ease-out-expo) forwards;
+            opacity: 0;
+            transform: translateY(100%);
         }
         .preloader-bar {
-            width: 120px;
+            width: 140px;
             height: 2px;
-            background: rgba(245,240,232,0.2);
+            background: rgba(245,240,232,0.15);
             border-radius: 2px;
             overflow: hidden;
         }
@@ -76,96 +188,166 @@
             width: 0%;
             height: 100%;
             background: var(--accent);
-            animation: preloaderFill 1.2s ease-out forwards;
+            animation: preloaderFill 1.4s var(--ease-out-expo) forwards;
         }
-        @keyframes preloaderPulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        @keyframes preloaderChar {
+            to { opacity: 1; transform: translateY(0); }
         }
         @keyframes preloaderFill {
             to { width: 100%; }
         }
-
-        /* ===== CUSTOM SCROLLBAR ===== */
+        
+        /* ═══════════════════════════════════════
+           CUSTOM SCROLLBAR
+        ═══════════════════════════════════════ */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--cream-dark); }
-        ::-webkit-scrollbar-thumb { background: var(--coffee-light); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: var(--coffee-muted); border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--coffee); }
-
-        /* ===== NAVIGATION ===== */
+        
+        /* ═══════════════════════════════════════
+           CUSTOM CURSOR
+        ═══════════════════════════════════════ */
+        .cursor {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            mix-blend-mode: difference;
+            transition: transform 0.12s var(--ease-out-expo), width 0.3s, height 0.3s;
+            transform: translate(-50%, -50%);
+        }
+        .cursor.expanded {
+            width: 44px;
+            height: 44px;
+            background: rgba(199, 91, 58, 0.12);
+            mix-blend-mode: normal;
+            border: 1.5px solid var(--accent);
+        }
+        @media (pointer: coarse) { .cursor { display: none; } }
+        
+        /* ═══════════════════════════════════════
+           NAVIGATION
+        ═══════════════════════════════════════ */
         nav {
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 100;
-            padding: 0 40px;
-            height: 72px;
+            padding: 0 var(--space-xl);
+            height: var(--header-height);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s var(--ease-out-expo);
         }
         nav.scrolled {
             background: var(--glass);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
             box-shadow: var(--shadow-sm);
             height: 64px;
         }
+        [data-theme="dark"] nav.scrolled {
+            background: rgba(15, 12, 9, 0.9);
+        }
+        
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--cream);
-            text-decoration: none;
             letter-spacing: 1px;
-            transition: color 0.3s;
+            transition: color 0.4s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        nav.scrolled .logo { color: var(--coffee); }
+        nav.scrolled .logo { color: var(--text); }
+        .logo-mark {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+            transition: transform 0.4s var(--ease-out-expo);
+        }
+        .logo:hover .logo-mark { transform: rotate(-8deg) scale(1.1); }
+        
         .nav-links {
             display: flex;
-            gap: 36px;
+            gap: 40px;
             list-style: none;
             align-items: center;
         }
         .nav-links a {
-            text-decoration: none;
             color: rgba(245,240,232,0.85);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
             transition: all 0.3s;
             position: relative;
             padding: 4px 0;
         }
-        nav.scrolled .nav-links a { color: var(--text); }
+        nav.scrolled .nav-links a { color: var(--text-muted); }
         .nav-links a::after {
             content: '';
             position: absolute;
             bottom: 0; left: 50%;
             width: 0; height: 2px;
             background: var(--accent);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s var(--ease-out-expo);
             transform: translateX(-50%);
         }
-        .nav-links a:hover::after { width: 100%; }
         .nav-links a:hover { color: var(--accent); }
-        nav.scrolled .nav-links a:hover { color: var(--accent); }
-
+        .nav-links a:hover::after { width: 100%; }
+        
         .nav-cta {
             padding: 10px 24px;
             background: var(--accent);
             color: var(--cream) !important;
-            border-radius: 50px;
+            border-radius: var(--radius-full);
             font-weight: 600;
             font-size: 0.85rem;
-            transition: all 0.3s;
+            transition: all 0.4s var(--ease-out-expo);
         }
         .nav-cta::after { display: none !important; }
         .nav-cta:hover {
             background: var(--coffee);
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(199,91,58,0.3);
+            box-shadow: 0 8px 24px rgba(199,91,58,0.3);
         }
-
+        
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(245,240,232,0.7);
+            transition: all 0.3s;
+            position: relative;
+            margin-right: 8px;
+        }
+        nav.scrolled .theme-toggle { color: var(--text-muted); }
+        .theme-toggle:hover { background: rgba(199,91,58,0.1); color: var(--accent); }
+        .theme-toggle i {
+            position: absolute;
+            transition: transform 0.5s var(--ease-out-expo), opacity 0.3s;
+        }
+        [data-theme="light"] .theme-toggle .fa-moon { opacity: 1; transform: rotate(0); }
+        [data-theme="light"] .theme-toggle .fa-sun { opacity: 0; transform: rotate(90deg); }
+        [data-theme="dark"] .theme-toggle .fa-moon { opacity: 0; transform: rotate(-90deg); }
+        [data-theme="dark"] .theme-toggle .fa-sun { opacity: 1; transform: rotate(0); }
+        
         .hamburger {
             display: none;
             flex-direction: column;
@@ -179,75 +361,90 @@
             width: 24px;
             height: 2px;
             background: var(--cream);
-            transition: all 0.3s;
+            transition: all 0.4s var(--ease-out-expo);
             border-radius: 2px;
         }
-        nav.scrolled .hamburger span { background: var(--coffee); }
+        nav.scrolled .hamburger span { background: var(--text); }
         .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-        /* ===== HERO ===== */
+        
+        /* ═══════════════════════════════════════
+           HERO
+        ═══════════════════════════════════════ */
         .hero {
             min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 120px 20px 100px;
-            background: 
-                linear-gradient(135deg, rgba(42,31,22,0.85) 0%, rgba(42,31,22,0.6) 50%, rgba(42,31,22,0.85) 100%),
-                linear-gradient(45deg, #1a1410 0%, #2a1f16 50%, #3d2b1f 100%);
             position: relative;
             overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.1);
+            transition: transform 0.1s linear;
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(42,31,22,0.88) 0%,
+                rgba(42,31,22,0.65) 50%,
+                rgba(42,31,22,0.85) 100%
+            );
         }
         .hero::before {
             content: '';
             position: absolute;
             top: -30%; right: -10%;
             width: 800px; height: 800px;
-            background: radial-gradient(circle, rgba(199,91,58,0.12) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(199,91,58,0.1) 0%, transparent 60%);
             border-radius: 50%;
             animation: heroGlow 8s ease-in-out infinite alternate;
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -20%; left: -10%;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(199,91,58,0.08) 0%, transparent 60%);
-            border-radius: 50%;
-            animation: heroGlow 10s ease-in-out infinite alternate-reverse;
+            z-index: 1;
         }
         @keyframes heroGlow {
             from { transform: scale(1) translate(0, 0); }
             to { transform: scale(1.1) translate(-30px, 20px); }
         }
-
+        
         .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             max-width: 800px;
             opacity: 0;
             transform: translateY(40px);
-            animation: heroReveal 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
+            animation: heroReveal 1.2s var(--ease-smooth) 0.6s forwards;
         }
         @keyframes heroReveal {
             to { opacity: 1; transform: translateY(0); }
         }
-
+        
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             padding: 8px 20px;
             background: rgba(199,91,58,0.15);
-            border: 1px solid rgba(199,91,58,0.3);
+            border: 1px solid rgba(199,91,58,0.25);
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: var(--accent);
+            color: var(--accent-light);
             margin-bottom: 28px;
             backdrop-filter: blur(10px);
         }
@@ -261,24 +458,26 @@
             0%, 100% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.5; transform: scale(0.8); }
         }
-
+        
         .hero h1 {
+            font-family: var(--font-serif);
             font-size: clamp(2.8rem, 7vw, 5.5rem);
             line-height: 1.05;
             margin-bottom: 24px;
             color: var(--cream);
             font-weight: 600;
+            letter-spacing: -0.02em;
         }
         .hero h1 em {
             font-style: italic;
-            color: var(--accent);
+            color: var(--accent-light);
             position: relative;
         }
         .hero h1 em::after {
             content: '';
             position: absolute;
             bottom: 4px; left: 0; right: 0;
-            height: 8px;
+            height: 10px;
             background: rgba(199,91,58,0.2);
             z-index: -1;
             border-radius: 2px;
@@ -293,7 +492,7 @@
             font-weight: 300;
             line-height: 1.7;
         }
-
+        
         .hero-buttons {
             display: flex;
             gap: 16px;
@@ -307,11 +506,10 @@
             padding: 16px 36px;
             background: var(--accent);
             color: var(--cream);
-            text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
             font-size: 0.95rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s var(--ease-out-expo);
             border: 2px solid var(--accent);
             position: relative;
             overflow: hidden;
@@ -334,7 +532,7 @@
         .btn-outline {
             background: transparent;
             color: var(--cream);
-            border-color: rgba(245,240,232,0.3);
+            border-color: rgba(245,240,232,0.25);
         }
         .btn-outline:hover {
             background: var(--cream);
@@ -342,7 +540,7 @@
             border-color: var(--cream);
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
-
+        
         .hero-stats {
             display: flex;
             justify-content: center;
@@ -351,25 +549,22 @@
             padding-top: 32px;
             border-top: 1px solid rgba(245,240,232,0.1);
         }
-        .hero-stat {
-            text-align: center;
-        }
+        .hero-stat { text-align: center; }
         .hero-stat .number {
-            font-family: 'Playfair Display', serif;
+            font-family: var(--font-serif);
             font-size: 2.2rem;
             font-weight: 700;
             color: var(--cream);
             line-height: 1;
         }
         .hero-stat .label {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: rgba(245,240,232,0.5);
             margin-top: 6px;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-
-        /* Scroll indicator */
+        
         .scroll-indicator {
             position: absolute;
             bottom: 32px;
@@ -379,23 +574,26 @@
             flex-direction: column;
             align-items: center;
             gap: 8px;
-            color: rgba(245,240,232,0.4);
-            font-size: 0.75rem;
-            letter-spacing: 2px;
+            color: rgba(245,240,232,0.35);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
             animation: bounce 2s infinite;
+            z-index: 2;
         }
-        .scroll-indicator i { font-size: 1.2rem; }
+        .scroll-indicator i { font-size: 1rem; }
         @keyframes bounce {
             0%, 100% { transform: translateX(-50%) translateY(0); }
             50% { transform: translateX(-50%) translateY(8px); }
         }
-
-        /* ===== SECTION REVEAL ===== */
+        
+        /* ═══════════════════════════════════════
+           SECTION REVEAL
+        ═══════════════════════════════════════ */
         .reveal {
             opacity: 0;
-            transform: translateY(60px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(50px);
+            transition: all 0.9s var(--ease-out-expo);
         }
         .reveal.visible {
             opacity: 1;
@@ -404,10 +602,12 @@
         .reveal-delay-1 { transition-delay: 0.1s; }
         .reveal-delay-2 { transition-delay: 0.2s; }
         .reveal-delay-3 { transition-delay: 0.3s; }
-
-        /* ===== ABOUT ===== */
+        
+        /* ═══════════════════════════════════════
+           ABOUT
+        ═══════════════════════════════════════ */
         .about {
-            padding: 140px 40px;
+            padding: var(--space-2xl) var(--space-xl);
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
@@ -422,28 +622,24 @@
             gap: 16px;
         }
         .about-img {
-            border-radius: 20px;
+            border-radius: var(--radius-lg);
             overflow: hidden;
             position: relative;
-            aspect-ratio: 4/5;
+            aspect-ratio: 3/4;
+            box-shadow: var(--shadow-md);
         }
-        .about-img:nth-child(2) { margin-top: 40px; }
-        .about-img-bg {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, #d4c4b0, #b8a08a);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--coffee);
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        .about-img:nth-child(2) { margin-top: 48px; }
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s var(--ease-out-expo);
         }
-        .about-img:hover .about-img-bg { transform: scale(1.08); }
+        .about-img:hover img { transform: scale(1.08); }
         .about-img-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(42,31,22,0.6), transparent 60%);
+            background: linear-gradient(to top, rgba(42,31,22,0.5), transparent 60%);
         }
         .about-img-tag {
             position: absolute;
@@ -451,7 +647,7 @@
             background: var(--cream);
             color: var(--coffee);
             padding: 8px 16px;
-            border-radius: 8px;
+            border-radius: var(--radius-sm);
             font-size: 0.75rem;
             font-weight: 600;
             letter-spacing: 1px;
@@ -460,6 +656,7 @@
             background: var(--accent);
             color: var(--cream);
         }
+        
         .about-text .section-label {
             font-size: 0.8rem;
             text-transform: uppercase;
@@ -478,10 +675,12 @@
             background: var(--accent);
         }
         .about-text h2 {
+            font-family: var(--font-serif);
             font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 24px;
             color: var(--coffee);
             line-height: 1.15;
+            letter-spacing: -0.02em;
         }
         .about-text p {
             color: var(--text-muted);
@@ -489,33 +688,33 @@
             font-size: 1.05rem;
             line-height: 1.8;
         }
+        
         .features {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            gap: 16px;
             margin-top: 40px;
         }
         .feature {
             display: flex;
             align-items: flex-start;
             gap: 14px;
-            padding: 16px;
+            padding: 18px;
             background: rgba(199,91,58,0.04);
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             border: 1px solid rgba(199,91,58,0.08);
-            transition: all 0.3s;
+            transition: all 0.4s var(--ease-out-expo);
         }
         .feature:hover {
             background: rgba(199,91,58,0.08);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             box-shadow: var(--shadow-sm);
         }
         .feature i {
             color: var(--accent);
-            font-size: 1.1rem;
-            margin-top: 2px;
-            width: 36px;
-            height: 36px;
+            font-size: 1rem;
+            width: 40px;
+            height: 40px;
             background: rgba(199,91,58,0.1);
             border-radius: 10px;
             display: flex;
@@ -525,7 +724,7 @@
         }
         .feature span {
             font-size: 0.9rem;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--coffee);
         }
         .feature small {
@@ -535,10 +734,12 @@
             margin-top: 2px;
             font-weight: 400;
         }
-
-        /* ===== MENU ===== */
+        
+        /* ═══════════════════════════════════════
+           MENU
+        ═══════════════════════════════════════ */
         .menu {
-            padding: 140px 40px;
+            padding: var(--space-2xl) var(--space-xl);
             background: var(--coffee);
             color: var(--cream);
             position: relative;
@@ -556,61 +757,76 @@
             text-align: center;
             max-width: 600px;
             margin: 0 auto 80px;
+            position: relative;
+            z-index: 1;
         }
         .menu-header .section-label {
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: var(--accent);
+            color: var(--accent-light);
             font-weight: 600;
             margin-bottom: 16px;
         }
         .menu-header h2 {
+            font-family: var(--font-serif);
             font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 16px;
+            letter-spacing: -0.02em;
         }
-        .menu-header p { color: rgba(245,240,232,0.6); font-size: 1.05rem; }
-
+        .menu-header p { color: rgba(245,240,232,0.55); font-size: 1.05rem; }
+        
         .menu-tabs {
             display: flex;
             justify-content: center;
             gap: 8px;
             margin-bottom: 48px;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
         .menu-tab {
             padding: 10px 24px;
             background: transparent;
             border: 1px solid rgba(245,240,232,0.15);
-            color: rgba(245,240,232,0.6);
+            color: rgba(245,240,232,0.55);
             border-radius: 50px;
             cursor: pointer;
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-sans);
             font-size: 0.9rem;
             font-weight: 500;
-            transition: all 0.3s;
+            transition: all 0.4s var(--ease-out-expo);
         }
         .menu-tab:hover, .menu-tab.active {
             background: var(--accent);
             border-color: var(--accent);
             color: var(--cream);
+            transform: translateY(-1px);
         }
-
+        
         .menu-grid {
             max-width: 1000px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
+            position: relative;
+            z-index: 1;
         }
         .menu-item {
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 16px;
+            border-radius: var(--radius-md);
             padding: 32px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s var(--ease-out-expo);
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .menu-item.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         .menu-item::before {
             content: '';
@@ -618,7 +834,7 @@
             top: 0; left: 0;
             width: 3px; height: 0;
             background: var(--accent);
-            transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: height 0.5s var(--ease-out-expo);
         }
         .menu-item:hover {
             transform: translateY(-6px);
@@ -635,14 +851,15 @@
             gap: 12px;
         }
         .menu-item h3 {
+            font-family: var(--font-serif);
             font-size: 1.25rem;
             font-weight: 600;
         }
-        .price {
-            color: var(--accent);
+        .menu-price {
+            color: var(--accent-light);
             font-weight: 700;
             font-size: 1.15rem;
-            font-family: 'Playfair Display', serif;
+            font-family: var(--font-serif);
             flex-shrink: 0;
         }
         .menu-item p {
@@ -655,17 +872,65 @@
             margin-top: 12px;
             padding: 4px 12px;
             background: rgba(199,91,58,0.15);
-            color: var(--accent);
+            color: var(--accent-light);
             border-radius: 20px;
             font-size: 0.7rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
-        /* ===== REVIEWS ===== */
+        
+        .menu-showcase {
+            max-width: 1000px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .showcase-img {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 1;
+            position: relative;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s var(--ease-out-expo);
+        }
+        .showcase-img.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .showcase-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s var(--ease-out-expo);
+        }
+        .showcase-img:hover img { transform: scale(1.1); }
+        .showcase-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(42,31,22,0.5), transparent 50%);
+        }
+        .showcase-img span {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            color: var(--cream);
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+         /* ═══════════════════════════════════════
+           REVIEWS
+        ═══════════════════════════════════════ */
         .reviews {
-            padding: 140px 40px;
+            padding: var(--space-2xl) var(--space-xl);
             max-width: 1100px;
             margin: 0 auto;
             text-align: center;
@@ -679,9 +944,11 @@
             margin-bottom: 16px;
         }
         .reviews h2 {
+            font-family: var(--font-serif);
             font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 16px;
             color: var(--coffee);
+            letter-spacing: -0.02em;
         }
         .reviews > p {
             color: var(--text-muted);
@@ -689,7 +956,7 @@
             font-size: 1.05rem;
         }
         .rating-big {
-            font-family: 'Playfair Display', serif;
+            font-family: var(--font-serif);
             font-size: 5rem;
             font-weight: 700;
             color: var(--coffee);
@@ -707,7 +974,7 @@
             font-size: 0.95rem;
             margin-bottom: 48px;
         }
-
+        
         .review-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -716,24 +983,30 @@
         }
         .review-card {
             background: var(--cream-dark);
-            border-radius: 20px;
-            padding: 32px;
+            border-radius: var(--radius-lg);
+            padding: 36px;
             border: 1px solid rgba(199,91,58,0.08);
-            transition: all 0.4s;
+            transition: all 0.5s var(--ease-out-expo);
             position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .review-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         .review-card::before {
             content: '"';
             position: absolute;
-            top: 16px; right: 24px;
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            color: rgba(199,91,58,0.1);
+            top: 20px; right: 28px;
+            font-family: var(--font-serif);
+            font-size: 4.5rem;
+            color: rgba(199,91,58,0.08);
             line-height: 1;
         }
         .review-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
         }
         .review-card .stars-small {
             color: #f5a623;
@@ -745,7 +1018,7 @@
             color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.7;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             font-style: italic;
         }
         .reviewer {
@@ -774,10 +1047,12 @@
             font-size: 0.75rem;
             color: var(--text-muted);
         }
-
-        /* ===== VISIT / CONTACT ===== */
+        
+        /* ═══════════════════════════════════════
+           VISIT / CONTACT
+        ═══════════════════════════════════════ */
         .visit {
-            padding: 140px 40px;
+            padding: var(--space-2xl) var(--space-xl);
             background: linear-gradient(135deg, var(--coffee) 0%, var(--coffee-light) 100%);
             color: var(--cream);
             position: relative;
@@ -805,7 +1080,7 @@
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: var(--accent);
+            color: var(--accent-light);
             font-weight: 600;
             margin-bottom: 16px;
             display: flex;
@@ -819,19 +1094,21 @@
             background: var(--accent);
         }
         .visit-info h2 {
+            font-family: var(--font-serif);
             font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 20px;
+            letter-spacing: -0.02em;
         }
         .visit-info > p {
-            color: rgba(245,240,232,0.7);
+            color: rgba(245,240,232,0.65);
             margin-bottom: 40px;
             font-size: 1.05rem;
             line-height: 1.7;
         }
-
+        
         .contact-grid {
             display: grid;
-            gap: 20px;
+            gap: 16px;
         }
         .contact-item {
             display: flex;
@@ -840,12 +1117,12 @@
             padding: 20px;
             background: rgba(255,255,255,0.04);
             border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 16px;
-            transition: all 0.3s;
+            border-radius: var(--radius-md);
+            transition: all 0.4s var(--ease-out-expo);
         }
         .contact-item:hover {
             background: rgba(255,255,255,0.08);
-            transform: translateX(4px);
+            transform: translateX(6px);
         }
         .contact-item i {
             width: 48px; height: 48px;
@@ -865,10 +1142,10 @@
         .contact-item div { text-align: left; }
         .contact-item strong {
             display: block;
-            font-size: 0.8rem;
-            color: rgba(245,240,232,0.5);
+            font-size: 0.75rem;
+            color: rgba(245,240,232,0.45);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             margin-bottom: 4px;
         }
         .contact-item span, .contact-item a {
@@ -878,27 +1155,33 @@
             font-size: 0.95rem;
             transition: color 0.3s;
         }
-        .contact-item a:hover { color: var(--accent); }
-
+        .contact-item a:hover { color: var(--accent-light); }
+        
         .visit-map {
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 24px;
-            padding: 40px;
+            border-radius: var(--radius-lg);
+            padding: 48px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            min-height: 400px;
+            min-height: 420px;
             position: relative;
             overflow: hidden;
+            transition: all 0.5s var(--ease-out-expo);
+        }
+        .visit-map:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(255,255,255,0.15);
         }
         .visit-map::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: 
+            background:
                 radial-gradient(circle at 30% 40%, rgba(199,91,58,0.1) 0%, transparent 50%),
                 radial-gradient(circle at 70% 60%, rgba(199,91,58,0.05) 0%, transparent 50%);
         }
@@ -914,64 +1197,104 @@
             margin-bottom: 24px;
             position: relative;
             z-index: 1;
-            animation: mapPulse 2s infinite;
+            animation: mapPulse 2.5s infinite;
         }
         @keyframes mapPulse {
             0%, 100% { box-shadow: 0 0 0 0 rgba(199,91,58,0.4); }
-            50% { box-shadow: 0 0 0 20px rgba(199,91,58,0); }
+            50% { box-shadow: 0 0 0 24px rgba(199,91,58,0); }
         }
         .visit-map h3 {
-            font-size: 1.5rem;
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
             margin-bottom: 8px;
             position: relative;
             z-index: 1;
         }
         .visit-map p {
-            color: rgba(245,240,232,0.6);
-            margin-bottom: 24px;
+            color: rgba(245,240,232,0.55);
+            margin-bottom: 28px;
             position: relative;
             z-index: 1;
+            line-height: 1.6;
         }
         .visit-map .btn {
             position: relative;
             z-index: 1;
         }
-
-        /* ===== FOOTER ===== */
+        
+        /* ═══════════════════════════════════════
+           FOOTER
+        ═══════════════════════════════════════ */
         footer {
             background: #1a1410;
             color: rgba(245,240,232,0.4);
-            text-align: center;
-            padding: 60px 40px 40px;
+            padding: 80px var(--space-xl) 40px;
         }
         .footer-content {
-            max-width: 800px;
+            max-width: 1100px;
             margin: 0 auto;
         }
-        .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+        .footer-brand {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--cream);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
+        }
+        .footer-about {
+            line-height: 1.7;
+            font-size: 0.9rem;
+            max-width: 300px;
+            color: rgba(245,240,232,0.5);
+        }
+        .footer-col h4 {
+            color: var(--cream);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: var(--space-md);
+        }
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .footer-col a {
+            font-size: 0.9rem;
+            color: rgba(245,240,232,0.5);
+            transition: color 0.3s;
+        }
+        .footer-col a:hover { color: var(--accent-light); }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(245,240,232,0.08);
+            padding-top: var(--space-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
         }
         .footer-social {
             display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 32px;
+            gap: 12px;
         }
         .footer-social a {
             width: 44px; height: 44px;
             border-radius: 50%;
-            background: rgba(245,240,232,0.05);
             border: 1px solid rgba(245,240,232,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             color: rgba(245,240,232,0.6);
-            text-decoration: none;
-            transition: all 0.3s;
+            transition: all 0.4s var(--ease-out-expo);
             font-size: 1rem;
         }
         .footer-social a:hover {
@@ -980,10 +1303,11 @@
             color: var(--cream);
             transform: translateY(-3px);
         }
-        footer p { font-size: 0.85rem; }
-        footer .heart { color: var(--accent); }
-
-        /* ===== MOBILE MENU ===== */
+        .heart { color: var(--accent); }
+        
+        /* ═══════════════════════════════════════
+           MOBILE MENU
+        ═══════════════════════════════════════ */
         .mobile-menu {
             position: fixed;
             top: 0; right: -100%;
@@ -994,54 +1318,109 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 32px;
-            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            gap: 36px;
+            transition: right 0.5s var(--ease-out-expo);
         }
         .mobile-menu.open { right: 0; }
         .mobile-menu a {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
             color: var(--cream);
-            text-decoration: none;
             transition: color 0.3s;
         }
         .mobile-menu a:hover { color: var(--accent); }
-
-        /* ===== RESPONSIVE ===== */
+        
+        /* ═══════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .about { grid-template-columns: 1fr; gap: 48px; }
+            .about-images { order: -1; max-width: 600px; margin: 0 auto; width: 100%; }
+            .visit-container { grid-template-columns: 1fr; gap: 48px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .menu-showcase { grid-template-columns: repeat(2, 1fr); }
+            .menu-showcase .showcase-img:last-child { display: none; }
+        }
+        
         @media (max-width: 768px) {
+            :root { --header-height: 64px; }
             .nav-links { display: none; }
             .hamburger { display: flex; }
             nav { padding: 0 24px; }
             .hero h1 { font-size: 2.5rem; }
-            .hero-stats { gap: 24px; }
-            .hero-stat .number { font-size: 1.6rem; }
-            .about { grid-template-columns: 1fr; gap: 48px; padding: 80px 24px; }
-            .about-images { order: -1; }
+            .hero-stats { gap: 24px; margin-top: 48px; }
+            .hero-stat .number { font-size: 1.8rem; }
+            .about { padding: 80px 24px; }
             .features { grid-template-columns: 1fr; }
             .menu { padding: 80px 24px; }
             .menu-grid { grid-template-columns: 1fr; }
+            .menu-showcase { grid-template-columns: 1fr; }
+            .menu-showcase .showcase-img:last-child { display: block; }
             .reviews { padding: 80px 24px; }
             .rating-big { font-size: 3.5rem; }
-            .visit-container { grid-template-columns: 1fr; gap: 48px; padding: 80px 24px; }
-            .visit-map { min-height: 300px; }
-            .btn-outline { margin-left: 0; margin-top: 12px; }
+            .visit { padding: 80px 24px; }
+            .visit-map { min-height: 320px; padding: 32px; }
             .hero-buttons { flex-direction: column; align-items: center; }
+            .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+            .footer-bottom { flex-direction: column; gap: var(--space-md); text-align: center; }
         }
-
-        /* ===== UTILITY ===== */
-        .text-center { text-align: center; }
+        
+        /* ═══════════════════════════════════════
+           REDUCED MOTION
+        ═══════════════════════════════════════ */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html { scroll-behavior: auto; }
+            .reveal, .menu-item, .review-card, .showcase-img {
+                opacity: 1;
+                transform: none;
+            }
+            .hero-content {
+                opacity: 1;
+                transform: none;
+                animation: none;
+            }
+        }
+        
+        /* ═══════════════════════════════════════
+           UTILITY
+        ═══════════════════════════════════════ */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
     </style>
-<base target="_blank">
 </head>
 <body>
 
-    <!-- Preloader -->
+    <!-- ═══════════════════════════════════════
+         PRELOADER
+    ═══════════════════════════════════════ -->
     <div id="preloader">
-        <div class="preloader-text">Upland Kafé</div>
+        <div class="preloader-text">
+            <span>U</span><span>p</span><span>l</span><span>a</span><span>n</span><span>d</span>
+            <span style="margin-left:10px">K</span><span>a</span><span>f</span><span>é</span>
+        </div>
         <div class="preloader-bar"></div>
     </div>
 
-    <!-- Mobile Menu -->
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+
+    <!-- ═══════════════════════════════════════
+         MOBILE MENU
+    ═══════════════════════════════════════ -->
     <div class="mobile-menu" id="mobileMenu">
         <a href="#home" onclick="closeMenu()">Home</a>
         <a href="#about" onclick="closeMenu()">About</a>
@@ -1050,9 +1429,14 @@
         <a href="#visit" onclick="closeMenu()">Visit Us</a>
     </div>
 
-    <!-- Navigation -->
+    <!-- ═══════════════════════════════════════
+         NAVIGATION
+    ═══════════════════════════════════════ -->
     <nav id="navbar">
-        <a href="#home" class="logo">Upland Kafé</a>
+        <a href="#home" class="logo">
+            <div class="logo-mark"><i class="fas fa-mug-hot" aria-hidden="true"></i></div>
+            Upland Kafé
+        </a>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -1060,15 +1444,29 @@
             <li><a href="#reviews">Reviews</a></li>
             <li><a href="#visit" class="nav-cta">Visit Us</a></li>
         </ul>
-        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div style="display:flex;align-items:center;">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+                <i class="fas fa-sun" aria-hidden="true"></i>
+            </button>
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- ═══════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════ -->
     <section class="hero" id="home">
+        <div class="hero-bg">
+            <img src="https://www.windowseat.ph/wp-content/uploads/2021/09/240832656_134916485504862_2026827490858588260_n.jpeg"
+                 alt="Upland Kafé exterior garden cafe in Silang, Cavite"
+                 id="heroBgImg"
+                 decoding="async">
+        </div>
         <div class="hero-content">
             <div class="hero-badge">
                 <span class="dot"></span>
@@ -1077,8 +1475,8 @@
             <h1>Where Coffee Meets <em>Nature</em></h1>
             <p>A charming garden-style cafe along Aguinaldo Highway. Your perfect pitstop before Tagaytay — cozy vibes, great coffee, and unforgettable moments.</p>
             <div class="hero-buttons">
-                <a href="#menu" class="btn">View Menu <i class="fas fa-arrow-right"></i></a>
-                <a href="#visit" class="btn btn-outline">Get Directions</a>
+                <a href="#menu" class="btn">View Menu <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                <a href="https://maps.google.com/?q=Upland+Kafe+Silang+Cavite" target="_blank" class="btn btn-outline">Get Directions</a>
             </div>
             <div class="hero-stats">
                 <div class="hero-stat">
@@ -1097,22 +1495,30 @@
         </div>
         <div class="scroll-indicator">
             <span>Scroll</span>
-            <i class="fas fa-chevron-down"></i>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
         </div>
     </section>
 
-    <!-- About -->
+    <!-- ═══════════════════════════════════════
+         ABOUT
+    ═══════════════════════════════════════ -->
     <section class="about" id="about">
         <div class="about-images reveal">
             <div class="about-img">
-                <div class="about-img-bg"><i class="fas fa-mug-hot"></i></div>
+                <img src="https://www.camella.com.ph/wp-content/uploads/2022/03/Upland-Kafe-a-picture-perfect-cafe-in-Cavite-775x600.jpg"
+                     alt="Upland Kafé picture-perfect garden cafe in Cavite"
+                     loading="lazy"
+                     decoding="async">
                 <div class="about-img-overlay"></div>
-                <span class="about-img-tag">Coffee</span>
+                <span class="about-img-tag">Garden</span>
             </div>
             <div class="about-img">
-                <div class="about-img-bg" style="background: linear-gradient(135deg, #c4b09c, #a89078);"><i class="fas fa-leaf"></i></div>
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEivNffYSxsc_fLEFBtvDhEHZgKmUSxnqGaj4HGGRh1JgO1oX4RMNvD0LBPvYglPO8pyQTefXKQOYwvedKwK7z4P2W_owLnUXQF5EXVaIZiYKIFnh3ISBZFm6r5JcXCL0QkDHTS8wO4l2eM/s1500/upland+1.png"
+                     alt="Upland Kafé interior and garden atmosphere"
+                     loading="lazy"
+                     decoding="async">
                 <div class="about-img-overlay"></div>
-                <span class="about-img-tag accent">Garden</span>
+                <span class="about-img-tag accent">Cozy</span>
             </div>
         </div>
         <div class="about-text reveal reveal-delay-1">
@@ -1122,28 +1528,28 @@
             <p>Whether you're a traveler heading to Tagaytay, a remote worker craving a change of scenery, or friends catching up over pastries — our doors (and garden lights) are always open.</p>
             <div class="features">
                 <div class="feature">
-                    <i class="fas fa-tree"></i>
+                    <i class="fas fa-tree" aria-hidden="true"></i>
                     <div>
                         <span>Garden Seating</span>
                         <small>Outdoor vibes surrounded by greens</small>
                     </div>
                 </div>
                 <div class="feature">
-                    <i class="fas fa-car"></i>
+                    <i class="fas fa-car" aria-hidden="true"></i>
                     <div>
                         <span>Curbside Pickup</span>
                         <small>Order ahead, grab & go</small>
                     </div>
                 </div>
                 <div class="feature">
-                    <i class="fas fa-wifi"></i>
+                    <i class="fas fa-wifi" aria-hidden="true"></i>
                     <div>
                         <span>Free Wi-Fi</span>
                         <small>Stay connected while you unwind</small>
                     </div>
                 </div>
                 <div class="feature">
-                    <i class="fas fa-paw"></i>
+                    <i class="fas fa-paw" aria-hidden="true"></i>
                     <div>
                         <span>Pet Friendly</span>
                         <small>Bring your fur babies along</small>
@@ -1153,7 +1559,9 @@
         </div>
     </section>
 
-    <!-- Menu -->
+    <!-- ═══════════════════════════════════════
+         MENU
+    ═══════════════════════════════════════ -->
     <section class="menu" id="menu">
         <div class="menu-header reveal">
             <div class="section-label">Our Menu</div>
@@ -1170,7 +1578,7 @@
             <div class="menu-item reveal" data-category="coffee">
                 <div class="menu-item-header">
                     <h3>Upland Iced Coffee</h3>
-                    <span class="price">₱140</span>
+                    <span class="menu-price">₱140</span>
                 </div>
                 <p>Our signature cold brew — steeped for 18 hours, smooth, bold, and naturally sweet. Served over ice.</p>
                 <span class="tag">Best Seller</span>
@@ -1178,7 +1586,7 @@
             <div class="menu-item reveal" data-category="drinks">
                 <div class="menu-item-header">
                     <h3>Strawberry Frappe</h3>
-                    <span class="price">₱165</span>
+                    <span class="menu-price">₱165</span>
                 </div>
                 <p>Fresh strawberry blend with creamy milk and a swirl of house-made syrup. Refreshingly sweet.</p>
                 <span class="tag">Refreshing</span>
@@ -1186,7 +1594,7 @@
             <div class="menu-item reveal" data-category="coffee">
                 <div class="menu-item-header">
                     <h3>Spanish Latte</h3>
-                    <span class="price">₱160</span>
+                    <span class="menu-price">₱160</span>
                 </div>
                 <p>Sweetened condensed milk meets double espresso over ice. Creamy, rich, and perfectly balanced.</p>
                 <span class="tag">Creamy</span>
@@ -1194,7 +1602,7 @@
             <div class="menu-item reveal" data-category="food">
                 <div class="menu-item-header">
                     <h3>Creamy Carbonara</h3>
-                    <span class="price">₱220</span>
+                    <span class="menu-price">₱220</span>
                 </div>
                 <p>Al dente pasta tossed in rich, creamy sauce with crispy bacon bits and parmesan. Served with garlic bread.</p>
                 <span class="tag">Meal</span>
@@ -1202,7 +1610,7 @@
             <div class="menu-item reveal" data-category="food">
                 <div class="menu-item-header">
                     <h3>Grilled Cheese Sandwich</h3>
-                    <span class="price">₱180</span>
+                    <span class="menu-price">₱180</span>
                 </div>
                 <p>Golden, buttery sourdough stuffed with melted mozzarella and cheddar. Served with chips on the side.</p>
                 <span class="tag">Comfort</span>
@@ -1210,15 +1618,41 @@
             <div class="menu-item reveal" data-category="food">
                 <div class="menu-item-header">
                     <h3>Loaded Fries</h3>
-                    <span class="price">₱150</span>
+                    <span class="menu-price">₱150</span>
                 </div>
                 <p>Crispy golden fries topped with cheese sauce, bacon bits, and a drizzle of ranch. Perfect for sharing.</p>
                 <span class="tag">Snack</span>
             </div>
         </div>
+        
+        <div class="menu-showcase">
+            <div class="showcase-img reveal">
+                <img src="https://tse1.mm.bing.net/th/id/OIP.4mkxuVw91dVHJ0rut_JXKQHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+                     alt="Upland Kafé coffee and food"
+                     loading="lazy"
+                     decoding="async">
+                <span>Coffee & Pastries</span>
+            </div>
+            <div class="showcase-img reveal reveal-delay-1">
+                <img src="https://tse3.mm.bing.net/th/id/OIP.PDz_7Ec4yhrujB2HD-Jp5wHaEy?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+                     alt="Upland Kafé drinks and ambiance"
+                     loading="lazy"
+                     decoding="async">
+                <span>Drinks & Vibes</span>
+            </div>
+            <div class="showcase-img reveal reveal-delay-2">
+                <img src="https://www.windowseat.ph/wp-content/uploads/2021/09/201401107_102356942094150_5566838717261838312_n.jpeg"
+                     alt="Upland Kafé outdoor garden seating"
+                     loading="lazy"
+                     decoding="async">
+                <span>Garden Seating</span>
+            </div>
+        </div>
     </section>
 
-    <!-- Reviews -->
+    <!-- ═══════════════════════════════════════
+         REVIEWS
+    ═══════════════════════════════════════ -->
     <section class="reviews" id="reviews">
         <div class="reveal">
             <div class="section-label">Testimonials</div>
@@ -1267,7 +1701,9 @@
         </div>
     </section>
 
-    <!-- Visit -->
+    <!-- ═══════════════════════════════════════
+         VISIT
+    ═══════════════════════════════════════ -->
     <section class="visit" id="visit">
         <div class="visit-container">
             <div class="visit-info reveal">
@@ -1276,28 +1712,28 @@
                 <p>We're easy to spot — right along Aguinaldo Highway at Shell Select, San Vicente II. Whether you're driving through or planning a dedicated visit, we'd love to see you.</p>
                 <div class="contact-grid">
                     <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                         <div>
                             <strong>Location</strong>
                             <span>Shell Select, San Vicente II, Silang, 4118 Cavite</span>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-clock"></i>
+                        <i class="fas fa-clock" aria-hidden="true"></i>
                         <div>
                             <strong>Hours</strong>
                             <span>Open Daily · Closes 10:30 PM</span>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-phone"></i>
+                        <i class="fas fa-phone" aria-hidden="true"></i>
                         <div>
                             <strong>Contact</strong>
                             <a href="tel:09928546765">0992 854 6765</a>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
                         <div>
                             <strong>Email</strong>
                             <a href="mailto:uplandkafe21@gmail.com">uplandkafe21@gmail.com</a>
@@ -1306,59 +1742,137 @@
                 </div>
             </div>
             <div class="visit-map reveal reveal-delay-1">
-                <div class="map-pin"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="map-pin"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
                 <h3>Find Us on the Map</h3>
                 <p>Shell Select, San Vicente II<br>Silang, 4118 Cavite</p>
                 <a href="https://maps.google.com/?q=Upland+Kafe+Silang+Cavite" target="_blank" class="btn">
-                    <i class="fas fa-location-arrow"></i> Open in Google Maps
+                    <i class="fas fa-location-arrow" aria-hidden="true"></i> Open in Google Maps
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ═══════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════ -->
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">Upland Kafé</div>
-            <div class="footer-social">
-                <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="mailto:uplandkafe21@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">Upland Kafé</div>
+                    <p class="footer-about">Where coffee meets nature. A garden-style sanctuary along Aguinaldo Highway, serving Silang and travelers to Tagaytay since 2021.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://www.instagram.com/uplandkafe/" target="_blank">Instagram</a></li>
+                                                <li><a href="https://www.facebook.com/uplandkafe/" target="_blank">Facebook</a></li>
+                        <li><a href="https://www.foodpanda.ph/restaurant/gr5g/upland-kafe" target="_blank">Foodpanda</a></li>
+                        <li><a href="mailto:uplandkafe21@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Visit</h4>
+                    <ul>
+                        <li><a href="https://maps.google.com/?q=Upland+Kafe+Silang+Cavite" target="_blank">Google Maps</a></li>
+                        <li><a href="https://restaurantguru.com/Upland-Kafe-Silang" target="_blank">Restaurant Guru</a></li>
+                        <li><a href="tel:09928546765">0992 854 6765</a></li>
+                    </ul>
+                </div>
             </div>
-            <p>© 2026 Upland Kafé. Crafted with <span class="heart">♥</span> in Silang, Cavite.</p>
+            <div class="footer-bottom">
+                <p>© 2026 Upland Kafé. Crafted with <span class="heart">♥</span> in Silang, Cavite.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/uplandkafe/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/uplandkafe/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:uplandkafe21@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Preloader
+        // ─── PRELOADER ───
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('preloader').classList.add('hidden');
-            }, 1500);
+            }, 1800);
         });
 
-        // Navbar scroll effect
-        const nav = document.getElementById('navbar');
+        // ─── CUSTOM CURSOR ───
+        const cursor = document.getElementById('cursor');
+        let cursorX = 0, cursorY = 0, targetX = 0, targetY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            targetX = e.clientX;
+            targetY = e.clientY;
+        });
+        
+        function animateCursor() {
+            cursorX += (targetX - cursorX) * 0.12;
+            cursorY += (targetY - cursorY) * 0.12;
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+        
+        document.querySelectorAll('a, button, .menu-item, .feature, .review-card').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('expanded'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('expanded'));
+        });
+
+        // ─── NAVBAR SCROLL ───
+        const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) nav.classList.add('scrolled');
-            else nav.classList.remove('scrolled');
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
         });
 
-        // Mobile menu
+        // ─── THEME TOGGLE ───
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        themeToggle.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const next = current === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('upland_theme', next);
+        });
+        
+        const savedTheme = localStorage.getItem('upland_theme');
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            html.setAttribute('data-theme', 'dark');
+        }
+
+        // ─── MOBILE MENU ───
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
+        
         function toggleMenu() {
             hamburger.classList.toggle('active');
             mobileMenu.classList.toggle('open');
             document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
         }
+        
         function closeMenu() {
             hamburger.classList.remove('active');
             mobileMenu.classList.remove('open');
             document.body.style.overflow = '';
         }
 
-        // Smooth scroll
+        // ─── SMOOTH SCROLL ───
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1367,27 +1881,28 @@
             });
         });
 
-        // Intersection Observer for reveal animations
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        // ─── SCROLL REVEAL ───
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // Trigger counter animation if it has data-count
+                    // Animate counters
                     const counters = entry.target.querySelectorAll('.number[data-count]');
                     counters.forEach(counter => animateCounter(counter));
-                    // Also check if the element itself is a counter
                     if (entry.target.classList.contains('rating-big') && entry.target.dataset.count) {
                         animateCounter(entry.target);
                     }
+                    revealObserver.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
-
+        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+        
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
         document.querySelectorAll('.rating-big[data-count]').forEach(el => revealObserver.observe(el));
+        document.querySelectorAll('.menu-item').forEach(el => revealObserver.observe(el));
+        document.querySelectorAll('.showcase-img').forEach(el => revealObserver.observe(el));
 
-        // Counter animation
+        // ─── COUNTER ANIMATION ───
         function animateCounter(el) {
             if (el.dataset.animated) return;
             el.dataset.animated = 'true';
@@ -1395,47 +1910,50 @@
             const isDecimal = target % 1 !== 0;
             const duration = 2000;
             const start = performance.now();
+            
             function update(now) {
                 const progress = Math.min((now - start) / duration, 1);
                 const ease = 1 - Math.pow(1 - progress, 3);
                 const current = target * ease;
-                if (isDecimal) {
-                    el.textContent = current.toFixed(1);
-                } else {
-                    el.textContent = Math.floor(current);
-                }
+                el.textContent = isDecimal ? current.toFixed(1) : Math.floor(current);
                 if (progress < 1) requestAnimationFrame(update);
             }
             requestAnimationFrame(update);
         }
 
-        // Menu filter
+        // ─── MENU FILTER ───
         function filterMenu(category, btn) {
             document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
             btn.classList.add('active');
+            
             const items = document.querySelectorAll('.menu-item');
-            items.forEach(item => {
+            items.forEach((item, i) => {
                 if (category === 'all' || item.dataset.category === category) {
                     item.style.display = 'block';
                     setTimeout(() => {
                         item.style.opacity = '1';
                         item.style.transform = 'translateY(0)';
-                    }, 50);
+                    }, i * 50);
                 } else {
                     item.style.opacity = '0';
                     item.style.transform = 'translateY(20px)';
-                    setTimeout(() => { item.style.display = 'none'; }, 300);
+                    setTimeout(() => { item.style.display = 'none'; }, 400);
                 }
             });
         }
 
-        // Parallax effect for hero glow
+        // ─── HERO PARALLAX ───
+        const heroBgImg = document.getElementById('heroBgImg');
         window.addEventListener('scroll', () => {
             const scrolled = window.scrollY;
-            const hero = document.querySelector('.hero');
-            if (hero && scrolled < window.innerHeight) {
-                hero.style.backgroundPosition = `center ${scrolled * 0.3}px`;
+            if (heroBgImg && scrolled < window.innerHeight) {
+                heroBgImg.style.transform = `scale(1.1) translateY(${scrolled * 0.3}px)`;
             }
+        });
+
+        // ─── PRELOADER CHARACTER STAGGER ───
+        document.querySelectorAll('.preloader-text span').forEach((span, i) => {
+            span.style.animationDelay = (i * 0.06) + 's';
         });
     </script>
 </body>
