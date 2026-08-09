@@ -3,192 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskFlow | Smart Task Manager</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Premium SEO & Open Graph Meta -->
+    <meta name="description" content="TaskFlow is a premium, beautifully animated smart task manager built for productivity.">
+    <meta name="theme-color" content="#0f172a">
+    <meta property="og:title" content="TaskFlow | Smart Task Manager">
+    <meta property="og:description" content="Stay organized. Get things done with buttery smooth animations.">
+    <meta property="og:type" content="website">
+    
+    <title>TaskFlow | Premium Task Manager</title>
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- GSAP for Premium Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+
     <style>
         :root {
-            --bg: #0f172a;
-            --bg-card: #1e293b;
-            --bg-hover: #334155;
-            --text: #f1f5f9;
-            --text-muted: #94a3b8;
-            --accent: #c75b3a;
-            --accent-green: #22c55e;
-            --border: rgba(255,255,255,0.08);
+            /* Premium Dark Theme */
+            --bg: #09090b;
+            --bg-glass: rgba(24, 24, 27, 0.6);
+            --bg-card: #18181b;
+            --bg-hover: #27272a;
+            --text: #fafafa;
+            --text-muted: #a1a1aa;
+            --accent: #f97316; /* Modern Orange */
+            --accent-glow: rgba(249, 115, 22, 0.3);
+            --accent-green: #10b981;
+            --border: rgba(255, 255, 255, 0.08);
+            --ring: rgba(249, 115, 22, 0.5);
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            /* Ambient background glow */
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(249, 115, 22, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.05), transparent 25%);
             color: var(--text);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            padding: 40px 20px;
+            padding: 60px 20px;
+            overflow-x: hidden;
         }
+
+        /* Semantic Main Container */
         .app {
             width: 100%;
-            max-width: 600px;
+            max-width: 540px;
+            position: relative;
+            z-index: 1;
         }
+
         .app-header {
             text-align: center;
-            margin-bottom: 32px;
+            margin-bottom: 40px;
         }
+
         .app-header h1 {
-            font-size: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
             margin-bottom: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
+            background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .app-header h1 i { color: var(--accent); }
-        .app-header p { color: var(--text-muted); font-size: 0.95rem; }
+
+        .app-header h1 i { 
+            color: var(--accent); 
+            -webkit-text-fill-color: var(--accent);
+            filter: drop-shadow(0 0 12px var(--accent-glow));
+        }
+
         .stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 24px;
+            gap: 16px;
+            margin-bottom: 32px;
         }
+
         .stat-card {
-            background: var(--bg-card);
+            background: var(--bg-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px;
+            border-radius: 16px;
+            padding: 20px 16px;
             text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255,255,255,0.15);
+        }
+
         .stat-card .num {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             font-weight: 700;
-            color: var(--accent);
+            color: var(--text);
         }
-        .stat-card .label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-        .input-group {
+
+        /* Form styling for semantic input */
+        .form-group {
             display: flex;
             gap: 12px;
             margin-bottom: 24px;
+            position: relative;
         }
-        .input-group input {
+
+        .form-group input {
             flex: 1;
-            padding: 14px 18px;
+            padding: 16px 20px;
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 14px;
             color: var(--text);
             font-size: 1rem;
+            font-family: inherit;
             outline: none;
-            transition: border-color 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .input-group input:focus { border-color: var(--accent); }
-        .input-group input::placeholder { color: var(--text-muted); }
-        .input-group button {
-            padding: 14px 24px;
+
+        .form-group input:focus { 
+            border-color: var(--accent); 
+            box-shadow: 0 0 0 3px var(--ring), 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .form-group button {
+            padding: 0 28px;
             background: var(--accent);
             color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             font-size: 1rem;
             font-weight: 600;
+            font-family: inherit;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .input-group button:hover {
+
+        .form-group button:hover {
+            background: #ea580c;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(199,91,58,0.3);
+            box-shadow: 0 8px 20px var(--accent-glow);
         }
+
         .filters {
             display: flex;
             gap: 8px;
-            margin-bottom: 20px;
-        }
-        .filter-btn {
-            padding: 8px 16px;
-            background: transparent;
+            margin-bottom: 24px;
+            background: var(--bg-card);
+            padding: 6px;
+            border-radius: 12px;
             border: 1px solid var(--border);
+        }
+
+        .filter-btn {
+            flex: 1;
+            padding: 10px;
+            background: transparent;
+            border: none;
             border-radius: 8px;
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            font-family: inherit;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
+
         .filter-btn.active {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
-        }
-        .filter-btn:hover:not(.active) {
-            border-color: var(--text-muted);
+            background: var(--bg-hover);
             color: var(--text);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
+
+        /* Semantic List */
         .task-list {
+            list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
+
         .task-item {
             display: flex;
             align-items: center;
-            gap: 14px;
-            padding: 16px 18px;
+            gap: 16px;
+            padding: 16px 20px;
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            transition: all 0.3s;
-            animation: slideIn 0.3s ease;
+            border-radius: 14px;
+            transition: all 0.3s ease;
         }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+
         .task-item:hover {
-            border-color: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateX(4px);
         }
-        .task-item.completed .task-text {
-            text-decoration: line-through;
-            color: var(--text-muted);
-        }
+
         .task-checkbox {
-            width: 22px;
-            height: 22px;
+            width: 24px;
+            height: 24px;
             border: 2px solid var(--text-muted);
             border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s ease;
             flex-shrink: 0;
+            background: transparent;
         }
-        .task-checkbox:hover { border-color: var(--accent); }
+
         .task-item.completed .task-checkbox {
             background: var(--accent-green);
             border-color: var(--accent-green);
         }
-        .task-checkbox i {
-            font-size: 0.7rem;
-            color: white;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .task-item.completed .task-checkbox i { opacity: 1; }
-        .task-text {
-            flex: 1;
-            font-size: 0.95rem;
-        }
-        .task-date {
-            font-size: 0.75rem;
+
+        .task-item.completed .task-text {
+            text-decoration: line-through;
             color: var(--text-muted);
         }
+
+        .task-text {
+            flex: 1;
+            font-size: 1rem;
+            line-height: 1.5;
+            transition: color 0.3s;
+        }
+
         .task-delete {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
             border: none;
             background: transparent;
             color: var(--text-muted);
@@ -196,45 +263,56 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
+            transition: all 0.2s ease;
         }
-        .task-delete:hover {
-            background: rgba(239,68,68,0.1);
+
+        .task-delete:hover, .task-delete:focus-visible {
+            background: rgba(239, 68, 68, 0.1);
             color: #ef4444;
+            outline: none;
         }
+
         .empty-state {
             text-align: center;
             padding: 60px 20px;
             color: var(--text-muted);
         }
+
         .empty-state i {
             font-size: 3rem;
             margin-bottom: 16px;
-            opacity: 0.5;
+            background: linear-gradient(135deg, #a1a1aa, #3f3f46);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .empty-state p { font-size: 0.95rem; }
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            color: var(--text-muted);
-            font-size: 0.8rem;
+
+        /* Screen reader only utility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
+
         @media (max-width: 480px) {
-            .stats { grid-template-columns: 1fr; }
-            .input-group { flex-direction: column; }
-            .input-group button { width: 100%; }
+            .form-group { flex-direction: column; }
+            .form-group button { padding: 16px; justify-content: center; }
         }
     </style>
-<base target="_blank">
 </head>
 <body>
-    <div class="app">
-        <div class="app-header">
-            <h1><i class="fas fa-check-double"></i> TaskFlow</h1>
+    <main class="app">
+        <header class="app-header">
+            <h1><i class="fas fa-check-double" aria-hidden="true"></i> TaskFlow</h1>
             <p>Stay organized. Get things done.</p>
-        </div>
+        </header>
 
-        <div class="stats">
+        <section class="stats" aria-label="Task Statistics">
             <div class="stat-card">
                 <div class="num" id="statTotal">0</div>
                 <div class="label">Total</div>
@@ -247,135 +325,230 @@
                 <div class="num" id="statDone">0</div>
                 <div class="label">Done</div>
             </div>
-        </div>
+        </section>
 
-        <div class="input-group">
-            <input type="text" id="taskInput" placeholder="What needs to be done?" autocomplete="off">
-            <button onclick="addTask()"><i class="fas fa-plus"></i> Add</button>
-        </div>
+        <!-- Changed to form for native submit behavior (Enter key) -->
+        <form class="form-group" id="taskForm">
+            <label for="taskInput" class="sr-only">New task</label>
+            <input type="text" id="taskInput" placeholder="What needs to be done?" autocomplete="off" required>
+            <button type="submit"><i class="fas fa-plus" aria-hidden="true"></i> Add</button>
+        </form>
 
-        <div class="filters">
-            <button class="filter-btn active" onclick="setFilter('all')">All</button>
-            <button class="filter-btn" onclick="setFilter('active')">Active</button>
-            <button class="filter-btn" onclick="setFilter('completed')">Completed</button>
-        </div>
+        <nav class="filters" aria-label="Task Filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+        </nav>
 
-        <div class="task-list" id="taskList">
-            <div class="empty-state">
-                <i class="fas fa-clipboard-list"></i>
-                <p>No tasks yet. Add one above to get started!</p>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p>Tasks saved locally • Built by Anthony Reyes</p>
-        </div>
-    </div>
+        <!-- aria-live polite will announce changes to screen readers naturally -->
+        <ul class="task-list" id="taskList" aria-live="polite">
+            <!-- Tasks injected via JS -->
+        </ul>
+    </main>
 
     <script>
-        // Task Manager Logic
-        let tasks = JSON.parse(localStorage.getItem('taskflow_tasks')) || [];
-        let currentFilter = 'all';
+        // Wait for DOM and GSAP to load
+        document.addEventListener("DOMContentLoaded", () => {
+            let tasks = JSON.parse(localStorage.getItem('taskflow_tasks')) || [];
+            let currentFilter = 'all';
 
-        function saveTasks() {
-            localStorage.setItem('taskflow_tasks', JSON.stringify(tasks));
-        }
+            const taskList = document.getElementById('taskList');
+            const taskForm = document.getElementById('taskForm');
+            const taskInput = document.getElementById('taskInput');
+            const filterBtns = document.querySelectorAll('.filter-btn');
 
-        function renderTasks() {
-            const list = document.getElementById('taskList');
-            const filtered = tasks.filter(t => {
-                if (currentFilter === 'active') return !t.completed;
-                if (currentFilter === 'completed') return t.completed;
-                return true;
-            });
-
-            if (filtered.length === 0) {
-                list.innerHTML = `
-                    <div class="empty-state">
-                        <i class="fas fa-clipboard-list"></i>
-                        <p>${currentFilter === 'all' ? 'No tasks yet. Add one above!' : 'No ' + currentFilter + ' tasks.'}</p>
-                    </div>`;
-            } else {
-                list.innerHTML = filtered.map(task => `
-                    <div class="task-item ${task.completed ? 'completed' : ''}">
-                        <div class="task-checkbox" onclick="toggleTask(${task.id})">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <span class="task-text">${escapeHtml(task.text)}</span>
-                        <span class="task-date">${formatDate(task.created)}</span>
-                        <button class="task-delete" onclick="deleteTask(${task.id})">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                `).join('');
+            function saveTasks() {
+                localStorage.setItem('taskflow_tasks', JSON.stringify(tasks));
+                updateStats();
             }
 
-            updateStats();
-        }
+            function updateStats() {
+                // GSAP counter animation for premium feel
+                animateCounter('#statTotal', tasks.length);
+                animateCounter('#statActive', tasks.filter(t => !t.completed).length);
+                animateCounter('#statDone', tasks.filter(t => t.completed).length);
+            }
 
-        function addTask() {
-            const input = document.getElementById('taskInput');
-            const text = input.value.trim();
-            if (!text) return;
+            function animateCounter(selector, newValue) {
+                const el = document.querySelector(selector);
+                const obj = { val: parseInt(el.innerText) || 0 };
+                gsap.to(obj, {
+                    val: newValue,
+                    duration: 0.5,
+                    snap: { val: 1 },
+                    onUpdate: () => { el.innerText = obj.val; }
+                });
+            }
 
-            tasks.unshift({
-                id: Date.now(),
-                text: text,
-                completed: false,
-                created: new Date().toISOString()
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            function createTaskElement(task) {
+                const li = document.createElement('li');
+                li.className = `task-item ${task.completed ? 'completed' : ''}`;
+                li.id = `task-${task.id}`;
+                li.innerHTML = `
+                    <button class="task-checkbox" aria-label="${task.completed ? 'Mark incomplete' : 'Mark complete'}" aria-pressed="${task.completed}">
+                        <i class="fas fa-check" style="opacity: ${task.completed ? '1' : '0'}"></i>
+                    </button>
+                    <span class="task-text">${escapeHtml(task.text)}</span>
+                    <button class="task-delete" aria-label="Delete task">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+
+                // Add event listeners directly to elements
+                li.querySelector('.task-checkbox').addEventListener('click', () => toggleTask(task.id, li));
+                li.querySelector('.task-delete').addEventListener('click', () => deleteTask(task.id, li));
+
+                return li;
+            }
+
+            function renderTasks(animate = false) {
+                taskList.innerHTML = '';
+                const filtered = tasks.filter(t => {
+                    if (currentFilter === 'active') return !t.completed;
+                    if (currentFilter === 'completed') return t.completed;
+                    return true;
+                });
+
+                if (filtered.length === 0) {
+                    taskList.innerHTML = `
+                        <li class="empty-state">
+                            <i class="fas fa-clipboard-list" aria-hidden="true"></i>
+                            <p>${currentFilter === 'all' ? 'No tasks yet. Add one above!' : 'No ' + currentFilter + ' tasks.'}</p>
+                        </li>`;
+                    if (animate) {
+                        gsap.from('.empty-state', { opacity: 0, y: 10, duration: 0.4 });
+                    }
+                    return;
+                }
+
+                filtered.forEach(task => {
+                    taskList.appendChild(createTaskElement(task));
+                });
+
+                // Staggered entrance animation for premium feel
+                if (animate) {
+                    gsap.from('.task-item', { 
+                        opacity: 0, 
+                        y: 20, 
+                        duration: 0.4, 
+                        stagger: 0.05, 
+                        ease: "back.out(1.5)" 
+                    });
+                }
+            }
+
+            // Handle Add Task
+            taskForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const text = taskInput.value.trim();
+                if (!text) return;
+
+                const newTask = {
+                    id: Date.now(),
+                    text: text,
+                    completed: false
+                };
+
+                tasks.unshift(newTask);
+                saveTasks();
+                
+                // Add to DOM and animate immediately (without full re-render for better UX)
+                if(currentFilter !== 'completed') {
+                    const emptyState = taskList.querySelector('.empty-state');
+                    if(emptyState) emptyState.remove();
+
+                    const li = createTaskElement(newTask);
+                    taskList.insertBefore(li, taskList.firstChild);
+                    
+                    gsap.from(li, { opacity: 0, height: 0, scale: 0.9, duration: 0.4, ease: "back.out(1.7)" });
+                }
+
+                taskInput.value = '';
             });
 
-            input.value = '';
-            saveTasks();
-            renderTasks();
-        }
+            // Handle Toggle
+            window.toggleTask = function(id, element) {
+                const task = tasks.find(t => t.id === id);
+                if (!task) return;
 
-        function toggleTask(id) {
-            const task = tasks.find(t => t.id === id);
-            if (task) {
                 task.completed = !task.completed;
                 saveTasks();
-                renderTasks();
-            }
-        }
 
-        function deleteTask(id) {
-            tasks = tasks.filter(t => t.id !== id);
-            saveTasks();
-            renderTasks();
-        }
+                const icon = element.querySelector('.fas.fa-check');
+                const checkbox = element.querySelector('.task-checkbox');
 
-        function setFilter(filter) {
-            currentFilter = filter;
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            renderTasks();
-        }
+                if (task.completed) {
+                    element.classList.add('completed');
+                    checkbox.setAttribute('aria-pressed', 'true');
+                    checkbox.setAttribute('aria-label', 'Mark incomplete');
+                    gsap.to(icon, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" });
+                    
+                    // Optional: Animate out if filtering by 'active'
+                    if(currentFilter === 'active') {
+                        gsap.to(element, { opacity: 0, height: 0, margin: 0, padding: 0, duration: 0.3, onComplete: () => renderTasks() });
+                    }
+                } else {
+                    element.classList.remove('completed');
+                    checkbox.setAttribute('aria-pressed', 'false');
+                    checkbox.setAttribute('aria-label', 'Mark complete');
+                    gsap.to(icon, { opacity: 0, scale: 0.5, duration: 0.2 });
+                    
+                    if(currentFilter === 'completed') {
+                        gsap.to(element, { opacity: 0, height: 0, margin: 0, padding: 0, duration: 0.3, onComplete: () => renderTasks() });
+                    }
+                }
+            };
 
-        function updateStats() {
-            document.getElementById('statTotal').textContent = tasks.length;
-            document.getElementById('statActive').textContent = tasks.filter(t => !t.completed).length;
-            document.getElementById('statDone').textContent = tasks.filter(t => t.completed).length;
-        }
+            // Handle Delete
+            window.deleteTask = function(id, element) {
+                tasks = tasks.filter(t => t.id !== id);
+                saveTasks();
 
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
+                // Premium exit animation
+                gsap.to(element, { 
+                    opacity: 0, 
+                    x: -50, 
+                    height: 0, 
+                    padding: 0, 
+                    margin: 0,
+                    duration: 0.3, 
+                    ease: "power2.inOut",
+                    onComplete: () => {
+                        element.remove();
+                        if(taskList.children.length === 0) renderTasks(true);
+                    }
+                });
+            };
 
-        function formatDate(iso) {
-            const date = new Date(iso);
-            return date.toLocaleDateString('en-PH', { month: 'short', day: 'numeric' });
-        }
+            // Handle Filters
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    currentFilter = e.target.getAttribute('data-filter');
+                    renderTasks(true);
+                });
+            });
 
-        // Enter key support
-        document.getElementById('taskInput').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') addTask();
+            // Initial Setup
+            updateStats();
+            renderTasks(true);
+            
+            // Premium Entrance Animation for the whole app
+            gsap.from('.app-header, .stats, .form-group, .filters', {
+                opacity: 0,
+                y: -20,
+                duration: 0.6,
+                stagger: 0.1,
+                ease: "power3.out"
+            });
         });
-
-        // Initial render
-        renderTasks();
     </script>
 </body>
 </html>
