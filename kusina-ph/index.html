@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kusina Box | Filipino Comfort Food Delivered</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg: #faf8f5;
+            --card: #ffffff;
+            --text: #1a1a1a;
+            --text-muted: #666;
+            --accent: #c75b3a;
+            --accent-hover: #a84a2f;
+            --border: #e5e5e5;
+            --success: #22c55e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .brand {
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .brand i { color: var(--accent); }
+        .cart-btn {
+            position: relative;
+            padding: 10px 18px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        .cart-btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
+        .cart-count {
+            position: absolute;
+            top: -6px; right: -6px;
+            width: 20px; height: 20px;
+            background: #1a1a1a;
+            color: white;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #c75b3a 0%, #e88c6a 100%);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 16px;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 500px;
+            margin: 0 auto 32px;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Products */
+        .products {
+            padding: 60px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .section-sub {
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+        }
+        .product-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
+        .product-img {
+            height: 180px;
+            background: linear-gradient(135deg, #f0e6dc, #e8ddd0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+        }
+        .product-tag {
+            position: absolute;
+            top: 12px; left: 12px;
+            background: var(--accent);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .product-info { padding: 20px; }
+        .product-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+        .product-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .add-btn {
+            padding: 8px 16px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .add-btn:hover { background: var(--accent-hover); }
+        .add-btn.added {
+            background: var(--success);
+            pointer-events: none;
+        }
+
+        /* Cart Sidebar */
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 200;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        .cart-overlay.active { opacity: 1; visibility: visible; }
+        .cart-sidebar {
+            position: fixed;
+            top: 0; right: 0;
+            width: 380px;
+            max-width: 90vw;
+            height: 100vh;
+            background: white;
+            z-index: 201;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+        }
+        .cart-sidebar.active { transform: translateX(0); }
+        .cart-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-header h2 { font-size: 1.2rem; }
+        .close-cart {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .close-cart:hover { background: var(--bg); }
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .cart-empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+        }
+        .cart-empty i { font-size: 3rem; margin-bottom: 16px; opacity: 0.4; }
+        .cart-item {
+            display: flex;
+            gap: 14px;
+            padding: 16px;
+            background: var(--bg);
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+        .cart-item-img {
+            width: 60px; height: 60px;
+            background: linear-gradient(135deg, #f0e6dc, #e8ddd0);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .cart-item-info { flex: 1; }
+        .cart-item-info h4 { font-size: 0.95rem; margin-bottom: 4px; }
+        .cart-item-info .item-price { color: var(--accent); font-weight: 600; font-size: 0.9rem; }
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .qty-btn {
+            width: 28px; height: 28px;
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+        .qty-btn:hover { background: var(--bg); }
+        .remove-btn {
+            color: #ef4444;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+        .cart-footer {
+            padding: 24px;
+            border-top: 1px solid var(--border);
+        }
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        .checkout-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .checkout-btn:hover { background: var(--accent-hover); }
+
+        /* Checkout Modal */
+        .checkout-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 300;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        .checkout-modal.active { opacity: 1; visibility: visible; }
+        .checkout-modal .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+        }
+        .checkout-content {
+            position: relative;
+            background: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 480px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 32px;
+            transform: scale(0.95);
+            transition: transform 0.3s;
+        }
+        .checkout-modal.active .checkout-content { transform: scale(1); }
+        .checkout-content h2 { margin-bottom: 24px; }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--text-muted);
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus { border-color: var(--accent); }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .success-msg {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .success-msg i {
+            font-size: 4rem;
+            color: var(--success);
+            margin-bottom: 16px;
+        }
+        .success-msg h3 { margin-bottom: 8px; }
+        .success-msg p { color: var(--text-muted); }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 640px) {
+            header { padding: 16px 20px; }
+            .hero { padding: 60px 20px; }
+            .products { padding: 40px 20px; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <header>
+        <div class="brand"><i class="fas fa-utensils"></i> Kusina Box</div>
+        <button class="cart-btn" onclick="toggleCart()">
+            <i class="fas fa-shopping-bag"></i>
+            <span>Cart</span>
+            <span class="cart-count" id="cartCount">0</span>
+        </button>
+    </header>
+
+    <section class="hero">
+        <h1>Filipino Comfort Food,<br>Delivered Fresh</h1>
+        <p>Home-style meals prepared with love. From our kitchen in Silang to your doorstep.</p>
+        <div class="hero-badge">
+            <i class="fas fa-motorcycle"></i> Free delivery within Silang
+        </div>
+    </section>
+
+    <section class="products">
+        <h2 class="section-title">Best Sellers</h2>
+        <p class="section-sub">Handpicked favorites from our kitchen</p>
+        <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <footer>
+        <p>© 2026 Kusina Box. Demo e-commerce by Anthony Reyes.</p>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Your Order</h2>
+            <button class="close-cart" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">
+                <i class="fas fa-shopping-basket"></i>
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display:none;">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cartTotal">₱0</span>
+            </div>
+            <button class="checkout-btn" onclick="openCheckout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="overlay" onclick="closeCheckout()"></div>
+        <div class="checkout-content" id="checkoutContent">
+            <h2>Checkout</h2>
+            <form id="checkoutForm" onsubmit="placeOrder(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required placeholder="Juan Dela Cruz">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" required placeholder="0917 123 4567">
+                </div>
+                <div class="form-group">
+                    <label>Delivery Address</label>
+                    <input type="text" required placeholder="Brgy. Balite, Silang, Cavite">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" value="Silang" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Postal Code</label>
+                        <input type="text" placeholder="4118">
+                    </div>
+                </div>
+                <button type="submit" class="checkout-btn" style="margin-top:8px;">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            { id: 1, name: 'Beef Caldereta', desc: 'Tender beef in rich tomato sauce with potatoes and carrots.', price: 280, icon: '🍖', tag: 'Best Seller' },
+            { id: 2, name: 'Chicken Adobo', desc: 'Classic Filipino adobo with soy sauce, vinegar, and garlic.', price: 220, icon: '🍗', tag: 'Popular' },
+            { id: 3, name: 'Pork Sinigang', desc: 'Sour tamarind soup with pork belly and fresh vegetables.', price: 250, icon: '🍲', tag: null },
+            { id: 4, name: 'Bangus Sisig', desc: 'Crispy milkfish sisig with calamansi and chili.', price: 240, icon: '🐟', tag: 'New' },
+            { id: 5, name: 'Laing (Bicol)', desc: 'Spicy taro leaves in coconut milk. Authentic Bicolano recipe.', price: 180, icon: '🌿', tag: null },
+            { id: 6, name: 'Lechon Kawali', desc: 'Deep-fried crispy pork belly with liver sauce.', price: 320, icon: '🥓', tag: 'Best Seller' },
+            { id: 7, name: 'Pancit Canton', desc: 'Stir-fried noodles with pork, shrimp, and vegetables.', price: 200, icon: '🍜', tag: null },
+            { id: 8, name: 'Halo-Halo Special', desc: 'Mixed shaved ice dessert with ube, leche flan, and ice cream.', price: 150, icon: '🍧', tag: 'Dessert' }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('kusina_cart')) || [];
+
+        function saveCart() {
+            localStorage.setItem('kusina_cart', JSON.stringify(cart));
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = products.map(p => {
+                const inCart = cart.find(c => c.id === p.id);
+                return `
+                    <div class="product-card">
+                        <div class="product-img">
+                            ${p.tag ? `<span class="product-tag">${p.tag}</span>` : ''}
+                            <span style="font-size:3rem;">${p.icon}</span>
+                        </div>
+                        <div class="product-info">
+                            <h3>${p.name}</h3>
+                            <p>${p.desc}</p>
+                            <div class="product-footer">
+                                <span class="price">₱${p.price}</span>
+                                <button class="add-btn ${inCart ? 'added' : ''}" onclick="addToCart(${p.id})" id="btn-${p.id}">
+                                    ${inCart ? '<i class="fas fa-check"></i> Added' : '<i class="fas fa-plus"></i> Add'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const existing = cart.find(c => c.id === id);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+            saveCart();
+            updateCartUI();
+            const btn = document.getElementById(`btn-${id}`);
+            btn.classList.add('added');
+            btn.innerHTML = '<i class="fas fa-check"></i> Added';
+        }
+
+        function updateQty(id, change) {
+            const item = cart.find(c => c.id === id);
+            if (item) {
+                item.qty += change;
+                if (item.qty <= 0) {
+                    cart = cart.filter(c => c.id !== id);
+                    const btn = document.getElementById(`btn-${id}`);
+                    if (btn) {
+                        btn.classList.remove('added');
+                        btn.innerHTML = '<i class="fas fa-plus"></i> Add';
+                    }
+                }
+            }
+            saveCart();
+            updateCartUI();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(c => c.id !== id);
+            saveCart();
+            updateCartUI();
+            const btn = document.getElementById(`btn-${id}`);
+            if (btn) {
+                btn.classList.remove('added');
+                btn.innerHTML = '<i class="fas fa-plus"></i> Add';
+            }
+        }
+
+        function updateCartUI() {
+            const count = cart.reduce((sum, c) => sum + c.qty, 0);
+            document.getElementById('cartCount').textContent = count;
+
+            const itemsContainer = document.getElementById('cartItems');
+            const footer = document.getElementById('cartFooter');
+
+            if (cart.length === 0) {
+                itemsContainer.innerHTML = `
+                    <div class="cart-empty">
+                        <i class="fas fa-shopping-basket"></i>
+                        <p>Your cart is empty</p>
+                    </div>`;
+                footer.style.display = 'none';
+            } else {
+                itemsContainer.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-img">${item.icon}</div>
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <span class="item-price">₱${item.price * item.qty}</span>
+                            <div class="qty-controls">
+                                <button class="qty-btn" onclick="updateQty(${item.id}, -1)">−</button>
+                                <span>${item.qty}</span>
+                                <button class="qty-btn" onclick="updateQty(${item.id}, 1)">+</button>
+                            </div>
+                        </div>
+                        <button class="remove-btn" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button>
+                    </div>
+                `).join('');
+                footer.style.display = 'block';
+                const total = cart.reduce((sum, c) => sum + (c.price * c.qty), 0);
+                document.getElementById('cartTotal').textContent = '₱' + total.toLocaleString();
+            }
+        }
+
+        function toggleCart() {
+            document.getElementById('cartOverlay').classList.toggle('active');
+            document.getElementById('cartSidebar').classList.toggle('active');
+        }
+
+        function openCheckout() {
+            toggleCart();
+            document.getElementById('checkoutModal').classList.add('active');
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkoutModal').classList.remove('active');
+            // Reset form
+            document.getElementById('checkoutContent').innerHTML = `
+                <h2>Checkout</h2>
+                <form id="checkoutForm" onsubmit="placeOrder(event)">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" required placeholder="Juan Dela Cruz">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" required placeholder="0917 123 4567">
+                    </div>
+                    <div class="form-group">
+                        <label>Delivery Address</label>
+                        <input type="text" required placeholder="Brgy. Balite, Silang, Cavite">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text" value="Silang" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Postal Code</label>
+                            <input type="text" placeholder="4118">
+                        </div>
+                    </div>
+                    <button type="submit" class="checkout-btn" style="margin-top:8px;">Place Order</button>
+                </form>
+            `;
+        }
+
+        function placeOrder(e) {
+            e.preventDefault();
+            const total = cart.reduce((sum, c) => sum + (c.price * c.qty), 0);
+            document.getElementById('checkoutContent').innerHTML = `
+                <div class="success-msg">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Order Placed!</h3>
+                    <p>Your ₱${total.toLocaleString()} order is being prepared.<br>Thank you for ordering from Kusina Box!</p>
+                </div>
+            `;
+            cart = [];
+            saveCart();
+            updateCartUI();
+            renderProducts();
+            setTimeout(closeCheckout, 3000);
+        }
+
+        // Init
+        renderProducts();
+        updateCartUI();
+    </script>
+</body>
+</html>
