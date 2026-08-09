@@ -267,18 +267,20 @@
         }
         nav.scrolled .logo { color: var(--text); }
         .logo-mark {
-            width: 32px;
-            height: 32px;
-            background: var(--accent);
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.8rem;
-            transition: transform 0.4s var(--ease-out-expo);
-        }
-        .logo:hover .logo-mark { transform: rotate(-8deg) scale(1.1); }
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.4s var(--ease-out-expo);
+    border: 2px solid rgba(245,240,232,0.25);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+nav.scrolled .logo-mark {
+    border-color: rgba(42,31,22,0.15);
+}
+.logo:hover .logo-mark {
+    transform: rotate(-5deg) scale(1.1);
+}
         
         .nav-links {
             display: flex;
@@ -1434,9 +1436,11 @@
     ═══════════════════════════════════════ -->
     <nav id="navbar">
         <a href="#home" class="logo">
-            <div class="logo-mark"><i class="fas fa-mug-hot" aria-hidden="true"></i></div>
-            Upland Kafé
-        </a>
+    <img src="https://scontent.fmnl4-1.fna.fbcdn.net/v/t39.30808-6/326687559_731147871742181_1685107973310002566_n.jpg?stp=dst-jpg_tt6&cstp=mx960x960&ctp=s960x960&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=fyFXmKTHSngQ7kNvwFFwAsc&_nc_oc=AdosYJzB_--nU5ICkDiG6Q2OhJBPLDSJNXLU9Y7elfh0ISpXGmZpV4Pbc9pL6mHEz9s&_nc_zt=23&_nc_ht=scontent.fmnl4-1.fna&_nc_gid=KdMkQcY8xtio52HqO4j4Rw&_nc_ss=7b289&oh=00_AQENb6j47iE5A9V1vCx54khbKes1mtjO2Cxk8OD739UymA&oe=6A7E51A9" 
+         alt="Upland Kafé" 
+         class="logo-mark">
+    Upland Kafé
+</a>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
