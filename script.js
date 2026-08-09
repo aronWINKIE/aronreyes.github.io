@@ -723,7 +723,7 @@ class ProjectModal {
                 result: 'Clean, fast-loading site that works on all devices. Perfect template for local businesses.',
                 tech: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
                 links: [
-                    { text: 'View Live', url: 'https://aronreyes.github.io/silang-brew/', icon: 'fa-external-link-alt' },
+                    { text: 'View Live', url: 'https://aronwinkie.github.io/aronreyes.github.io/silang-brew/', icon: 'fa-external-link-alt' },
                     { text: 'View Code', url: 'https://github.com/aronWINKIE/aronreyes.github.io/tree/main/silang-brew', icon: 'fa-code' }
                 ]
             },
@@ -735,7 +735,7 @@ class ProjectModal {
                 result: 'Zero-setup productivity tool with filters, stats, and animations. All data stays on the device.',
                 tech: ['JavaScript', 'localStorage', 'CSS Animations', 'DOM Manipulation'],
                 links: [
-                    { text: 'View Live', url: 'https://aronreyes.github.io/taskflow/', icon: 'fa-external-link-alt' },
+                    { text: 'View Live', url: 'https://aronwinkie.github.io/aronreyes.github.io/taskflow/', icon: 'fa-external-link-alt' },
                     { text: 'View Code', url: 'https://github.com/aronWINKIE/aronreyes.github.io/tree/main/taskflow', icon: 'fa-code' }
                 ]
             },
@@ -747,7 +747,7 @@ class ProjectModal {
                 result: 'Fully interactive shopping experience. Ready to integrate with payment APIs like PayMongo or Stripe.',
                 tech: ['HTML5', 'CSS3', 'JavaScript', 'Cart Logic'],
                 links: [
-                    { text: 'View Live', url: 'https://aronreyes.github.io/kusina-ph/', icon: 'fa-external-link-alt' },
+                    { text: 'View Live', url: 'https://aronwinkie.github.io/aronreyes.github.io/kusina-ph/', icon: 'fa-external-link-alt' },
                     { text: 'View Code', url: 'https://github.com/aronWINKIE/aronreyes.github.io/tree/main/kusina-ph', icon: 'fa-code' }
                 ]
             }
