@@ -1,23 +1,43 @@
 /* ============================================
-   ARON REYES — PREMIUM PORTFOLIO CONTROLLER v4
-   Preloader | Cursor | Magnetic | Tilt | Form | Modal | Particles
+   ANTHONY REYES — PREMIUM PORTFOLIO CONTROLLER v4.1
+   FIXED: Preloader fallback | Cursor | Magnetic | Tilt | Form | Modal | Particles
    ============================================ */
 
 // ============================================
-// PRELOADER
+// PRELOADER — FIXED WITH FALLBACK TIMER
 // ============================================
 class Preloader {
     constructor() {
         this.el = document.getElementById('preloader');
+        this.startTime = Date.now();
+        this.minDisplay = 1800;   // Minimum show time (ms)
+        this.maxWait = 3500;      // Maximum wait before forcing hide (ms)
+        this.hidden = false;
         this.init();
     }
     init() {
-        window.addEventListener('load', () => {
+        const doHide = () => {
+            if (this.hidden) return;
+            this.hidden = true;
+
+            const elapsed = Date.now() - this.startTime;
+            const remaining = Math.max(0, this.minDisplay - elapsed);
+
             setTimeout(() => {
-                this.el.classList.add('hidden');
-                setTimeout(() => this.el.remove(), 1000);
-            }, 2200);
-        });
+                if (this.el) {
+                    this.el.classList.add('hidden');
+                    setTimeout(() => this.el.remove(), 1000);
+                }
+                // Dispatch event so slider knows preloader is done
+                window.dispatchEvent(new CustomEvent('preloaderDone'));
+            }, remaining);
+        };
+
+        // Normal: hide when page fully loaded
+        window.addEventListener('load', doHide);
+
+        // FALLBACK: force hide after maxWait regardless of load state
+        setTimeout(doHide, this.maxWait);
     }
 }
 
@@ -50,8 +70,7 @@ class CustomCursor {
             this.pos.y = e.clientY;
         });
 
-        // Hover detection
-        const hoverables = 'a, button, .magnetic, .project-card, .service-card, .skill-tag, .nav-dot, .arrow-btn';
+        const hoverables = 'a, button, .magnetic, .project-card, .service-card, .skill-tag, .nav-dot, .arrow-btn, .modal-close';
         document.addEventListener('mouseover', (e) => {
             if (e.target.closest(hoverables)) {
                 document.body.classList.add('hovering');
@@ -67,7 +86,6 @@ class CustomCursor {
     }
 
     animate() {
-        // Smooth follow for outline
         this.outlinePos.x += (this.pos.x - this.outlinePos.x) * 0.15;
         this.outlinePos.y += (this.pos.y - this.outlinePos.y) * 0.15;
 
@@ -154,7 +172,6 @@ class ParticleNetwork {
 
         window.addEventListener('resize', () => this.resize());
 
-        // Only animate when hero is visible
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((m) => {
                 const slide = m.target;
@@ -170,7 +187,6 @@ class ParticleNetwork {
         const heroSlide = document.querySelector('.slide[data-index="0"]');
         if (heroSlide) observer.observe(heroSlide, { attributes: true, attributeFilter: ['class'] });
 
-        // Check if already active
         if (heroSlide && heroSlide.classList.contains('active')) {
             this.isActive = true;
             this.animate();
@@ -199,22 +215,18 @@ class ParticleNetwork {
 
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        // Update and draw particles
         this.particles.forEach((p, i) => {
             p.x += p.vx;
             p.y += p.vy;
 
-            // Bounce
             if (p.x < 0 || p.x > this.canvas.width) p.vx *= -1;
             if (p.y < 0 || p.y > this.canvas.height) p.vy *= -1;
 
-            // Draw particle
             this.ctx.beginPath();
             this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
             this.ctx.fillStyle = 'rgba(199, 91, 58, 0.4)';
             this.ctx.fill();
 
-            // Draw connections
             for (let j = i + 1; j < this.particles.length; j++) {
                 const p2 = this.particles[j];
                 const dx = p.x - p2.x;
@@ -249,6 +261,7 @@ class PortfolioSlider {
         this.typingDelay = 250;
         this.typingInProgress = false;
         this.typedSlides = new Set();
+        this.preloaderDone = false;
 
         this.slides = document.querySelectorAll('.slide');
         this.dots = document.querySelectorAll('.nav-dot');
@@ -264,13 +277,25 @@ class PortfolioSlider {
         this.bindEvents();
         this.updateUI();
 
-        // Delay typing start for hero slide
-        setTimeout(() => {
-            this.startTyping(0);
-            this.typedSlides.add(0);
-        }, 2500); // After preloader
+        // Wait for preloader before starting typing
+        window.addEventListener('preloaderDone', () => {
+            this.preloaderDone = true;
+            setTimeout(() => {
+                if (!this.typedSlides.has(0)) {
+                    this.startTyping(0);
+                    this.typedSlides.add(0);
+                }
+            }, 300);
+        });
 
-        // CTA button
+        // Fallback: if preloader event missed, start after 4s
+        setTimeout(() => {
+            if (!this.preloaderDone && !this.typedSlides.has(0)) {
+                this.startTyping(0);
+                this.typedSlides.add(0);
+            }
+        }, 4000);
+
         const ctaBtn = document.getElementById('ctaBtn');
         if (ctaBtn) {
             ctaBtn.addEventListener('click', (e) => {
@@ -282,7 +307,6 @@ class PortfolioSlider {
     }
 
     bindEvents() {
-        // Keyboard
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
                 e.preventDefault();
@@ -299,7 +323,6 @@ class PortfolioSlider {
             }
         });
 
-        // Wheel with debounce
         let wheelTimeout;
         document.addEventListener('wheel', (e) => {
             if (this.isAnimating) return;
@@ -310,7 +333,6 @@ class PortfolioSlider {
             }, 50);
         }, { passive: true });
 
-        // Touch
         let touchStartY = 0;
         let touchStartTime = 0;
         document.addEventListener('touchstart', (e) => {
@@ -326,12 +348,10 @@ class PortfolioSlider {
             }
         }, { passive: true });
 
-        // Dots
         this.dots.forEach((dot, i) => {
             dot.addEventListener('click', () => this.goToSlide(i));
         });
 
-        // Nav links
         this.navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -339,7 +359,6 @@ class PortfolioSlider {
             });
         });
 
-        // Arrows
         if (this.arrowUp) this.arrowUp.addEventListener('click', () => this.prevSlide());
         if (this.arrowDown) this.arrowDown.addEventListener('click', () => this.nextSlide());
     }
@@ -362,7 +381,6 @@ class PortfolioSlider {
 
         this.isAnimating = true;
 
-        // Update slide classes
         this.slides.forEach((slide, i) => {
             slide.classList.remove('active', 'prev', 'next');
             if (i === index) slide.classList.add('active');
@@ -373,7 +391,6 @@ class PortfolioSlider {
         this.currentSlide = index;
         this.updateUI();
 
-        // Start typing for new slide after transition
         setTimeout(() => {
             if (!this.typedSlides.has(index)) {
                 this.startTyping(index);
@@ -416,24 +433,20 @@ class PortfolioSlider {
             let text = el.dataset.text || '';
             const cursor = el.nextElementSibling;
 
-            // Handle three dots separately
             const hasDots = text.endsWith('...');
             if (hasDots) text = text.slice(0, -3);
 
-            // Reset
             el.textContent = '';
             if (cursor) {
                 cursor.style.display = 'inline';
                 cursor.classList.add('typing');
             }
 
-            // Type each character
             for (let j = 0; j < text.length; j++) {
                 el.textContent += text.charAt(j);
                 await this.sleep(this.typingSpeed + Math.random() * 20);
             }
 
-            // Animate three dots
             if (hasDots) {
                 await this.sleep(200);
                 el.textContent = text + '.';
@@ -443,7 +456,6 @@ class PortfolioSlider {
                 el.textContent = text + '...';
             }
 
-            // Hide cursor after typing this element
             if (cursor) {
                 cursor.classList.remove('typing');
                 if (i < typeElements.length - 1) {
@@ -483,7 +495,6 @@ class PortfolioSlider {
         const statNums = slide.querySelectorAll('.stat-num[data-target]');
         statNums.forEach(stat => {
             const target = parseInt(stat.dataset.target);
-            const suffix = stat.nextElementSibling?.textContent || '';
             let current = 0;
             const increment = target / 30;
             const timer = setInterval(() => {
@@ -531,7 +542,6 @@ class MatrixWave {
             observer.observe(slide, { attributes: true, attributeFilter: ['class'] });
         });
 
-        // Check initial state
         const contactSlide = document.querySelector('.slide[data-index="4"]');
         if (contactSlide && contactSlide.classList.contains('active')) {
             this.isActive = true;
@@ -632,7 +642,6 @@ class ContactForm {
     init() {
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
 
-        // Real-time validation
         const inputs = this.form.querySelectorAll('input, select, textarea');
         inputs.forEach(input => {
             input.addEventListener('blur', () => this.validateField(input));
@@ -678,14 +687,8 @@ class ContactForm {
 
         if (!allValid) return;
 
-        // Simulate sending
         this.submitBtn.classList.add('sending');
         this.submitBtn.disabled = true;
-
-        // NOTE: For production, replace this with actual form backend
-        // Options: Formspree (<form action="https://formspree.io/f/YOUR_ID">)
-        //          Netlify Forms (add netlify attribute)
-        //          EmailJS
 
         setTimeout(() => {
             this.submitBtn.classList.remove('sending');
@@ -813,13 +816,11 @@ class ProjectModal {
 }
 
 // ============================================
-// AVAILABILITY TOGGLE (Demo)
+// AVAILABILITY MANAGER
 // ============================================
 class AvailabilityManager {
     constructor() {
         this.badge = document.getElementById('availabilityBadge');
-        // Uncomment to test limited availability:
-        // this.setLimited();
     }
 
     setAvailable() {
@@ -850,6 +851,6 @@ document.addEventListener('DOMContentLoaded', () => {
     new ProjectModal();
     new AvailabilityManager();
 
-    console.log('%c👋 Aron Reyes Portfolio v4', 'color: #c75b3a; font-size: 14px; font-weight: bold; font-family: monospace;');
+    console.log('%c👋 Anthony Reyes Portfolio v4.1', 'color: #c75b3a; font-size: 14px; font-weight: bold; font-family: monospace;');
     console.log('%cPremium interactive experience loaded', 'color: #6b7b8e; font-size: 11px; font-family: monospace;');
 });
