@@ -1480,11 +1480,11 @@
             </div>
             <div class="hero-stats">
                 <div class="hero-stat">
-                    <div class="number" data-count="4.6">4.6</div>
+                    <div class="number" data-count="4.6">0</div>
                     <div class="label">Star Rating</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="number" data-count="365">365</div>
+                    <div class="number" data-count="365">0</div>
                     <div class="label">Reviews</div>
                 </div>
                 <div class="hero-stat">
@@ -1824,7 +1824,12 @@
             cursor.style.top = cursorY + 'px';
             requestAnimationFrame(animateCursor);
         }
-        animateCursor();
+        // Auto-animate hero counters after preloader
+        setTimeout(() => {
+            document.querySelectorAll('.hero-stat .number[data-count]').forEach(counter => {
+                if (!counter.dataset.animated) animateCounter(counter);
+            });
+        }, 2000);
         
         document.querySelectorAll('a, button, .menu-item, .feature, .review-card').forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('expanded'));
