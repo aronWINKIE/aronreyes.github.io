@@ -851,6 +851,6 @@ document.addEventListener('DOMContentLoaded', () => {
     new ProjectModal();
     new AvailabilityManager();
 
-    console.log('%c👋 Anthony Reyes Portfolio v4.1', 'color: #c75b3a; font-size: 14px; font-weight: bold; font-family: monospace;');
+    console.log('%c👋 Aron Reyes Portfolio v4.1', 'color: #c75b3a; font-size: 14px; font-weight: bold; font-family: monospace;');
     console.log('%cPremium interactive experience loaded', 'color: #6b7b8e; font-size: 11px; font-family: monospace;');
 });
