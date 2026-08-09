@@ -716,15 +716,15 @@ class ProjectModal {
 
         this.projectData = {
             silangbrew: {
-                title: 'Silang Brew',
+                title: 'Upland Kafé',
                 tag: 'Landing Page',
                 problem: 'A local coffee shop in Silang needed an online presence to attract customers and showcase their menu.',
                 solution: 'Built a warm, inviting single-page website with smooth scroll navigation, responsive design, and a modern menu grid.',
                 result: 'Clean, fast-loading site that works on all devices. Perfect template for local businesses.',
                 tech: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
                 links: [
-    { text: 'View Live', url: 'https://aronwinkie.github.io/aronreyes.github.io/silang-brew/', icon: 'fa-external-link-alt' },
-    { text: 'View Code', url: 'https://github.com/aronWINKIE/aronreyes.github.io/tree/main/silang-brew', icon: 'fa-code' }
+    { text: 'View Live', url: 'https://aronwinkie.github.io/aronreyes.github.io/Upland_Kafé/', icon: 'fa-external-link-alt' },
+    { text: 'View Code', url: 'https://github.com/aronWINKIE/aronreyes.github.io/tree/main/Upland_Kafé', icon: 'fa-code' }
 ]
             },
             taskflow: {
