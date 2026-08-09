@@ -1,0 +1,66 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# Use editorial workflow if you want draft/review/publish stages
+# publish_mode: editorial_workflow
+
+collections:
+  - name: "menu"
+    label: "Menu"
+    file: "data/menu.json"
+    format: "json"
+    fields:
+      - name: "items"
+        label: "Menu Items"
+        widget: "list"
+        allow_add: true
+        fields:
+          - { label: "Name", name: "title", widget: "string" }
+          - { label: "Price", name: "price", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - label: "Category"
+            name: "category"
+            widget: "select"
+            options:
+              - { label: "Coffee", value: "coffee" }
+              - { label: "Drinks", value: "drinks" }
+              - { label: "Food", value: "food" }
+          - { label: "Tag", name: "tag", widget: "string", required: false }
+          - { label: "Best Seller", name: "bestseller", widget: "boolean", default: false }
+
+  - name: "announcements"
+    label: "Announcements"
+    file: "data/announcements.json"
+    format: "json"
+    fields:
+      - name: "announcements"
+        label: "Announcement Cards"
+        widget: "list"
+        allow_add: true
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+          - { label: "Active", name: "active", widget: "boolean", default: true }
+          - { label: "Button Text", name: "button", widget: "string", required: false }
+          - { label: "Button Link", name: "link", widget: "string", required: false }
+          - { label: "Image URL", name: "image", widget: "image", required: false }
+
+  - name: "reviews"
+    label: "Reviews"
+    file: "data/reviews.json"
+    format: "json"
+    fields:
+      - name: "reviews"
+        label: "Customer Reviews"
+        widget: "list"
+        allow_add: true
+        fields:
+          - { label: "Reviewer Name", name: "name", widget: "string" }
+          - { label: "Badge", name: "badge", widget: "string", required: false }
+          - { label: "Quote", name: "quote", widget: "text" }
+          - { label: "Stars", name: "stars", widget: "number", value_type: "int", min: 1, max: 5, default: 5 }
+          - { label: "Initials", name: "initials", widget: "string", required: false }

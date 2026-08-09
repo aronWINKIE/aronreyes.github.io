@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Upland Kafé — A charming garden-style cafe in Silang, Cavite. Your perfect pitstop before Tagaytay. Open daily until 10:30 PM.">
     <meta name="theme-color" content="#2a1f16">
-    
+
     <meta property="og:title" content="Upland Kafé | Garden Cafe — Silang, Cavite">
     <meta property="og:description" content="Where coffee meets nature. A garden-style cafe along Aguinaldo Highway.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://www.windowseat.ph/wp-content/uploads/2021/09/240832656_134916485504862_2026827490858588260_n.jpeg">
-    
+
     <title>Upland Kafé | Garden Cafe — Silang, Cavite</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
+    <!-- Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -40,7 +43,7 @@
         "servesCuisine": "Cafe"
     }
     </script>
-    
+
     <style>
         /* ═══════════════════════════════════════
            DESIGN TOKENS
@@ -48,7 +51,7 @@
         :root {
             --font-serif: 'Playfair Display', Georgia, serif;
             --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-            
+
             --cream: #f5f0e8;
             --cream-dark: #e8e0d4;
             --coffee: #2a1f16;
@@ -62,32 +65,32 @@
             --text-light: #a89e94;
             --glass: rgba(245, 240, 232, 0.85);
             --glass-dark: rgba(26, 20, 16, 0.6);
-            
+
             --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05);
             --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.08);
             --shadow-lg: 0 25px 50px -12px rgba(0,0,0,0.15);
             --shadow-xl: 0 40px 80px -20px rgba(0,0,0,0.2);
-            
+
             --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
             --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-            
+
             --space-xs: clamp(0.5rem, 0.4rem + 0.25vw, 0.75rem);
             --space-sm: clamp(0.75rem, 0.6rem + 0.5vw, 1rem);
             --space-md: clamp(1rem, 0.8rem + 0.75vw, 1.5rem);
             --space-lg: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
             --space-xl: clamp(2.5rem, 2rem + 2.5vw, 5rem);
             --space-2xl: clamp(4rem, 3rem + 5vw, 8rem);
-            
+
             --radius-sm: 8px;
             --radius-md: 14px;
             --radius-lg: 24px;
             --radius-xl: 32px;
             --radius-full: 9999px;
-            
+
             --header-height: 80px;
         }
-        
+
         [data-theme="dark"] {
             --cream: #0f0c09;
             --cream-dark: #1a1612;
@@ -99,7 +102,7 @@
             --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.4);
             --shadow-lg: 0 25px 50px -12px rgba(0,0,0,0.5);
         }
-        
+
         /* ═══════════════════════════════════════
            RESET & BASE
         ═══════════════════════════════════════ */
@@ -108,7 +111,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         html {
             scroll-behavior: smooth;
             scroll-padding-top: var(--header-height);
@@ -117,7 +120,7 @@
             -moz-osx-font-smoothing: grayscale;
             text-rendering: optimizeLegibility;
         }
-        
+
         body {
             font-family: var(--font-sans);
             background: var(--cream);
@@ -126,21 +129,21 @@
             overflow-x: hidden;
             min-height: 100vh;
         }
-        
+
         ::selection {
             background: var(--accent);
             color: white;
         }
-        
+
         img {
             max-width: 100%;
             height: auto;
             display: block;
         }
-        
+
         a { color: inherit; text-decoration: none; }
         button { font-family: inherit; cursor: pointer; border: none; background: none; }
-        
+
         /* ═══════════════════════════════════════
            PRELOADER
         ═══════════════════════════════════════ */
@@ -196,7 +199,7 @@
         @keyframes preloaderFill {
             to { width: 100%; }
         }
-        
+
         /* ═══════════════════════════════════════
            CUSTOM SCROLLBAR
         ═══════════════════════════════════════ */
@@ -204,7 +207,7 @@
         ::-webkit-scrollbar-track { background: var(--cream-dark); }
         ::-webkit-scrollbar-thumb { background: var(--coffee-muted); border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--coffee); }
-        
+
         /* ═══════════════════════════════════════
            CUSTOM CURSOR
         ═══════════════════════════════════════ */
@@ -228,7 +231,7 @@
             border: 1.5px solid var(--accent);
         }
         @media (pointer: coarse) { .cursor { display: none; } }
-        
+
         /* ═══════════════════════════════════════
            NAVIGATION
         ═══════════════════════════════════════ */
@@ -253,7 +256,7 @@
         [data-theme="dark"] nav.scrolled {
             background: rgba(15, 12, 9, 0.9);
         }
-        
+
         .logo {
             font-family: var(--font-serif);
             font-size: 1.5rem;
@@ -267,21 +270,21 @@
         }
         nav.scrolled .logo { color: var(--text); }
         .logo-mark {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    object-fit: cover;
-    transition: transform 0.4s var(--ease-out-expo);
-    border: 2px solid rgba(245,240,232,0.25);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-nav.scrolled .logo-mark {
-    border-color: rgba(42,31,22,0.15);
-}
-.logo:hover .logo-mark {
-    transform: rotate(-5deg) scale(1.1);
-}
-        
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.4s var(--ease-out-expo);
+            border: 2px solid rgba(245,240,232,0.25);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        nav.scrolled .logo-mark {
+            border-color: rgba(42,31,22,0.15);
+        }
+        .logo:hover .logo-mark {
+            transform: rotate(-5deg) scale(1.1);
+        }
+
         .nav-links {
             display: flex;
             gap: 40px;
@@ -310,7 +313,7 @@ nav.scrolled .logo-mark {
         }
         .nav-links a:hover { color: var(--accent); }
         .nav-links a:hover::after { width: 100%; }
-        
+
         .nav-cta {
             padding: 10px 24px;
             background: var(--accent);
@@ -326,7 +329,7 @@ nav.scrolled .logo-mark {
             transform: translateY(-2px);
             box-shadow: 0 8px 24px rgba(199,91,58,0.3);
         }
-        
+
         .theme-toggle {
             width: 40px;
             height: 40px;
@@ -349,7 +352,7 @@ nav.scrolled .logo-mark {
         [data-theme="light"] .theme-toggle .fa-sun { opacity: 0; transform: rotate(90deg); }
         [data-theme="dark"] .theme-toggle .fa-moon { opacity: 0; transform: rotate(-90deg); }
         [data-theme="dark"] .theme-toggle .fa-sun { opacity: 1; transform: rotate(0); }
-        
+
         .hamburger {
             display: none;
             flex-direction: column;
@@ -370,7 +373,7 @@ nav.scrolled .logo-mark {
         .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-        
+
         /* ═══════════════════════════════════════
            HERO
         ═══════════════════════════════════════ */
@@ -422,7 +425,7 @@ nav.scrolled .logo-mark {
             from { transform: scale(1) translate(0, 0); }
             to { transform: scale(1.1) translate(-30px, 20px); }
         }
-        
+
         .hero-content {
             position: relative;
             z-index: 2;
@@ -434,7 +437,7 @@ nav.scrolled .logo-mark {
         @keyframes heroReveal {
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
         .hero-badge {
             display: inline-flex;
             align-items: center;
@@ -460,7 +463,7 @@ nav.scrolled .logo-mark {
             0%, 100% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.5; transform: scale(0.8); }
         }
-        
+
         .hero h1 {
             font-family: var(--font-serif);
             font-size: clamp(2.8rem, 7vw, 5.5rem);
@@ -494,7 +497,7 @@ nav.scrolled .logo-mark {
             font-weight: 300;
             line-height: 1.7;
         }
-        
+
         .hero-buttons {
             display: flex;
             gap: 16px;
@@ -542,7 +545,7 @@ nav.scrolled .logo-mark {
             border-color: var(--cream);
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
-        
+
         .hero-stats {
             display: flex;
             justify-content: center;
@@ -566,7 +569,7 @@ nav.scrolled .logo-mark {
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-        
+
         .scroll-indicator {
             position: absolute;
             bottom: 32px;
@@ -588,7 +591,7 @@ nav.scrolled .logo-mark {
             0%, 100% { transform: translateX(-50%) translateY(0); }
             50% { transform: translateX(-50%) translateY(8px); }
         }
-        
+
         /* ═══════════════════════════════════════
            SECTION REVEAL
         ═══════════════════════════════════════ */
@@ -604,7 +607,8 @@ nav.scrolled .logo-mark {
         .reveal-delay-1 { transition-delay: 0.1s; }
         .reveal-delay-2 { transition-delay: 0.2s; }
         .reveal-delay-3 { transition-delay: 0.3s; }
-                /* ═══════════════════════════════════════
+
+        /* ═══════════════════════════════════════
            ANNOUNCEMENT / HIRING
         ═══════════════════════════════════════ */
         .announcement {
@@ -672,13 +676,14 @@ nav.scrolled .logo-mark {
             margin-bottom: 28px;
             font-size: 1.05rem;
         }
-        
+
         @media (max-width: 768px) {
             .announcement { padding: 60px 24px; }
             .announcement-card { grid-template-columns: 1fr; }
             .announcement-img { min-height: 280px; }
             .announcement-content { padding: 32px; }
         }
+
         /* ═══════════════════════════════════════
            ABOUT
         ═══════════════════════════════════════ */
@@ -732,7 +737,7 @@ nav.scrolled .logo-mark {
             background: var(--accent);
             color: var(--cream);
         }
-        
+
         .about-text .section-label {
             font-size: 0.8rem;
             text-transform: uppercase;
@@ -764,7 +769,7 @@ nav.scrolled .logo-mark {
             font-size: 1.05rem;
             line-height: 1.8;
         }
-        
+
         .features {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -810,850 +815,7 @@ nav.scrolled .logo-mark {
             margin-top: 2px;
             font-weight: 400;
         }
-        
-        /* ═══════════════════════════════════════
-           MENU
-        ═══════════════════════════════════════ */
-        .menu {
-            padding: var(--space-2xl) var(--space-xl);
-            background: var(--coffee);
-            color: var(--cream);
-            position: relative;
-            overflow: hidden;
-        }
-        .menu::before {
-            content: '';
-            position: absolute;
-            top: -200px; right: -200px;
-            width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(199,91,58,0.08) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .menu-header {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 80px;
-            position: relative;
-            z-index: 1;
-        }
-        .menu-header .section-label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent-light);
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-        .menu-header h2 {
-            font-family: var(--font-serif);
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 16px;
-            letter-spacing: -0.02em;
-        }
-        .menu-header p { color: rgba(245,240,232,0.55); font-size: 1.05rem; }
-        
-        .menu-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 48px;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
-        }
-        .menu-tab {
-            padding: 10px 24px;
-            background: transparent;
-            border: 1px solid rgba(245,240,232,0.15);
-            color: rgba(245,240,232,0.55);
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: var(--font-sans);
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.4s var(--ease-out-expo);
-        }
-        .menu-tab:hover, .menu-tab.active {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: var(--cream);
-            transform: translateY(-1px);
-        }
-        
-        .menu-grid {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            position: relative;
-            z-index: 1;
-        }
-        .menu-item {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: var(--radius-md);
-            padding: 32px;
-            transition: all 0.5s var(--ease-out-expo);
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        .menu-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .menu-item::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 3px; height: 0;
-            background: var(--accent);
-            transition: height 0.5s var(--ease-out-expo);
-        }
-        .menu-item:hover {
-            transform: translateY(-6px);
-            background: rgba(255,255,255,0.06);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            border-color: rgba(255,255,255,0.12);
-        }
-        .menu-item:hover::before { height: 100%; }
-        .menu-item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 12px;
-            gap: 12px;
-        }
-        .menu-item h3 {
-            font-family: var(--font-serif);
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-        .menu-price {
-            color: var(--accent-light);
-            font-weight: 700;
-            font-size: 1.15rem;
-            font-family: var(--font-serif);
-            flex-shrink: 0;
-        }
-        .menu-item p {
-            color: rgba(245,240,232,0.5);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-        .menu-item .tag {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 4px 12px;
-            background: rgba(199,91,58,0.15);
-            color: var(--accent-light);
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .menu-showcase {
-            max-width: 1000px;
-            margin: 60px auto 0;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            position: relative;
-            z-index: 1;
-        }
-        .showcase-img {
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            aspect-ratio: 1;
-            position: relative;
-            box-shadow: var(--shadow-md);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s var(--ease-out-expo);
-        }
-        .showcase-img.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .showcase-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s var(--ease-out-expo);
-        }
-        .showcase-img:hover img { transform: scale(1.1); }
-        .showcase-img::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(42,31,22,0.5), transparent 50%);
-        }
-        .showcase-img span {
-            position: absolute;
-            bottom: 16px;
-            left: 16px;
-            color: var(--cream);
-            font-size: 0.85rem;
-            font-weight: 600;
-            z-index: 2;
-            letter-spacing: 0.5px;
-        }
-         /* ═══════════════════════════════════════
-           REVIEWS
-        ═══════════════════════════════════════ */
-        .reviews {
-            padding: var(--space-2xl) var(--space-xl);
-            max-width: 1100px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .reviews .section-label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-        .reviews h2 {
-            font-family: var(--font-serif);
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 16px;
-            color: var(--coffee);
-            letter-spacing: -0.02em;
-        }
-        .reviews > p {
-            color: var(--text-muted);
-            margin-bottom: 60px;
-            font-size: 1.05rem;
-        }
-        .rating-big {
-            font-family: var(--font-serif);
-            font-size: 5rem;
-            font-weight: 700;
-            color: var(--coffee);
-            line-height: 1;
-            margin-bottom: 8px;
-        }
-        .stars {
-            color: #f5a623;
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-            letter-spacing: 4px;
-        }
-        .review-count {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 48px;
-        }
-        
-        .review-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            text-align: left;
-        }
-        .review-card {
-            background: var(--cream-dark);
-            border-radius: var(--radius-lg);
-            padding: 36px;
-            border: 1px solid rgba(199,91,58,0.08);
-            transition: all 0.5s var(--ease-out-expo);
-            position: relative;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        .review-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .review-card::before {
-            content: '"';
-            position: absolute;
-            top: 20px; right: 28px;
-            font-family: var(--font-serif);
-            font-size: 4.5rem;
-            color: rgba(199,91,58,0.08);
-            line-height: 1;
-        }
-        .review-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-        }
-        .review-card .stars-small {
-            color: #f5a623;
-            font-size: 0.85rem;
-            margin-bottom: 16px;
-            letter-spacing: 2px;
-        }
-        .review-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 24px;
-            font-style: italic;
-        }
-        .reviewer {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .reviewer-avatar {
-            width: 44px; height: 44px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent), var(--coffee-light));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--cream);
-            font-weight: 600;
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-        .reviewer-name {
-            font-weight: 600;
-            color: var(--coffee);
-            font-size: 0.9rem;
-        }
-        .reviewer-badge {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-        
-        /* ═══════════════════════════════════════
-           VISIT / CONTACT
-        ═══════════════════════════════════════ */
-        .visit {
-            padding: var(--space-2xl) var(--space-xl);
-            background: linear-gradient(135deg, var(--coffee) 0%, var(--coffee-light) 100%);
-            color: var(--cream);
-            position: relative;
-            overflow: hidden;
-        }
-        .visit::before {
-            content: '';
-            position: absolute;
-            bottom: -100px; left: -100px;
-            width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(199,91,58,0.1) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .visit-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-        .visit-info .section-label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent-light);
-            font-weight: 600;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .visit-info .section-label::before {
-            content: '';
-            width: 40px;
-            height: 1px;
-            background: var(--accent);
-        }
-        .visit-info h2 {
-            font-family: var(--font-serif);
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 20px;
-            letter-spacing: -0.02em;
-        }
-        .visit-info > p {
-            color: rgba(245,240,232,0.65);
-            margin-bottom: 40px;
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-        
-        .contact-grid {
-            display: grid;
-            gap: 16px;
-        }
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            padding: 20px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: var(--radius-md);
-            transition: all 0.4s var(--ease-out-expo);
-        }
-        .contact-item:hover {
-            background: rgba(255,255,255,0.08);
-            transform: translateX(6px);
-        }
-        .contact-item i {
-            width: 48px; height: 48px;
-            background: var(--accent);
-            color: var(--cream);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-            transition: all 0.3s;
-        }
-        .contact-item:hover i {
-            transform: scale(1.1) rotate(-5deg);
-        }
-        .contact-item div { text-align: left; }
-        .contact-item strong {
-            display: block;
-            font-size: 0.75rem;
-            color: rgba(245,240,232,0.45);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 4px;
-        }
-        .contact-item span, .contact-item a {
-            font-weight: 500;
-            color: var(--cream);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-        .contact-item a:hover { color: var(--accent-light); }
-        
-        .visit-map {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: var(--radius-lg);
-            padding: 48px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            min-height: 420px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.5s var(--ease-out-expo);
-        }
-        .visit-map:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: rgba(255,255,255,0.15);
-        }
-        .visit-map::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 30% 40%, rgba(199,91,58,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 60%, rgba(199,91,58,0.05) 0%, transparent 50%);
-        }
-        .map-pin {
-            width: 80px; height: 80px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: var(--cream);
-            margin-bottom: 24px;
-            position: relative;
-            z-index: 1;
-            animation: mapPulse 2.5s infinite;
-        }
-        @keyframes mapPulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(199,91,58,0.4); }
-            50% { box-shadow: 0 0 0 24px rgba(199,91,58,0); }
-        }
-        .visit-map h3 {
-            font-family: var(--font-serif);
-            font-size: 1.6rem;
-            margin-bottom: 8px;
-            position: relative;
-            z-index: 1;
-        }
-        .visit-map p {
-            color: rgba(245,240,232,0.55);
-            margin-bottom: 28px;
-            position: relative;
-            z-index: 1;
-            line-height: 1.6;
-        }
-        .visit-map .btn {
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* ═══════════════════════════════════════
-           FOOTER
-        ═══════════════════════════════════════ */
-        footer {
-            background: #1a1410;
-            color: rgba(245,240,232,0.4);
-            padding: 80px var(--space-xl) 40px;
-        }
-        .footer-content {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: var(--space-xl);
-            margin-bottom: var(--space-xl);
-        }
-        .footer-brand {
-            font-family: var(--font-serif);
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--cream);
-            margin-bottom: 12px;
-        }
-        .footer-about {
-            line-height: 1.7;
-            font-size: 0.9rem;
-            max-width: 300px;
-            color: rgba(245,240,232,0.5);
-        }
-        .footer-col h4 {
-            color: var(--cream);
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: var(--space-md);
-        }
-        .footer-col ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .footer-col a {
-            font-size: 0.9rem;
-            color: rgba(245,240,232,0.5);
-            transition: color 0.3s;
-        }
-        .footer-col a:hover { color: var(--accent-light); }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(245,240,232,0.08);
-            padding-top: var(--space-lg);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-        }
-        .footer-social {
-            display: flex;
-            gap: 12px;
-        }
-        .footer-social a {
-            width: 44px; height: 44px;
-            border-radius: 50%;
-            border: 1px solid rgba(245,240,232,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(245,240,232,0.6);
-            transition: all 0.4s var(--ease-out-expo);
-            font-size: 1rem;
-        }
-        .footer-social a:hover {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: var(--cream);
-            transform: translateY(-3px);
-        }
-        .heart { color: var(--accent); }
-        
-        /* ═══════════════════════════════════════
-           MOBILE MENU
-        ═══════════════════════════════════════ */
-        .mobile-menu {
-            position: fixed;
-            top: 0; right: -100%;
-            width: 100%; height: 100vh;
-            background: var(--coffee);
-            z-index: 99;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 36px;
-            transition: right 0.5s var(--ease-out-expo);
-        }
-        .mobile-menu.open { right: 0; }
-        .mobile-menu a {
-            font-family: var(--font-serif);
-            font-size: 2.2rem;
-            color: var(--cream);
-            transition: color 0.3s;
-        }
-        .mobile-menu a:hover { color: var(--accent); }
-        
-        /* ═══════════════════════════════════════
-           RESPONSIVE
-        ═══════════════════════════════════════ */
-        @media (max-width: 1024px) {
-            .about { grid-template-columns: 1fr; gap: 48px; }
-            .about-images { order: -1; max-width: 600px; margin: 0 auto; width: 100%; }
-            .visit-container { grid-template-columns: 1fr; gap: 48px; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-            .menu-showcase { grid-template-columns: repeat(2, 1fr); }
-            .menu-showcase .showcase-img:last-child { display: none; }
-        }
-        
-        @media (max-width: 768px) {
-            :root { --header-height: 64px; }
-            .nav-links { display: none; }
-            .hamburger { display: flex; }
-            nav { padding: 0 24px; }
-            .hero h1 { font-size: 2.5rem; }
-            .hero-stats { gap: 24px; margin-top: 48px; }
-            .hero-stat .number { font-size: 1.8rem; }
-            .about { padding: 80px 24px; }
-            .features { grid-template-columns: 1fr; }
-            .menu { padding: 80px 24px; }
-            .menu-grid { grid-template-columns: 1fr; }
-            .menu-showcase { grid-template-columns: 1fr; }
-            .menu-showcase .showcase-img:last-child { display: block; }
-            .reviews { padding: 80px 24px; }
-            .rating-big { font-size: 3.5rem; }
-            .visit { padding: 80px 24px; }
-            .visit-map { min-height: 320px; padding: 32px; }
-            .hero-buttons { flex-direction: column; align-items: center; }
-            .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
-            .footer-bottom { flex-direction: column; gap: var(--space-md); text-align: center; }
-        }
-        
-        /* ═══════════════════════════════════════
-           REDUCED MOTION
-        ═══════════════════════════════════════ */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-            html { scroll-behavior: auto; }
-            .reveal, .menu-item, .review-card, .showcase-img {
-                opacity: 1;
-                transform: none;
-            }
-            .hero-content {
-                opacity: 1;
-                transform: none;
-                animation: none;
-            }
-        }
-        
-        /* ═══════════════════════════════════════
-           UTILITY
-        ═══════════════════════════════════════ */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-    </style>
-</head>
-<body>
 
-    <!-- ═══════════════════════════════════════
-         PRELOADER
-    ═══════════════════════════════════════ -->
-    <div id="preloader">
-        <div class="preloader-text">
-            <span>U</span><span>p</span><span>l</span><span>a</span><span>n</span><span>d</span>
-            <span style="margin-left:10px">K</span><span>a</span><span>f</span><span>é</span>
-        </div>
-        <div class="preloader-bar"></div>
-    </div>
-
-    <!-- Custom Cursor -->
-    <div class="cursor" id="cursor"></div>
-
-    <!-- ═══════════════════════════════════════
-         MOBILE MENU
-    ═══════════════════════════════════════ -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#home" onclick="closeMenu()">Home</a>
-        <a href="#about" onclick="closeMenu()">About</a>
-        <a href="#menu" onclick="closeMenu()">Menu</a>
-        <a href="#reviews" onclick="closeMenu()">Reviews</a>
-        <a href="#visit" onclick="closeMenu()">Visit Us</a>
-    </div>
-
-    <!-- ═══════════════════════════════════════
-         NAVIGATION
-    ═══════════════════════════════════════ -->
-    <nav id="navbar">
-        <a href="#home" class="logo">
-    <img src="https://scontent.fmnl4-1.fna.fbcdn.net/v/t39.30808-6/326687559_731147871742181_1685107973310002566_n.jpg?stp=dst-jpg_tt6&cstp=mx960x960&ctp=s960x960&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=fyFXmKTHSngQ7kNvwFFwAsc&_nc_oc=AdosYJzB_--nU5ICkDiG6Q2OhJBPLDSJNXLU9Y7elfh0ISpXGmZpV4Pbc9pL6mHEz9s&_nc_zt=23&_nc_ht=scontent.fmnl4-1.fna&_nc_gid=KdMkQcY8xtio52HqO4j4Rw&_nc_ss=7b289&oh=00_AQENb6j47iE5A9V1vCx54khbKes1mtjO2Cxk8OD739UymA&oe=6A7E51A9" 
-         alt="Upland Kafé" 
-         class="logo-mark">
-    Upland Kafé
-</a>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#menu">Menu</a></li>
-            <li><a href="#reviews">Reviews</a></li>
-            <li><a href="#visit" class="nav-cta">Visit Us</a></li>
-        </ul>
-        <div style="display:flex;align-items:center;">
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-                <i class="fas fa-moon" aria-hidden="true"></i>
-                <i class="fas fa-sun" aria-hidden="true"></i>
-            </button>
-            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
-
-    <!-- ═══════════════════════════════════════
-         HERO
-    ═══════════════════════════════════════ -->
-    <section class="hero" id="home">
-        <div class="hero-bg">
-            <img src="https://www.windowseat.ph/wp-content/uploads/2021/09/240832656_134916485504862_2026827490858588260_n.jpeg"
-                 alt="Upland Kafé exterior garden cafe in Silang, Cavite"
-                 id="heroBgImg"
-                 decoding="async">
-        </div>
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span class="dot"></span>
-                Silang, Cavite
-            </div>
-            <h1>Where Coffee Meets <em>Nature</em></h1>
-            <p>A charming garden-style cafe along Aguinaldo Highway. Your perfect pitstop before Tagaytay — cozy vibes, great coffee, and unforgettable moments.</p>
-            <div class="hero-buttons">
-                <a href="#menu" class="btn">View Menu <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                <a href="https://maps.google.com/?q=Upland+Kafe+Silang+Cavite" target="_blank" class="btn btn-outline">Get Directions</a>
-            </div>
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <div class="number" data-count="4.6">0</div>
-                    <div class="label">Star Rating</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="number" data-count="365">0</div>
-                    <div class="label">Reviews</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="number">10:30<span style="font-size:1rem">PM</span></div>
-                    <div class="label">Closes Daily</div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <span>Scroll</span>
-            <i class="fas fa-chevron-down" aria-hidden="true"></i>
-        </div>
-    </section>
-    <!-- ═══════════════════════════════════════
-         ANNOUNCEMENT / HIRING
-    ═══════════════════════════════════════ -->
-    <section class="announcement" id="announcement">
-        <div class="announcement-card reveal">
-            <div class="announcement-img">
-                <img src="https://scontent.fmnl4-3.fna.fbcdn.net/v/t51.82787-15/712663800_18090460631604995_7322247299303398613_n.jpg?stp=dst-jpg_tt6&cstp=mx1405x1874&ctp=p526x296&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=6P7J3wJUJcMQ7kNvwHXqMT2&_nc_oc=Ado7yxfDVxWxqp8xsPOP4b62KXRsTGD2vNLYP8udtVa7LjQ00owNqFm021mQ2cT29PY&_nc_zt=23&_nc_ht=scontent.fmnl4-3.fna&_nc_gid=vBDdOSgUqvG8u8JNdaWiIA&_nc_ss=7b289&oh=00_AQHJpfVExdJEg3SFdOa3w50ic0ArFH5CsPeGXlcIvqpDsg&oe=6A7E3B5A" 
-                     alt="Upland Kafé is hiring - Sip THIS news!"
-                     loading="lazy"
-                     decoding="async">
-            </div>
-            <div class="announcement-content">
-                <span class="announcement-eyebrow">Sip THIS news!</span>
-                <h2>We're Hiring!</h2>
-                <p>Join the Upland Kafé family. We're looking for passionate baristas and kitchen crew to help us serve the best coffee experience in Silang, Cavite.</p>
-                <a href="https://www.facebook.com/uplandkafe/" target="_blank" class="btn">Apply Now <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-            </div>
-        </div>
-    </section>
-    <!-- ═══════════════════════════════════════
-         ABOUT
-    ═══════════════════════════════════════ -->
-    <section class="about" id="about">
-        <div class="about-images reveal">
-            <div class="about-img">
-                <img src="https://www.camella.com.ph/wp-content/uploads/2022/03/Upland-Kafe-a-picture-perfect-cafe-in-Cavite-775x600.jpg"
-                     alt="Upland Kafé picture-perfect garden cafe in Cavite"
-                     loading="lazy"
-                     decoding="async">
-                <div class="about-img-overlay"></div>
-                <span class="about-img-tag">Garden</span>
-            </div>
-            <div class="about-img">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEivNffYSxsc_fLEFBtvDhEHZgKmUSxnqGaj4HGGRh1JgO1oX4RMNvD0LBPvYglPO8pyQTefXKQOYwvedKwK7z4P2W_owLnUXQF5EXVaIZiYKIFnh3ISBZFm6r5JcXCL0QkDHTS8wO4l2eM/s1500/upland+1.png"
-                     alt="Upland Kafé interior and garden atmosphere"
-                     loading="lazy"
-                     decoding="async">
-                <div class="about-img-overlay"></div>
-                <span class="about-img-tag accent">Cozy</span>
-            </div>
-        </div>
-        <div class="about-text reveal reveal-delay-1">
-            <div class="section-label">Our Story</div>
-            <h2>A Roadside Oasis in the Heart of Silang</h2>
-            <p>Upland Kafé is more than just a coffee shop — it's a sanctuary. Nestled along Aguinaldo Highway near Shell Select, our garden-style space invites you to slow down, breathe in the fresh Silang air, and savor every sip.</p>
-            <p>Whether you're a traveler heading to Tagaytay, a remote worker craving a change of scenery, or friends catching up over pastries — our doors (and garden lights) are always open.</p>
-            <div class="features">
-                <div class="feature">
-                    <i class="fas fa-tree" aria-hidden="true"></i>
-                    <div>
-                        <span>Garden Seating</span>
-                        <small>Outdoor vibes surrounded by greens</small>
-                    </div>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-car" aria-hidden="true"></i>
-                    <div>
-                        <span>Curbside Pickup</span>
-                        <small>Order ahead, grab & go</small>
-                    </div>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-wifi" aria-hidden="true"></i>
-                    <div>
-                        <span>Free Wi-Fi</span>
-                        <small>Stay connected while you unwind</small>
-                    </div>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-paw" aria-hidden="true"></i>
-                    <div>
-                        <span>Pet Friendly</span>
-                        <small>Bring your fur babies along</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
         /* ═══════════════════════════════════════
            FEATURED REEL
         ═══════════════════════════════════════ */
@@ -1686,7 +848,7 @@ nav.scrolled .logo-mark {
             color: var(--text-muted);
             font-size: 1.05rem;
         }
-        
+
         .reel-card {
             max-width: 420px;
             margin: 0 auto;
@@ -1763,13 +925,861 @@ nav.scrolled .logo-mark {
         .reel-card:hover .reel-play i {
             transform: scale(1.15);
         }
-        
+
         @media (max-width: 768px) {
             .reel { padding: 80px 24px; }
             .reel-thumbnail { max-height: 480px; }
         }
 
-            <!-- ═══════════════════════════════════════
+        /* ═══════════════════════════════════════
+           MENU
+        ═══════════════════════════════════════ */
+        .menu {
+            padding: var(--space-2xl) var(--space-xl);
+            background: var(--coffee);
+            color: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+        .menu::before {
+            content: '';
+            position: absolute;
+            top: -200px; right: -200px;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(199,91,58,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .menu-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 80px;
+            position: relative;
+            z-index: 1;
+        }
+        .menu-header .section-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-light);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .menu-header h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        .menu-header p { color: rgba(245,240,232,0.55); font-size: 1.05rem; }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        .menu-tab {
+            padding: 10px 24px;
+            background: transparent;
+            border: 1px solid rgba(245,240,232,0.15);
+            color: rgba(245,240,232,0.55);
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+        .menu-tab:hover, .menu-tab.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--cream);
+            transform: translateY(-1px);
+        }
+
+        .menu-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .menu-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            transition: all 0.5s var(--ease-out-expo);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .menu-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 3px; height: 0;
+            background: var(--accent);
+            transition: height 0.5s var(--ease-out-expo);
+        }
+        .menu-item:hover {
+            transform: translateY(-6px);
+            background: rgba(255,255,255,0.06);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-color: rgba(255,255,255,0.12);
+        }
+        .menu-item:hover::before { height: 100%; }
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            gap: 12px;
+        }
+        .menu-item h3 {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        .menu-price {
+            color: var(--accent-light);
+            font-weight: 700;
+            font-size: 1.15rem;
+            font-family: var(--font-serif);
+            flex-shrink: 0;
+        }
+        .menu-item p {
+            color: rgba(245,240,232,0.5);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .menu-item .tag {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 4px 12px;
+            background: rgba(199,91,58,0.15);
+            color: var(--accent-light);
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .menu-showcase {
+            max-width: 1000px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .showcase-img {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 1;
+            position: relative;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s var(--ease-out-expo);
+        }
+        .showcase-img.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .showcase-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s var(--ease-out-expo);
+        }
+        .showcase-img:hover img { transform: scale(1.1); }
+        .showcase-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(42,31,22,0.5), transparent 50%);
+        }
+        .showcase-img span {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            color: var(--cream);
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+
+        /* ═══════════════════════════════════════
+           REVIEWS
+        ═══════════════════════════════════════ */
+        .reviews {
+            padding: var(--space-2xl) var(--space-xl);
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .reviews .section-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .reviews h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 16px;
+            color: var(--coffee);
+            letter-spacing: -0.02em;
+        }
+        .reviews > p {
+            color: var(--text-muted);
+            margin-bottom: 60px;
+            font-size: 1.05rem;
+        }
+        .rating-big {
+            font-family: var(--font-serif);
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--coffee);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .stars {
+            color: #f5a623;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            letter-spacing: 4px;
+        }
+        .review-count {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 48px;
+        }
+
+        .review-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            text-align: left;
+        }
+        .review-card {
+            background: var(--cream-dark);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            border: 1px solid rgba(199,91,58,0.08);
+            transition: all 0.5s var(--ease-out-expo);
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .review-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .review-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px; right: 28px;
+            font-family: var(--font-serif);
+            font-size: 4.5rem;
+            color: rgba(199,91,58,0.08);
+            line-height: 1;
+        }
+        .review-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        .review-card .stars-small {
+            color: #f5a623;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+        .review-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+        .reviewer {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .reviewer-avatar {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--coffee-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cream);
+            font-weight: 600;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .reviewer-name {
+            font-weight: 600;
+            color: var(--coffee);
+            font-size: 0.9rem;
+        }
+        .reviewer-badge {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* ═══════════════════════════════════════
+           VISIT / CONTACT
+        ═══════════════════════════════════════ */
+        .visit {
+            padding: var(--space-2xl) var(--space-xl);
+            background: linear-gradient(135deg, var(--coffee) 0%, var(--coffee-light) 100%);
+            color: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+        .visit::before {
+            content: '';
+            position: absolute;
+            bottom: -100px; left: -100px;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(199,91,58,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .visit-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .visit-info .section-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-light);
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .visit-info .section-label::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--accent);
+        }
+        .visit-info h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+        .visit-info > p {
+            color: rgba(245,240,232,0.65);
+            margin-bottom: 40px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .contact-grid {
+            display: grid;
+            gap: 16px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius-md);
+            transition: all 0.4s var(--ease-out-expo);
+        }
+        .contact-item:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateX(6px);
+        }
+        .contact-item i {
+            width: 48px; height: 48px;
+            background: var(--accent);
+            color: var(--cream);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+        .contact-item:hover i {
+            transform: scale(1.1) rotate(-5deg);
+        }
+        .contact-item div { text-align: left; }
+        .contact-item strong {
+            display: block;
+            font-size: 0.75rem;
+            color: rgba(245,240,232,0.45);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+        .contact-item span, .contact-item a {
+            font-weight: 500;
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .contact-item a:hover { color: var(--accent-light); }
+
+        .visit-map {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 420px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s var(--ease-out-expo);
+        }
+        .visit-map:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(255,255,255,0.15);
+        }
+        .visit-map::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 30% 40%, rgba(199,91,58,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(199,91,58,0.05) 0%, transparent 50%);
+        }
+        .map-pin {
+            width: 80px; height: 80px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--cream);
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+            animation: mapPulse 2.5s infinite;
+        }
+        @keyframes mapPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(199,91,58,0.4); }
+            50% { box-shadow: 0 0 0 24px rgba(199,91,58,0); }
+        }
+        .visit-map h3 {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        .visit-map p {
+            color: rgba(245,240,232,0.55);
+            margin-bottom: 28px;
+            position: relative;
+            z-index: 1;
+            line-height: 1.6;
+        }
+        .visit-map .btn {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ═══════════════════════════════════════
+           FOOTER
+        ═══════════════════════════════════════ */
+        footer {
+            background: #1a1410;
+            color: rgba(245,240,232,0.4);
+            padding: 80px var(--space-xl) 40px;
+        }
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+        .footer-brand {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+        .footer-about {
+            line-height: 1.7;
+            font-size: 0.9rem;
+            max-width: 300px;
+            color: rgba(245,240,232,0.5);
+        }
+        .footer-col h4 {
+            color: var(--cream);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: var(--space-md);
+        }
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .footer-col a {
+            font-size: 0.9rem;
+            color: rgba(245,240,232,0.5);
+            transition: color 0.3s;
+        }
+        .footer-col a:hover { color: var(--accent-light); }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(245,240,232,0.08);
+            padding-top: var(--space-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+        .footer-social a {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            border: 1px solid rgba(245,240,232,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(245,240,232,0.6);
+            transition: all 0.4s var(--ease-out-expo);
+            font-size: 1rem;
+        }
+        .footer-social a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--cream);
+            transform: translateY(-3px);
+        }
+        .heart { color: var(--accent); }
+
+        /* ═══════════════════════════════════════
+           MOBILE MENU
+        ═══════════════════════════════════════ */
+        .mobile-menu {
+            position: fixed;
+            top: 0; right: -100%;
+            width: 100%; height: 100vh;
+            background: var(--coffee);
+            z-index: 99;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 36px;
+            transition: right 0.5s var(--ease-out-expo);
+        }
+        .mobile-menu.open { right: 0; }
+        .mobile-menu a {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            color: var(--cream);
+            transition: color 0.3s;
+        }
+        .mobile-menu a:hover { color: var(--accent); }
+
+        /* ═══════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .about { grid-template-columns: 1fr; gap: 48px; }
+            .about-images { order: -1; max-width: 600px; margin: 0 auto; width: 100%; }
+            .visit-container { grid-template-columns: 1fr; gap: 48px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .menu-showcase { grid-template-columns: repeat(2, 1fr); }
+            .menu-showcase .showcase-img:last-child { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            :root { --header-height: 64px; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            nav { padding: 0 24px; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-stats { gap: 24px; margin-top: 48px; }
+            .hero-stat .number { font-size: 1.8rem; }
+            .about { padding: 80px 24px; }
+            .features { grid-template-columns: 1fr; }
+            .menu { padding: 80px 24px; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .menu-showcase { grid-template-columns: 1fr; }
+            .menu-showcase .showcase-img:last-child { display: block; }
+            .reviews { padding: 80px 24px; }
+            .rating-big { font-size: 3.5rem; }
+            .visit { padding: 80px 24px; }
+            .visit-map { min-height: 320px; padding: 32px; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+            .footer-bottom { flex-direction: column; gap: var(--space-md); text-align: center; }
+        }
+
+        /* ═══════════════════════════════════════
+           REDUCED MOTION
+        ═══════════════════════════════════════ */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html { scroll-behavior: auto; }
+            .reveal, .menu-item, .review-card, .showcase-img {
+                opacity: 1;
+                transform: none;
+            }
+            .hero-content {
+                opacity: 1;
+                transform: none;
+                animation: none;
+            }
+        }
+
+        /* ═══════════════════════════════════════
+           UTILITY
+        ═══════════════════════════════════════ */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <!-- ═══════════════════════════════════════
+         PRELOADER
+    ═══════════════════════════════════════ -->
+    <div id="preloader">
+        <div class="preloader-text">
+            <span>U</span><span>p</span><span>l</span><span>a</span><span>n</span><span>d</span>
+            <span style="margin-left:10px">K</span><span>a</span><span>f</span><span>é</span>
+        </div>
+        <div class="preloader-bar"></div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+
+    <!-- ═══════════════════════════════════════
+         MOBILE MENU
+    ═══════════════════════════════════════ -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home" onclick="closeMenu()">Home</a>
+        <a href="#about" onclick="closeMenu()">About</a>
+        <a href="#menu" onclick="closeMenu()">Menu</a>
+        <a href="#reviews" onclick="closeMenu()">Reviews</a>
+        <a href="#visit" onclick="closeMenu()">Visit Us</a>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         NAVIGATION
+    ═══════════════════════════════════════ -->
+    <nav id="navbar">
+        <a href="#home" class="logo">
+            <img src="https://scontent.fmnl4-1.fna.fbcdn.net/v/t39.30808-6/326687559_731147871742181_1685107973310002566_n.jpg?stp=dst-jpg_tt6&cstp=mx960x960&ctp=s960x960&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=fyFXmKTHSngQ7kNvwFFwAsc&_nc_oc=AdosYJzB_--nU5ICkDiG6Q2OhJBPLDSJNXLU9Y7elfh0ISpXGmZpV4Pbc9pL6mHEz9s&_nc_zt=23&_nc_ht=scontent.fmnl4-1.fna&_nc_gid=KdMkQcY8xtio52HqO4j4Rw&_nc_ss=7b289&oh=00_AQENb6j47iE5A9V1vCx54khbKes1mtjO2Cxk8OD739UymA&oe=6A7E51A9" 
+                 alt="Upland Kafé" 
+                 class="logo-mark">
+            Upland Kafé
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#visit" class="nav-cta">Visit Us</a></li>
+        </ul>
+        <div style="display:flex;align-items:center;">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+                <i class="fas fa-sun" aria-hidden="true"></i>
+            </button>
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════ -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <img src="https://www.windowseat.ph/wp-content/uploads/2021/09/240832656_134916485504862_2026827490858588260_n.jpeg"
+                 alt="Upland Kafé exterior garden cafe in Silang, Cavite"
+                 id="heroBgImg"
+                 decoding="async">
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                Silang, Cavite
+            </div>
+            <h1>Where Coffee Meets <em>Nature</em></h1>
+            <p>A charming garden-style cafe along Aguinaldo Highway. Your perfect pitstop before Tagaytay — cozy vibes, great coffee, and unforgettable moments.</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn">View Menu <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                <a href="https://maps.google.com/?q=Upland+Kafe+Silang+Cavite" target="_blank" class="btn btn-outline">Get Directions</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="number" data-count="4.6">0</div>
+                    <div class="label">Star Rating</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="number" data-count="365">0</div>
+                    <div class="label">Reviews</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="number">10:30<span style="font-size:1rem">PM</span></div>
+                    <div class="label">Closes Daily</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         ANNOUNCEMENT / HIRING
+    ═══════════════════════════════════════ -->
+    <section class="announcement" id="announcement">
+        <div class="announcement-card reveal" id="announcementCard">
+            <div class="announcement-img">
+                <img src="https://scontent.fmnl4-3.fna.fbcdn.net/v/t51.82787-15/712663800_18090460631604995_7322247299303398613_n.jpg?stp=dst-jpg_tt6&cstp=mx1405x1874&ctp=p526x296&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=6P7J3wJUJcMQ7kNvwHXqMT2&_nc_oc=Ado7yxfDVxWxqp8xsPOP4b62KXRsTGD2vNLYP8udtVa7LjQ00owNqFm021mQ2cT29PY&_nc_zt=23&_nc_ht=scontent.fmnl4-3.fna&_nc_gid=vBDdOSgUqvG8u8JNdaWiIA&_nc_ss=7b289&oh=00_AQHJpfVExdJEg3SFdOa3w50ic0ArFH5CsPeGXlcIvqpDsg&oe=6A7E3B5A" 
+                     alt="Upland Kafé is hiring - Sip THIS news!"
+                     loading="lazy"
+                     decoding="async"
+                     id="announcementImg">
+            </div>
+            <div class="announcement-content" id="announcementContent">
+                <span class="announcement-eyebrow">Sip THIS news!</span>
+                <h2>We're Hiring!</h2>
+                <p>Join the Upland Kafé family. We're looking for passionate baristas and kitchen crew to help us serve the best coffee experience in Silang, Cavite.</p>
+                <a href="https://www.facebook.com/uplandkafe/" target="_blank" class="btn">Apply Now <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         ABOUT
+    ═══════════════════════════════════════ -->
+    <section class="about" id="about">
+        <div class="about-images reveal">
+            <div class="about-img">
+                <img src="https://www.camella.com.ph/wp-content/uploads/2022/03/Upland-Kafe-a-picture-perfect-cafe-in-Cavite-775x600.jpg"
+                     alt="Upland Kafé picture-perfect garden cafe in Cavite"
+                     loading="lazy"
+                     decoding="async">
+                <div class="about-img-overlay"></div>
+                <span class="about-img-tag">Garden</span>
+            </div>
+            <div class="about-img">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEivNffYSxsc_fLEFBtvDhEHZgKmUSxnqGaj4HGGRh1JgO1oX4RMNvD0LBPvYglPO8pyQTefXKQOYwvedKwK7z4P2W_owLnUXQF5EXVaIZiYKIFnh3ISBZFm6r5JcXCL0QkDHTS8wO4l2eM/s1500/upland+1.png"
+                     alt="Upland Kafé interior and garden atmosphere"
+                     loading="lazy"
+                     decoding="async">
+                <div class="about-img-overlay"></div>
+                <span class="about-img-tag accent">Cozy</span>
+            </div>
+        </div>
+        <div class="about-text reveal reveal-delay-1">
+            <div class="section-label">Our Story</div>
+            <h2>A Roadside Oasis in the Heart of Silang</h2>
+            <p>Upland Kafé is more than just a coffee shop — it's a sanctuary. Nestled along Aguinaldo Highway near Shell Select, our garden-style space invites you to slow down, breathe in the fresh Silang air, and savor every sip.</p>
+            <p>Whether you're a traveler heading to Tagaytay, a remote worker craving a change of scenery, or friends catching up over pastries — our doors (and garden lights) are always open.</p>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-tree" aria-hidden="true"></i>
+                    <div>
+                        <span>Garden Seating</span>
+                        <small>Outdoor vibes surrounded by greens</small>
+                    </div>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-car" aria-hidden="true"></i>
+                    <div>
+                        <span>Curbside Pickup</span>
+                        <small>Order ahead, grab & go</small>
+                    </div>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-wifi" aria-hidden="true"></i>
+                    <div>
+                        <span>Free Wi-Fi</span>
+                        <small>Stay connected while you unwind</small>
+                    </div>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-paw" aria-hidden="true"></i>
+                    <div>
+                        <span>Pet Friendly</span>
+                        <small>Bring your fur babies along</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
          FEATURED REEL
     ═══════════════════════════════════════ -->
     <section class="reel" id="reel">
@@ -1794,6 +1804,7 @@ nav.scrolled .logo-mark {
             </div>
         </div>
     </section>
+
     <!-- ═══════════════════════════════════════
          MENU
     ═══════════════════════════════════════ -->
@@ -1859,7 +1870,7 @@ nav.scrolled .logo-mark {
                 <span class="tag">Snack</span>
             </div>
         </div>
-        
+
         <div class="menu-showcase">
             <div class="showcase-img reveal">
                 <img src="https://tse1.mm.bing.net/th/id/OIP.4mkxuVw91dVHJ0rut_JXKQHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
@@ -1899,7 +1910,7 @@ nav.scrolled .logo-mark {
             <div class="stars">★★★★★</div>
             <div class="review-count">Based on 365 Google Reviews</div>
         </div>
-        <div class="review-cards">
+        <div class="review-cards" id="reviewCards">
             <div class="review-card reveal reveal-delay-1">
                 <div class="stars-small">★★★★★</div>
                 <p>"Upland Café is a charming place that offers a relaxing and refreshing dining experience. The cafe has a cozy, nature-inspired ambiance with a beautiful view that makes it perfect for unwinding, catching up with friends, or enjoying some quiet time."</p>
@@ -2010,7 +2021,7 @@ nav.scrolled .logo-mark {
                     <h4>Connect</h4>
                     <ul>
                         <li><a href="https://www.instagram.com/uplandkafe/" target="_blank">Instagram</a></li>
-                                                <li><a href="https://www.facebook.com/uplandkafe/" target="_blank">Facebook</a></li>
+                        <li><a href="https://www.facebook.com/uplandkafe/" target="_blank">Facebook</a></li>
                         <li><a href="https://www.foodpanda.ph/restaurant/gr5g/upland-kafe" target="_blank">Foodpanda</a></li>
                         <li><a href="mailto:uplandkafe21@gmail.com">Email</a></li>
                     </ul>
@@ -2034,7 +2045,6 @@ nav.scrolled .logo-mark {
             </div>
         </div>
     </footer>
-
     <script>
         // ─── PRELOADER ───
         window.addEventListener('load', () => {
@@ -2046,12 +2056,12 @@ nav.scrolled .logo-mark {
         // ─── CUSTOM CURSOR ───
         const cursor = document.getElementById('cursor');
         let cursorX = 0, cursorY = 0, targetX = 0, targetY = 0;
-        
+
         document.addEventListener('mousemove', (e) => {
             targetX = e.clientX;
             targetY = e.clientY;
         });
-        
+
         function animateCursor() {
             cursorX += (targetX - cursorX) * 0.12;
             cursorY += (targetY - cursorY) * 0.12;
@@ -2059,13 +2069,8 @@ nav.scrolled .logo-mark {
             cursor.style.top = cursorY + 'px';
             requestAnimationFrame(animateCursor);
         }
-        // Auto-animate hero counters after preloader
-        setTimeout(() => {
-            document.querySelectorAll('.hero-stat .number[data-count]').forEach(counter => {
-                if (!counter.dataset.animated) animateCounter(counter);
-            });
-        }, 2000);
-        
+        animateCursor(); // FIX: actually start the cursor animation
+
         document.querySelectorAll('a, button, .menu-item, .feature, .review-card').forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('expanded'));
             el.addEventListener('mouseleave', () => cursor.classList.remove('expanded'));
@@ -2081,14 +2086,14 @@ nav.scrolled .logo-mark {
         // ─── THEME TOGGLE ───
         const themeToggle = document.getElementById('themeToggle');
         const html = document.documentElement;
-        
+
         themeToggle.addEventListener('click', () => {
             const current = html.getAttribute('data-theme');
             const next = current === 'light' ? 'dark' : 'light';
             html.setAttribute('data-theme', next);
             localStorage.setItem('upland_theme', next);
         });
-        
+
         const savedTheme = localStorage.getItem('upland_theme');
         if (savedTheme) {
             html.setAttribute('data-theme', savedTheme);
@@ -2099,13 +2104,13 @@ nav.scrolled .logo-mark {
         // ─── MOBILE MENU ───
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
-        
+
         function toggleMenu() {
             hamburger.classList.toggle('active');
             mobileMenu.classList.toggle('open');
             document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
         }
-        
+
         function closeMenu() {
             hamburger.classList.remove('active');
             mobileMenu.classList.remove('open');
@@ -2136,11 +2141,14 @@ nav.scrolled .logo-mark {
                 }
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-        
-        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-        document.querySelectorAll('.rating-big[data-count]').forEach(el => revealObserver.observe(el));
-        document.querySelectorAll('.menu-item').forEach(el => revealObserver.observe(el));
-        document.querySelectorAll('.showcase-img').forEach(el => revealObserver.observe(el));
+
+        function observeElements() {
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+            document.querySelectorAll('.rating-big[data-count]').forEach(el => revealObserver.observe(el));
+            document.querySelectorAll('.menu-item').forEach(el => revealObserver.observe(el));
+            document.querySelectorAll('.showcase-img').forEach(el => revealObserver.observe(el));
+        }
+        observeElements();
 
         // ─── COUNTER ANIMATION ───
         function animateCounter(el) {
@@ -2150,7 +2158,7 @@ nav.scrolled .logo-mark {
             const isDecimal = target % 1 !== 0;
             const duration = 2000;
             const start = performance.now();
-            
+
             function update(now) {
                 const progress = Math.min((now - start) / duration, 1);
                 const ease = 1 - Math.pow(1 - progress, 3);
@@ -2165,7 +2173,7 @@ nav.scrolled .logo-mark {
         function filterMenu(category, btn) {
             document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
             btn.classList.add('active');
-            
+
             const items = document.querySelectorAll('.menu-item');
             items.forEach((item, i) => {
                 if (category === 'all' || item.dataset.category === category) {
@@ -2195,6 +2203,150 @@ nav.scrolled .logo-mark {
         document.querySelectorAll('.preloader-text span').forEach((span, i) => {
             span.style.animationDelay = (i * 0.06) + 's';
         });
+
+        // ═══════════════════════════════════════════════════════════
+        //  CMS CONTENT LOADERS  (Decap CMS integration)
+        // ═══════════════════════════════════════════════════════════
+
+        // Helper: generate star string
+        function getStars(n) {
+            return '★'.repeat(n) + '☆'.repeat(5 - n);
+        }
+
+        // Helper: get initials from name
+        function getInitials(name) {
+            if (!name) return '??';
+            return name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+        }
+
+        // ─── LOAD MENU FROM CMS ───
+        async function loadMenu() {
+            try {
+                const res = await fetch('/data/menu.json');
+                if (!res.ok) return; // keep fallback
+                const data = await res.json();
+                if (!data.items || !data.items.length) return;
+
+                const grid = document.getElementById('menuGrid');
+                grid.innerHTML = '';
+
+                data.items.forEach((item, i) => {
+                    const div = document.createElement('div');
+                    div.className = 'menu-item reveal';
+                    div.dataset.category = item.category || 'food';
+                    div.style.transitionDelay = (i * 0.05) + 's';
+                    div.innerHTML = `
+                        <div class="menu-item-header">
+                            <h3>${escapeHtml(item.title)}</h3>
+                            <span class="menu-price">${escapeHtml(item.price)}</span>
+                        </div>
+                        <p>${escapeHtml(item.description)}</p>
+                        ${item.tag ? `<span class="tag">${escapeHtml(item.tag)}</span>` : ''}
+                    `;
+                    grid.appendChild(div);
+                });
+
+                // Re-observe new items
+                document.querySelectorAll('.menu-item').forEach(el => revealObserver.observe(el));
+            } catch (e) {
+                console.log('Menu CMS load failed, using fallback');
+            }
+        }
+
+        // ─── LOAD ANNOUNCEMENTS FROM CMS ───
+        async function loadAnnouncements() {
+            try {
+                const res = await fetch('/data/announcements.json');
+                if (!res.ok) return;
+                const data = await res.json();
+                if (!data.announcements || !data.announcements.length) return;
+
+                const active = data.announcements.find(a => a.active !== false);
+                if (!active) {
+                    document.getElementById('announcement').style.display = 'none';
+                    return;
+                }
+
+                const img = document.getElementById('announcementImg');
+                const content = document.getElementById('announcementContent');
+
+                if (active.image) img.src = active.image;
+                content.innerHTML = `
+                    <span class="announcement-eyebrow">Sip THIS news!</span>
+                    <h2>${escapeHtml(active.title)}</h2>
+                    <p>${escapeHtml(active.body)}</p>
+                    ${active.button && active.link ? 
+                        `<a href="${escapeHtml(active.link)}" target="_blank" class="btn">${escapeHtml(active.button)} <i class="fas fa-arrow-right" aria-hidden="true"></i></a>` : ''}
+                `;
+            } catch (e) {
+                console.log('Announcement CMS load failed, using fallback');
+            }
+        }
+
+        // ─── LOAD REVIEWS FROM CMS ───
+        async function loadReviews() {
+            try {
+                const res = await fetch('/data/reviews.json');
+                if (!res.ok) return;
+                const data = await res.json();
+                if (!data.reviews || !data.reviews.length) return;
+
+                const container = document.getElementById('reviewCards');
+                container.innerHTML = '';
+
+                data.reviews.forEach((review, i) => {
+                    const div = document.createElement('div');
+                    div.className = `review-card reveal reveal-delay-${Math.min(i + 1, 3)}`;
+                    const stars = getStars(review.stars || 5);
+                    const initials = review.initials || getInitials(review.name);
+                    div.innerHTML = `
+                        <div class="stars-small">${stars}</div>
+                        <p>"${escapeHtml(review.quote)}"</p>
+                        <div class="reviewer">
+                            <div class="reviewer-avatar">${escapeHtml(initials)}</div>
+                            <div>
+                                <div class="reviewer-name">${escapeHtml(review.name)}</div>
+                                <div class="reviewer-badge">${escapeHtml(review.badge || '')}</div>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(div);
+                });
+
+                // Re-observe new cards
+                document.querySelectorAll('.review-card').forEach(el => revealObserver.observe(el));
+            } catch (e) {
+                console.log('Reviews CMS load failed, using fallback');
+            }
+        }
+
+        // Helper: basic HTML escaping
+        function escapeHtml(str) {
+            if (typeof str !== 'string') return String(str || '');
+            return str
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        // ─── INIT CMS LOADERS ───
+        document.addEventListener('DOMContentLoaded', () => {
+            loadMenu();
+            loadAnnouncements();
+            loadReviews();
+        });
+
+        // ─── NETLIFY IDENTITY REDIRECT ───
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
     </script>
 </body>
 </html>

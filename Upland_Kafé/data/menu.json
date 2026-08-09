@@ -1,0 +1,52 @@
+{
+  "items": [
+    {
+      "title": "Upland Iced Coffee",
+      "price": "₱140",
+      "description": "Our signature cold brew — steeped for 18 hours, smooth, bold, and naturally sweet. Served over ice.",
+      "category": "coffee",
+      "tag": "Best Seller",
+      "bestseller": true
+    },
+    {
+      "title": "Strawberry Frappe",
+      "price": "₱165",
+      "description": "Fresh strawberry blend with creamy milk and a swirl of house-made syrup. Refreshingly sweet.",
+      "category": "drinks",
+      "tag": "Refreshing",
+      "bestseller": false
+    },
+    {
+      "title": "Spanish Latte",
+      "price": "₱160",
+      "description": "Sweetened condensed milk meets double espresso over ice. Creamy, rich, and perfectly balanced.",
+      "category": "coffee",
+      "tag": "Creamy",
+      "bestseller": false
+    },
+    {
+      "title": "Creamy Carbonara",
+      "price": "₱220",
+      "description": "Al dente pasta tossed in rich, creamy sauce with crispy bacon bits and parmesan. Served with garlic bread.",
+      "category": "food",
+      "tag": "Meal",
+      "bestseller": false
+    },
+    {
+      "title": "Grilled Cheese Sandwich",
+      "price": "₱180",
+      "description": "Golden, buttery sourdough stuffed with melted mozzarella and cheddar. Served with chips on the side.",
+      "category": "food",
+      "tag": "Comfort",
+      "bestseller": false
+    },
+    {
+      "title": "Loaded Fries",
+      "price": "₱150",
+      "description": "Crispy golden fries topped with cheese sauce, bacon bits, and a drizzle of ranch. Perfect for sharing.",
+      "category": "food",
+      "tag": "Snack",
+      "bestseller": false
+    }
+  ]
+}

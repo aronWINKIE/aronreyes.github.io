@@ -1,0 +1,25 @@
+{
+  "reviews": [
+    {
+      "name": "Pinky Myles Jaravata",
+      "badge": "Local Guide · 7 reviews",
+      "quote": "Upland Café is a charming place that offers a relaxing and refreshing dining experience. The cafe has a cozy, nature-inspired ambiance with a beautiful view that makes it perfect for unwinding, catching up with friends, or enjoying some quiet time.",
+      "stars": 5,
+      "initials": "PJ"
+    },
+    {
+      "name": "Liam Jones",
+      "badge": "Local Guide · 35 reviews",
+      "quote": "Upland Kafé is a charming roadside café in Silang, Cavite that many visitors enjoy for its relaxed garden-style atmosphere, creative coffee drinks, and casual outdoor seating, making it a popular pitstop for travelers heading to Tagaytay.",
+      "stars": 5,
+      "initials": "LJ"
+    },
+    {
+      "name": "Aubrey Cortez",
+      "badge": "2 reviews",
+      "quote": "I recently visited Upland Kafe in Silang and I can honestly say it's one of the coziest and most relaxing cafes I've been to. The vibes are very chill, peaceful, and perfect if you want to unwind, catch up with friends, or just enjoy some quiet time.",
+      "stars": 5,
+      "initials": "AC"
+    }
+  ]
+}

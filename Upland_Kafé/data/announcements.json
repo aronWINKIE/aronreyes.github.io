@@ -1,0 +1,12 @@
+{
+  "announcements": [
+    {
+      "title": "We're Hiring!",
+      "body": "Join the Upland Kafé family. We're looking for passionate baristas and kitchen crew to help us serve the best coffee experience in Silang, Cavite.",
+      "active": true,
+      "button": "Apply Now",
+      "link": "https://www.facebook.com/uplandkafe/",
+      "image": "https://scontent.fmnl4-3.fna.fbcdn.net/v/t51.82787-15/712663800_18090460631604995_7322247299303398613_n.jpg?stp=dst-jpg_tt6&cstp=mx1405x1874&ctp=p526x296&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=6P7J3wJUJcMQ7kNvwHXqMT2&_nc_oc=Ado7yxfDVxWxqp8xsPOP4b62KXRsTGD2vNLYP8udtVa7LjQ00owNqFm021mQ2cT29PY&_nc_zt=23&_nc_ht=scontent.fmnl4-3.fna&_nc_gid=vBDdOSgUqvG8u8JNdaWiIA&_nc_ss=7b289&oh=00_AQHJpfVExdJEg3SFdOa3w50ic0ArFH5CsPeGXlcIvqpDsg&oe=6A7E3B5A"
+    }
+  ]
+}
